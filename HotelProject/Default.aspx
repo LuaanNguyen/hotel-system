@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="HotelProject.Default" %>
+<%@ Register Src="~/LoginControl.ascx" TagPrefix="uc" TagName="Login" %>
 <!--Default page linking all services made by Sophia-->
 <!DOCTYPE html>
 
@@ -44,8 +45,25 @@
                                    Link: Current Page
                     </asp:TableCell>
                 </asp:TableRow>
-            </asp:Table>
-            
+                <asp:TableRow>
+                    <asp:TableCell>Sophia Gu</asp:TableCell>
+                    <asp:TableCell>.ascx page and user controls</asp:TableCell>
+                    <asp:TableCell>The Login User control component used for Staff & Member Login page</asp:TableCell>
+                    <asp:TableCell>C# Code behind the GUI. Present on the Staff Login Page and Member Login Page<br />
+                                   Staff Login Page: <asp:HyperLink ID="StaffLogin" runat="server" NavigateUrl="~/StaffLogin.aspx">Staff Login</asp:HyperLink><br />
+                                   Member Login Page: <asp:HyperLink ID="MemberLoginLink" runat="server" NavigateUrl="~/MemberLogin.aspx">Member Login</asp:HyperLink>
+                    </asp:TableCell>
+                </asp:TableRow>
+                <asp:TableRow>
+                    <asp:TableCell>Sophia Gu</asp:TableCell>
+                    <asp:TableCell>Cookies</asp:TableCell>
+                    <asp:TableCell>Stores username and password</asp:TableCell>
+                    <asp:TableCell>GUI design and C# Code behind GUI using HTTP cookies library. Present in Staff & Member Login Page <br />
+                                   Staff Login Page: <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/StaffLogin.aspx">Staff Login</asp:HyperLink><br />
+                                   Member Login Page: <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/MemberLogin.aspx">Member Login</asp:HyperLink>
+                    </asp:TableCell>
+                </asp:TableRow>
+            </asp:Table>           
         </div>
     </form>
 </body>

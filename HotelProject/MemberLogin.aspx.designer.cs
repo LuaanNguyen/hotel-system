@@ -11,7 +11,7 @@ namespace HotelProject
 {
 
 
-    public partial class Default
+    public partial class MemberLogin
     {
 
         /// <summary>
@@ -24,22 +24,22 @@ namespace HotelProject
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// Title control.
+        /// LoginControl1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Title;
+        protected global::HotelProject.LoginControl LoginControl1;
 
         /// <summary>
-        /// Names control.
+        /// CookieTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Names;
+        protected global::System.Web.UI.WebControls.Label CookieTitle;
 
         /// <summary>
         /// Description control.
@@ -51,48 +51,21 @@ namespace HotelProject
         protected global::System.Web.UI.WebControls.Label Description;
 
         /// <summary>
-        /// ComponentsTable control.
+        /// CookieUsername control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table ComponentsTable;
+        protected global::System.Web.UI.WebControls.Label CookieUsername;
 
         /// <summary>
-        /// StaffLogin control.
+        /// CookiePassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink StaffLogin;
-
-        /// <summary>
-        /// MemberLoginLink control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink MemberLoginLink;
-
-        /// <summary>
-        /// HyperLink1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HyperLink1;
-
-        /// <summary>
-        /// HyperLink2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HyperLink2;
+        protected global::System.Web.UI.WebControls.Label CookiePassword;
     }
 }

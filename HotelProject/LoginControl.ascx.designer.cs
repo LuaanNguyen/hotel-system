@@ -11,88 +11,70 @@ namespace HotelProject
 {
 
 
-    public partial class Default
+    public partial class LoginControl
     {
 
         /// <summary>
-        /// form1 control.
+        /// LoginTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.Label LoginTitle;
 
         /// <summary>
-        /// Title control.
+        /// UsernameLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Title;
+        protected global::System.Web.UI.WebControls.Label UsernameLabel;
 
         /// <summary>
-        /// Names control.
+        /// UsernameTextbox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Names;
+        protected global::System.Web.UI.WebControls.TextBox UsernameTextbox;
 
         /// <summary>
-        /// Description control.
+        /// PasswordLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Description;
+        protected global::System.Web.UI.WebControls.Label PasswordLabel;
 
         /// <summary>
-        /// ComponentsTable control.
+        /// PasswordTextbox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table ComponentsTable;
+        protected global::System.Web.UI.WebControls.TextBox PasswordTextbox;
 
         /// <summary>
-        /// StaffLogin control.
+        /// LoginButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink StaffLogin;
+        protected global::System.Web.UI.WebControls.Button LoginButton;
 
         /// <summary>
-        /// MemberLoginLink control.
+        /// Result control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink MemberLoginLink;
-
-        /// <summary>
-        /// HyperLink1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HyperLink1;
-
-        /// <summary>
-        /// HyperLink2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HyperLink2;
+        protected global::System.Web.UI.WebControls.Label Result;
     }
 }
