@@ -13,5 +13,12 @@ namespace HotelProject
         {
 
         }
+        protected void btnTryHash_Click(object sender, EventArgs e)
+        {
+            lblHashResult.Text = SecurityLib.Security.HashPassword("Test123");
+        }
     }
+
+    
+
 }

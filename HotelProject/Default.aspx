@@ -68,6 +68,36 @@
                                    Member Login Page: <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/MemberLogin.aspx">Member Login</asp:HyperLink>
                     </asp:TableCell>
                 </asp:TableRow>
+
+                <asp:TableRow>
+                    <asp:TableCell>Luan Nguyen</asp:TableCell>
+                    <asp:TableCell>DLL (SecurityLib)</asp:TableCell>
+                    <asp:TableCell>Contains SHA-256 hashing function for credential security</asp:TableCell>
+                    <asp:TableCell>
+                        Used in: Try Hash Button<br />
+                        Link: This Page
+                    </asp:TableCell>
+                </asp:TableRow>
+
+                <asp:TableRow>
+                    <asp:TableCell>Luan Nguyen</asp:TableCell>
+                    <asp:TableCell>.ascx User Control</asp:TableCell>
+                    <asp:TableCell>Calculates a discounted hotel price</asp:TableCell>
+                    <asp:TableCell>
+                        Used in: Luan’s Components Demo<br />
+                        Control: &lt;uc:Discount /&gt;
+                    </asp:TableCell>
+                </asp:TableRow>
+
+                <asp:TableRow>
+                    <asp:TableCell>Luan Nguyen</asp:TableCell>
+                    <asp:TableCell>.asmx Web Service</asp:TableCell>
+                    <asp:TableCell>Provides discount calculation service endpoint</asp:TableCell>
+                    <asp:TableCell>
+                        TryIt Link:<br />
+                        <asp:HyperLink ID="TryDiscountServiceRow" runat="server" NavigateUrl="~/DiscountService.asmx">DiscountService.asmx</asp:HyperLink>
+                    </asp:TableCell>
+                </asp:TableRow>
             </asp:Table>     
             
             <br /><br />
@@ -92,6 +122,11 @@
                         </td>
                     </tr>
                 </table>
+
+                <asp:Button ID="btnTryHash" runat="server" Text="Test Hash" OnClick="btnTryHash_Click" />
+                <asp:Label ID="lblHashResult" runat="server" />
+
+                <asp:HyperLink ID="TryDiscountService" runat="server" NavigateUrl="~/DiscountService.asmx">Try Discount Service</asp:HyperLink>
             </div>
         </div>
     </form>

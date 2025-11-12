@@ -69,6 +69,7 @@
   <ItemGroup>
     <Content Include="AgentProfile.ascx" />
     <Content Include="Default.aspx" />
+    <Content Include="DiscountService.asmx" />
     <Content Include="LoginControl.ascx" />
     <Content Include="MemberLogin.aspx" />
     <Content Include="StaffLogin.aspx" />
@@ -90,6 +91,10 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DiscountService.asmx.cs">
+      <DependentUpon>DiscountService.asmx</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="LoginControl.ascx.cs">
       <DependentUpon>LoginControl.ascx</DependentUpon>
