@@ -67,13 +67,23 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AgentProfile.ascx" />
     <Content Include="Default.aspx" />
     <Content Include="LoginControl.ascx" />
     <Content Include="MemberLogin.aspx" />
     <Content Include="StaffLogin.aspx" />
     <Content Include="Web.config" />
+    <Content Include="DiscountControl.ascx" />
+    <Content Include="MemberProfile.ascx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AgentProfile.ascx.cs">
+      <DependentUpon>AgentProfile.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgentProfile.ascx.designer.cs">
+      <DependentUpon>AgentProfile.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -103,6 +113,20 @@
     <Compile Include="StaffLogin.aspx.designer.cs">
       <DependentUpon>StaffLogin.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DiscountControl.ascx.cs">
+      <DependentUpon>DiscountControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DiscountControl.ascx.designer.cs">
+      <DependentUpon>DiscountControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="MemberProfile.ascx.cs">
+      <DependentUpon>MemberProfile.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MemberProfile.ascx.designer.cs">
+      <DependentUpon>MemberProfile.ascx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -112,6 +136,12 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SecurityLib\SecurityLib.csproj">
+      <Project>{360a13f5-5efb-4df2-9ae0-4dd370a36ebd}</Project>
+      <Name>SecurityLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

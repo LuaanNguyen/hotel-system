@@ -1,5 +1,10 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="HotelProject.Default" %>
 <%@ Register Src="~/LoginControl.ascx" TagPrefix="uc" TagName="Login" %>
+<%@ Register Src="~/DiscountControl.ascx" TagPrefix="uc" TagName="Discount" %>
+<%@ Register Src="~/AgentProfile.ascx" TagPrefix="uc" TagName="AgentProfile" %>
+<%@ Register Src="~/MemberProfile.ascx" TagPrefix="uc" TagName="MemberProfile" %>
+
+
 <!--Default page linking all services made by Sophia-->
 <!DOCTYPE html>
 
@@ -63,7 +68,31 @@
                                    Member Login Page: <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/MemberLogin.aspx">Member Login</asp:HyperLink>
                     </asp:TableCell>
                 </asp:TableRow>
-            </asp:Table>           
+            </asp:Table>     
+            
+            <br /><br />
+
+            <!-- Luan's services-->
+
+            <div style="margin-top:30px; padding:20px; border:1px solid #aaa; width:90%; max-width:800px;">
+                <h2 style="text-align:center; font-family:Arial;">Luan's Components Demo</h2>
+    
+                <table style="width:100%; margin-top:20px;">
+                    <tr>
+                        <td style="vertical-align:top; padding:10px; width:33%;">
+                            <uc:Discount ID="Discount1" runat="server" />
+                        </td>
+
+                        <td style="vertical-align:top; padding:10px; width:33%;">
+                            <uc:AgentProfile ID="AgentProfile1" runat="server" />
+                        </td>
+
+                        <td style="vertical-align:top; padding:10px; width:33%;">
+                            <uc:MemberProfile ID="MemberProfile1" runat="server" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
         </div>
     </form>
 </body>
