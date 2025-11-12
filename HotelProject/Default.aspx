@@ -74,7 +74,7 @@
                     <asp:TableCell>DLL (SecurityLib)</asp:TableCell>
                     <asp:TableCell>Contains SHA-256 hashing function for credential security</asp:TableCell>
                     <asp:TableCell>
-                        Used in: Try Hash Button<br />
+                        Used in: Test Hash Button<br />
                         Link: This Page
                     </asp:TableCell>
                 </asp:TableRow>
