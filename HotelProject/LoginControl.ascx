@@ -14,6 +14,5 @@
     <br />
 
     <asp:Button ID="LoginButton" runat="server" Text="Login" OnClick="btn_LoginClick" />
-    <asp:Label ID="Result" runat="server" Text="Result:"></asp:Label>
     
 </div>

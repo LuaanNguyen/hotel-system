@@ -21,6 +21,12 @@ namespace WcfHotelService
         [OperationContract]
         bool AddHotelRating(string username, string hotelID, float rating, string comment);
 
+        [OperationContract]
+        bool LoginStaff(string username, string password);
+
+        [OperationContract]
+        bool LoginMember(string username, string password);
+
 
         // TODO: Add your service operations here
     }

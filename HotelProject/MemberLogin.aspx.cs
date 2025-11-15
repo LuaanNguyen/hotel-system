@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using HotelProject.RatingServiceReference;
 
 namespace HotelProject
 {
@@ -17,24 +18,42 @@ namespace HotelProject
             if (!IsPostBack)
             {
                 HttpCookie myCookies = Request.Cookies["myCookieId"];
-                if (myCookies != null)
+                if (myCookies != null && IsMemberLoggedIn())
                 {
-                    CookieUsername.Text = "Entered Username: " + myCookies["Username"];
-                    CookiePassword.Text = "Entered Password: " + myCookies["Password"];
+                    Response.Redirect("MemberDashboard.aspx");
                 }
             }
         }
 
+        protected bool IsMemberLoggedIn()
+        {
+            HttpCookie loginCookie = Request.Cookies["myCookieId"];
+            return (loginCookie != null && !string.IsNullOrEmpty(loginCookie["Username"]));
+        }
+
         private void LoginControl1_LoginAttempt(object sender, LoginEventArgs e)
         {
-            HttpCookie myCookies = new HttpCookie("myCookieId");
-            myCookies["Username"] = e.Username;
-            myCookies["Password"] = e.Password;
-            myCookies.Expires = DateTime.Now.AddMonths(6);
-            Response.Cookies.Add(myCookies);
+            string enteredUsername = e.Username;
+            string enteredPassword = e.Password;
 
-            CookieUsername.Text = "Entered Username: " + myCookies["Username"];
-            CookiePassword.Text = "Entered Password: " + myCookies["Password"];
+            HttpCookie myCookies = new HttpCookie("myCookieId");
+            Service1Client prxy = new Service1Client();
+
+            if(prxy.LoginMember(enteredUsername, enteredPassword))
+            {
+                // first, let's set the cookies
+                myCookies["Username"] = e.Username;
+                myCookies["Password"] = e.Password;
+                myCookies.Expires = DateTime.Now.AddMinutes(10);
+                Response.Cookies.Add(myCookies);
+
+                Response.Redirect("MemberDashboard.aspx");
+            }
+            else
+            {
+                ResultLabel.Text = "Result: Invalid Credentials.";
+            }
+
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HotelProject.RatingServiceReference;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -14,27 +15,45 @@ namespace HotelProject
             LoginControl1.LoginAttempt += LoginControl1_LoginAttempt;
 
             // Fetch the cookie values only when the page isn't loading for the first time
-            if(!IsPostBack)
+            if (!IsPostBack)
             {
-                HttpCookie myCookies = Request.Cookies["myCookieId"];
-                if(myCookies != null)
+                HttpCookie myCookies = Request.Cookies["myCookieId2"];
+                if (myCookies != null && IsStaffLoggedIn())
                 {
-                    CookieUsername.Text = "Entered Username: " + myCookies["Username"];
-                    CookiePassword.Text = "Entered Password: " + myCookies["Password"];
+                    Response.Redirect("StaffDashboard.aspx");
                 }
             }
         }
 
+        protected bool IsStaffLoggedIn()
+        {
+            HttpCookie loginCookie = Request.Cookies["myCookieId2"];
+            return (loginCookie != null && !string.IsNullOrEmpty(loginCookie["Username"]));
+        }
+
         private void LoginControl1_LoginAttempt(object sender, LoginEventArgs e)
         {
-            HttpCookie myCookies = new HttpCookie("myCookieId");
-            myCookies["Username"] = e.Username;
-            myCookies["Password"] = e.Password;
-            myCookies.Expires = DateTime.Now.AddMonths(6);
-            Response.Cookies.Add(myCookies);
+            string enteredUsername = e.Username;
+            string enteredPassword = e.Password;
 
-            CookieUsername.Text = "Entered Username: " + myCookies["Username"];
-            CookiePassword.Text = "Entered Password: " + myCookies["Password"];
+            HttpCookie myCookies = new HttpCookie("myCookieId2");
+            Service1Client prxy = new Service1Client();
+
+            if (prxy.LoginStaff(enteredUsername, enteredPassword))
+            {
+                // first, let's set the cookies
+                myCookies["Username"] = e.Username;
+                myCookies["Password"] = e.Password;
+                myCookies.Expires = DateTime.Now.AddMinutes(10);
+                Response.Cookies.Add(myCookies);
+
+                Response.Redirect("StaffDashboard.aspx");
+            }
+            else
+            {
+                ResultLabel.Text = "Result: Invalid Credentials.";
+            }
+
         }
     }
 }

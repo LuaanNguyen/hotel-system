@@ -19,6 +19,18 @@
   <wsdl:message name="IService1_AddHotelRating_OutputMessage">
     <wsdl:part name="parameters" element="tns:AddHotelRatingResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_LoginStaff_InputMessage">
+    <wsdl:part name="parameters" element="tns:LoginStaff" />
+  </wsdl:message>
+  <wsdl:message name="IService1_LoginStaff_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoginStaffResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_LoginMember_InputMessage">
+    <wsdl:part name="parameters" element="tns:LoginMember" />
+  </wsdl:message>
+  <wsdl:message name="IService1_LoginMember_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoginMemberResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="GetRatedHotels">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetRatedHotels" message="tns:IService1_GetRatedHotels_InputMessage" />
@@ -27,6 +39,14 @@
     <wsdl:operation name="AddHotelRating">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/AddHotelRating" message="tns:IService1_AddHotelRating_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/AddHotelRatingResponse" message="tns:IService1_AddHotelRating_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LoginStaff">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/LoginStaff" message="tns:IService1_LoginStaff_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/LoginStaffResponse" message="tns:IService1_LoginStaff_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LoginMember">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/LoginMember" message="tns:IService1_LoginMember_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/LoginMemberResponse" message="tns:IService1_LoginMember_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -42,6 +62,24 @@
     </wsdl:operation>
     <wsdl:operation name="AddHotelRating">
       <soap:operation soapAction="http://tempuri.org/IService1/AddHotelRating" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoginStaff">
+      <soap:operation soapAction="http://tempuri.org/IService1/LoginStaff" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoginMember">
+      <soap:operation soapAction="http://tempuri.org/IService1/LoginMember" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
