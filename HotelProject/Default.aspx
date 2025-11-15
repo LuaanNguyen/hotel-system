@@ -68,6 +68,26 @@
                                    Member Login Page: <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/MemberLogin.aspx">Member Login</asp:HyperLink>
                     </asp:TableCell>
                 </asp:TableRow>
+                <asp:TableRow>
+                    <asp:TableCell>Sophia Gu</asp:TableCell>
+                    <asp:TableCell>WSDL Service (fetch rated hotels by username)</asp:TableCell>
+                    <asp:TableCell>Input: Username
+                        <br />     Output: All hotels that the member rated
+                    </asp:TableCell>
+                    <asp:TableCell>GUI design, C# code behind the GUI, Members.xml & Hotels.xml file, C# code for WSDL service
+                        <br />     Member Rating Page TryIt: <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/MemberRating.aspx">Member Rating Page</asp:HyperLink>
+                    </asp:TableCell>
+                </asp:TableRow>
+                <asp:TableRow>
+                    <asp:TableCell>Sophia Gu</asp:TableCell>
+                    <asp:TableCell>WSDL Service (user adds a rating for a hotel)</asp:TableCell>
+                    <asp:TableCell>Input: Username
+                        <br />     Output: bool
+                    </asp:TableCell>
+                    <asp:TableCell>GUI design, C# code behind the GUI, Members.xml & Hotels.xml file, C# code for WSDL service
+                        <br />     Member Rating Page TryIt: <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/MemberRating.aspx">Member Rating Page</asp:HyperLink>
+                    </asp:TableCell>
+                </asp:TableRow>
 
                 <asp:TableRow>
                     <asp:TableCell>Luan Nguyen</asp:TableCell>
