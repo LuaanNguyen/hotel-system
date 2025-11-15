@@ -29,6 +29,7 @@ namespace HotelProject
             if (string.IsNullOrEmpty(username))
             {
                 ResultLabel1.Text = "Result: Enter a username.";
+                UsernameTextbox.Text = "";
                 return;
             }
 
@@ -42,6 +43,7 @@ namespace HotelProject
                 {
                     RatingDisplay.Text = "This member has not rated any hotels.";
                     ResultLabel1.Text = $"Member '{username}' exists!";
+                    UsernameTextbox.Text = "";
                     return;
                 }
 
@@ -49,6 +51,7 @@ namespace HotelProject
                 if (ratedHotels[0].HotelID == "-1")
                 {
                     ResultLabel1.Text = "Incorrect credentials. Member with entered username doesn't exist";
+                    UsernameTextbox.Text = "";
                     return;
                 }
 
@@ -72,6 +75,7 @@ namespace HotelProject
                     result.AppendLine();
                 }
 
+                UsernameTextbox.Text = "";
                 RatingDisplay.Text = result.ToString();
            
             }
@@ -79,6 +83,67 @@ namespace HotelProject
             {
                 ResultLabel1.Text = ex.Message;
             }
+        }
+
+        protected void AddRating_Click(object sender, EventArgs e)
+        {
+            // clear out the text, just in case
+            ResultLabel2.Text = "";
+
+            // validate inputs
+            string username = UsernameTextbox2.Text.Trim();
+            string hotelID = HotelIDTextbox.Text.Trim();
+            string rating = RatingTextbox.Text.Trim();
+            string comment = CommentTextbox.Text.Trim();
+
+            if(string.IsNullOrEmpty(username))
+            {
+                ResultLabel2.Text = "Result: Enter a username, please.";
+            }
+
+            if (string.IsNullOrEmpty(hotelID))
+            {
+                ResultLabel2.Text = "Result: Enter a hotel ID, please.";
+            }
+
+            if (!float.TryParse(rating, out float ratingFloat) || ratingFloat < 0.0f || ratingFloat > 5.0)
+            {
+                ResultLabel2.Text = "Result: Enter a valid rating from 0.0 to 5.0, please";
+            }
+
+            if (string.IsNullOrEmpty(comment)) {
+                ResultLabel2.Text = "Result: Enter a comment, please.";
+            }
+
+            try
+            {
+                Service1Client prxy = new Service1Client();
+
+
+                float convertedRating = float.Parse(rating);
+                bool success = prxy.AddHotelRating(username, hotelID, convertedRating, comment);
+
+                if (success)
+                {
+                    ResultLabel2.Text = "Result: Rating successfully added.\n" +
+                    "Please enter the corresponding username in the above TryIt Service to see the newly added rating";
+
+                    UsernameTextbox2.Text = "";
+                    HotelIDTextbox.Text = "";
+                    RatingTextbox.Text = "";
+                    CommentTextbox.Text = "";
+
+                }
+                else
+                {
+                    ResultLabel2.Text = "Result: Failed to add rating";
+                }
+            }
+            catch (Exception ex)
+            {
+                ResultLabel2.Text = "Result: " + ex.Message;
+            }
+            
         }
     }
 }

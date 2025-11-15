@@ -18,6 +18,10 @@ namespace WcfHotelService
         [OperationContract]
         List<RatedHotel> GetRatedHotels(string username);
 
+        [OperationContract]
+        bool AddHotelRating(string username, string hotelID, float rating, string comment);
+
+
         // TODO: Add your service operations here
     }
 

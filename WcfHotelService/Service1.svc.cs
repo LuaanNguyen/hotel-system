@@ -120,5 +120,73 @@ namespace WcfHotelService
             return ratedHotels ;
         }
 
+        public bool AddHotelRating(string username, string hotelID, float rating, string comment)
+        {
+            try
+            {
+                string membersPath = HostingEnvironment.MapPath("~/App_Data/Members.xml");
+                XDocument members = XDocument.Load(membersPath);
+
+                // get matching member
+                var allMembers = members.Descendants("Member");
+                XElement member = null;
+
+                foreach (var m in allMembers)
+                {
+                    var tempUsername = m.Element("Username");
+
+                    // found member with matching username
+                    if (tempUsername != null && tempUsername.Value == username)
+                    {
+                        member = m;
+                        break;
+                    }
+                }
+
+                // if no match after searching, I'll throw an exception (two invalid possiblities, so throw exception)
+                if (member == null)
+                {
+                    throw new Exception($"Member with username '{username}' doesn't exist!");
+                }
+
+                //check if already rated
+                var existingRating = member.Descendants("RatedHotel").FirstOrDefault(r => r.Element("HotelID")?.Value == hotelID);
+                if (existingRating != null)
+                {
+                    throw new Exception($"You have already rated hotel with ID {hotelID}");
+                }
+
+                // check if rating given is valid
+                if (rating < 0.0f || rating > 5.0f)
+                {
+                    throw new Exception("Rating must be between 0 and 5");
+                }
+
+                // find/create the container
+                var ratedHotelsElement = member.Element("RatedHotels");
+
+                // create container
+                if (ratedHotelsElement == null)
+                {
+                    ratedHotelsElement = new XElement("RatedHotels");
+                    member.Add(ratedHotelsElement);
+                }
+
+                // new rating
+                XElement newRating = new XElement("RatedHotel",
+                    new XElement("HotelID", hotelID),
+                    new XElement("Rating", rating.ToString("F1")),
+                    new XElement("Comment", comment)
+                );
+                ratedHotelsElement.Add(newRating);
+                members.Save(membersPath);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
     }
 }
