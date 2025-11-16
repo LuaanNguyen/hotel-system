@@ -14,21 +14,21 @@ namespace WcfHotelService
     [ServiceContract]
     public interface IService1
     {
-
+        // get rated hotels by username
         [OperationContract]
         List<RatedHotel> GetRatedHotels(string username);
 
+        // allows user to add a new rating for a hotel
         [OperationContract]
         bool AddHotelRating(string username, string hotelID, float rating, string comment);
 
+        // login functionality for staff
         [OperationContract]
         bool LoginStaff(string username, string password);
 
+        // login functionality for member
         [OperationContract]
         bool LoginMember(string username, string password);
-
-
-        // TODO: Add your service operations here
     }
 
 
@@ -52,7 +52,7 @@ namespace WcfHotelService
         public Address HotelAddress { get; set; }
     }
 
-    // Address is complex type, so just make a separate data contract
+    // Address is complex type, so also made a separate data contract for ease
     [DataContract]
     public class Address
     {
@@ -85,7 +85,6 @@ namespace WcfHotelService
 
         [DataMember]
         public float Rating { get; set; }
-
 
         [DataMember]
         public List<string> PhoneNo { get; set; }

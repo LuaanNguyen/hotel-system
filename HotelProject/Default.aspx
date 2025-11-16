@@ -23,10 +23,10 @@
                 Staff can use the application to receive notifications about discounted hotel prices, and book a batch of hotel rooms. 
                 They will then offer those discounted rooms to the members through the application. New users can create an account
                 to become a member."></asp:Label>
-            <br />
+            <br /><br />
             <asp:Table ID="ComponentsTable" runat="server" GridLines="Both" BorderWidth="1">
                 <asp:TableRow>
-                    <asp:TableCell ColumnSpan="4" HorizontalAlign="Center">
+                    <asp:TableCell ColumnSpan="4" HorizontalAlign="Center" Font-Bold="true">
                         Application and Components Summary Table
                     </asp:TableCell>
                 </asp:TableRow>
@@ -40,7 +40,7 @@
                     <asp:TableCell>Provider Name</asp:TableCell>
                     <asp:TableCell>Page and Component type</asp:TableCell>
                     <asp:TableCell>Component Description (What does the component do?)</asp:TableCell>
-                    <asp:TableCell> Actual resources and methods used, link to component (where is it used></asp:TableCell>
+                    <asp:TableCell> Actual resources and methods used, link to component (where is it used)</asp:TableCell>
                 </asp:TableRow>
                 <asp:TableRow>
                     <asp:TableCell>Sophia Gu</asp:TableCell>
@@ -71,17 +71,19 @@
                 <asp:TableRow>
                     <asp:TableCell>Sophia Gu</asp:TableCell>
                     <asp:TableCell>WSDL Service (fetch rated hotels by username)</asp:TableCell>
-                    <asp:TableCell>Input: Username
+                    <asp:TableCell>Operation Name: GetRatedHotels
+                        <br />     Input: Username (string)
                         <br />     Output: All hotels that the member rated
                     </asp:TableCell>
                     <asp:TableCell>GUI design, C# code behind the GUI, Members.xml & Hotels.xml file, C# code for WSDL service
-                        <br />     Member Rating Page TryIt: <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/MemberRating.aspx">Member Rating Page</asp:HyperLink>
+                        <br />     Member Rating TryIt Page: <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/MemberRating.aspx">Member Rating Page</asp:HyperLink>
                     </asp:TableCell>
                 </asp:TableRow>
                 <asp:TableRow>
                     <asp:TableCell>Sophia Gu</asp:TableCell>
-                    <asp:TableCell>WSDL Service (user adds a rating for a hotel)</asp:TableCell>
-                    <asp:TableCell>Input: Username
+                    <asp:TableCell>WSDL Service (adds a rating for a hotel)</asp:TableCell>
+                    <asp:TableCell>Operation Name: AddHotelRating
+                        <br />     Input: Username (string), HotelID (string), rating (float), comment (string)
                         <br />     Output: bool
                     </asp:TableCell>
                     <asp:TableCell>GUI design, C# code behind the GUI, Members.xml & Hotels.xml file, C# code for WSDL service
@@ -91,7 +93,8 @@
                 <asp:TableRow>
                     <asp:TableCell>Sophia Gu</asp:TableCell>
                     <asp:TableCell>WSDL Service (verifies Member Login)</asp:TableCell>
-                    <asp:TableCell>Input: username(string), password(string)
+                    <asp:TableCell>Operation Name: LoginMember
+                        <br />     Input: username(string), password(string)
                         <br />     Output: bool
                     </asp:TableCell>
                     <asp:TableCell>C# code for the WSDL service, with the XDocument class to verify login information
@@ -101,7 +104,8 @@
                 <asp:TableRow>
                     <asp:TableCell>Sophia Gu</asp:TableCell>
                     <asp:TableCell>WSDL Service (verifies Staff Login)</asp:TableCell>
-                    <asp:TableCell>Input: username(string), password(string)
+                    <asp:TableCell>Operation Name: LoginStaff
+                        <br />     Input: username(string), password(string)
                         <br />     Output: bool
                     </asp:TableCell>
                     <asp:TableCell>C# code for WSDL service, with the XDocument class to verify login information
