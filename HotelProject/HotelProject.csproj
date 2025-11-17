@@ -71,13 +71,13 @@
     <Content Include="Connected Services\RatingServiceReference\HotelProject.RatingServiceReference.RatedHotel.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <None Include="Connected Services\RatingServiceReference\Service1.disco" />
     <None Include="Connected Services\RatingServiceReference\configuration91.svcinfo" />
     <None Include="Connected Services\RatingServiceReference\configuration.svcinfo" />
     <None Include="Connected Services\RatingServiceReference\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <None Include="Connected Services\RatingServiceReference\Service11.disco" />
     <Content Include="Default.aspx" />
     <Content Include="DiscountService.asmx" />
     <Content Include="LoginControl.ascx" />
@@ -173,14 +173,14 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\RatingServiceReference\Service1.wsdl" />
-    <None Include="Connected Services\RatingServiceReference\Service1.xsd">
+    <None Include="Connected Services\RatingServiceReference\Service11.wsdl" />
+    <None Include="Connected Services\RatingServiceReference\Service13.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\RatingServiceReference\Service11.xsd">
+    <None Include="Connected Services\RatingServiceReference\Service131.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\RatingServiceReference\Service12.xsd">
+    <None Include="Connected Services\RatingServiceReference\Service132.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />

@@ -77,6 +77,7 @@
                     </asp:TableCell>
                     <asp:TableCell>GUI design, C# code behind the GUI, Members.xml & Hotels.xml file, C# code for WSDL service
                         <br />     Member Rating TryIt Page: <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/MemberRating.aspx">Member Rating Page</asp:HyperLink>
+                        <br />     Service Deployed Here: <asp:HyperLink ID="HyperLink7" runat="server" NavigateUrl="http://webstrar8.fulton.asu.edu/page0/Service1.svc">Access Service</asp:HyperLink>
                     </asp:TableCell>
                 </asp:TableRow>
                 <asp:TableRow>
@@ -88,6 +89,7 @@
                     </asp:TableCell>
                     <asp:TableCell>GUI design, C# code behind the GUI, Members.xml & Hotels.xml file, C# code for WSDL service
                         <br />     Member Rating Page TryIt: <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/MemberRating.aspx">Member Rating Page</asp:HyperLink>
+                        <br />     Service Deployed Here: <asp:HyperLink ID="HyperLink8" runat="server" NavigateUrl="http://webstrar8.fulton.asu.edu/page0/Service1.svc">Access Service</asp:HyperLink>
                     </asp:TableCell>
                 </asp:TableRow>
                 <asp:TableRow>
@@ -99,6 +101,7 @@
                     </asp:TableCell>
                     <asp:TableCell>C# code for the WSDL service, with the XDocument class to verify login information
                         <br />     Member Login Page: <asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl="~/MemberLogin.aspx">Member Login</asp:HyperLink>
+                        <br />     Service Deployed Here: <asp:HyperLink ID="HyperLink9" runat="server" NavigateUrl="http://webstrar8.fulton.asu.edu/page0/Service1.svc">Access Service</asp:HyperLink>
                     </asp:TableCell>
                 </asp:TableRow>
                 <asp:TableRow>
@@ -110,6 +113,7 @@
                     </asp:TableCell>
                     <asp:TableCell>C# code for WSDL service, with the XDocument class to verify login information
                         <br />     Staff Login Page: <asp:HyperLink ID="HyperLink6" runat="server" NavigateUrl="~/StaffLogin.aspx">Staff Login</asp:HyperLink>
+                        <br />     Service Deployed Here: <asp:HyperLink ID="HyperLink10" runat="server" NavigateUrl="http://webstrar8.fulton.asu.edu/page0/Service1.svc">Access Service</asp:HyperLink>
                     </asp:TableCell>
                 </asp:TableRow>
 
