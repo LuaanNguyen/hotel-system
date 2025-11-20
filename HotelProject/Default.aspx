@@ -88,6 +88,26 @@
                         <br />     Member Rating Page TryIt: <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/MemberRating.aspx">Member Rating Page</asp:HyperLink>
                     </asp:TableCell>
                 </asp:TableRow>
+                <asp:TableRow>
+                    <asp:TableCell>Sophia Gu</asp:TableCell>
+                    <asp:TableCell>WSDL Service (verifies Member Login)</asp:TableCell>
+                    <asp:TableCell>Input: username(string), password(string)
+                        <br />     Output: bool
+                    </asp:TableCell>
+                    <asp:TableCell>C# code for the WSDL service, with the XDocument class to verify login information
+                        <br />     Member Login Page: <asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl="~/MemberLogin.aspx">Member Login</asp:HyperLink>
+                    </asp:TableCell>
+                </asp:TableRow>
+                <asp:TableRow>
+                    <asp:TableCell>Sophia Gu</asp:TableCell>
+                    <asp:TableCell>WSDL Service (verifies Staff Login)</asp:TableCell>
+                    <asp:TableCell>Input: username(string), password(string)
+                        <br />     Output: bool
+                    </asp:TableCell>
+                    <asp:TableCell>C# code for WSDL service, with the XDocument class to verify login information
+                        <br />     Staff Login Page: <asp:HyperLink ID="HyperLink6" runat="server" NavigateUrl="~/StaffLogin.aspx">Staff Login</asp:HyperLink>
+                    </asp:TableCell>
+                </asp:TableRow>
 
                 <asp:TableRow>
                     <asp:TableCell>Luan Nguyen</asp:TableCell>

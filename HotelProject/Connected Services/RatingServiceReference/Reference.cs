@@ -246,6 +246,18 @@ namespace HotelProject.RatingServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddHotelRating", ReplyAction="http://tempuri.org/IService1/AddHotelRatingResponse")]
         System.Threading.Tasks.Task<bool> AddHotelRatingAsync(string username, string hotelID, float rating, string comment);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/LoginStaff", ReplyAction="http://tempuri.org/IService1/LoginStaffResponse")]
+        bool LoginStaff(string username, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/LoginStaff", ReplyAction="http://tempuri.org/IService1/LoginStaffResponse")]
+        System.Threading.Tasks.Task<bool> LoginStaffAsync(string username, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/LoginMember", ReplyAction="http://tempuri.org/IService1/LoginMemberResponse")]
+        bool LoginMember(string username, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/LoginMember", ReplyAction="http://tempuri.org/IService1/LoginMemberResponse")]
+        System.Threading.Tasks.Task<bool> LoginMemberAsync(string username, string password);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -289,6 +301,22 @@ namespace HotelProject.RatingServiceReference {
         
         public System.Threading.Tasks.Task<bool> AddHotelRatingAsync(string username, string hotelID, float rating, string comment) {
             return base.Channel.AddHotelRatingAsync(username, hotelID, rating, comment);
+        }
+        
+        public bool LoginStaff(string username, string password) {
+            return base.Channel.LoginStaff(username, password);
+        }
+        
+        public System.Threading.Tasks.Task<bool> LoginStaffAsync(string username, string password) {
+            return base.Channel.LoginStaffAsync(username, password);
+        }
+        
+        public bool LoginMember(string username, string password) {
+            return base.Channel.LoginMember(username, password);
+        }
+        
+        public System.Threading.Tasks.Task<bool> LoginMemberAsync(string username, string password) {
+            return base.Channel.LoginMemberAsync(username, password);
         }
     }
 }

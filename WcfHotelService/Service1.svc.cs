@@ -188,5 +188,73 @@ namespace WcfHotelService
             }
         }
 
+        public bool LoginStaff(string username, string password)
+        {
+            if(string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+            {
+                return false;
+            }
+
+            try
+            {
+                string staffPath = HostingEnvironment.MapPath("~/App_Data/Staff.xml");
+                XDocument staff = XDocument.Load(staffPath);
+
+                // get matching member
+                var allStaff = staff.Descendants("StaffMember");
+
+                foreach (var m in allStaff)
+                {
+                    var tempUsername = m.Element("Username");
+                    var tempPassword = m.Element("Password");
+
+                    // found member with matching username & [password
+                    if (tempUsername != null && tempUsername.Value == username && tempPassword != null && tempPassword.Value == password)
+                    {
+                        return true;
+                    }
+                }
+
+                return false;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception (ex.Message);
+            }
+        }
+
+        public bool LoginMember(string username, string password)
+        {
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+            {
+                return false;
+            }
+
+            try
+            {
+                string membersPath = HostingEnvironment.MapPath("~/App_Data/Members.xml");
+                XDocument members = XDocument.Load(membersPath);
+
+                // get matching member
+                var allMembers = members.Descendants("Member");
+
+                foreach (var m in allMembers)
+                {
+                    var tempUsername = m.Element("Username");
+                    var tempPassword = m.Element("Password");
+
+                    // found member with matching username
+                    if (tempUsername != null && tempUsername.Value == username && tempPassword != null && tempPassword.Value == password)
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception (ex.Message);
+            }
+        }
     }
 }
