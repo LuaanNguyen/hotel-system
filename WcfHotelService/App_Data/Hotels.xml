@@ -11,6 +11,8 @@
 			<State>AZ</State>
 			<Zip>85281</Zip>
 		</Address>
+		<BookedRooms>33</BookedRooms>
+		<Price>57.00</Price>
 	</Hotel>
 	<Hotel ID="2">
 		<Name>La Quinta Inn</Name>
@@ -22,6 +24,8 @@
 			<State>AZ</State>
 			<Zip>85281</Zip>
 		</Address>
+		<BookedRooms>53</BookedRooms>
+		<Price>50.00</Price>
 	</Hotel>
 	<Hotel Rating="4.1" ID="3">
 		<Name>Hampton Inn Phoenix-Airport North</Name>
@@ -34,6 +38,8 @@
 			<State>AZ</State>
 			<Zip>85008</Zip>
 		</Address>
+		<BookedRooms>0</BookedRooms>
+		<Price>0.00</Price>
 	</Hotel>
 	<Hotel Rating="4.4" ID="4">
 		<Name>Hampton Inn and Suites Tempe</Name>
@@ -46,6 +52,8 @@
 			<State>AZ</State>
 			<Zip>85281</Zip>
 		</Address>
+		<BookedRooms>20</BookedRooms>
+		<Price>75.00</Price>
 	</Hotel>
 	<Hotel Rating="3.2" ID="5">
 		<Name>Days Inn By Wyndham Phoeix North</Name>
@@ -57,6 +65,8 @@
 			<State>AZ</State>
 			<Zip>85027</Zip>
 		</Address>
+		<BookedRooms>25</BookedRooms>
+		<Price>77.00</Price>
 	</Hotel>
 	<Hotel Rating="4.3" ID="6">
 		<Name>Best Western Plus Chandler Hotel and Suites</Name>
@@ -68,6 +78,8 @@
 			<State>AZ</State>
 			<Zip>85226</Zip>
 		</Address>
+		<BookedRooms>0</BookedRooms>
+		<Price>0.00</Price>
 	</Hotel>
 	<Hotel ID="7">
 		<Name>Hilton Garden Inn Phoenix Airport</Name>
@@ -79,6 +91,8 @@
 			<State>AZ</State>
 			<Zip>85040</Zip>
 		</Address>
+		<BookedRooms>23</BookedRooms>
+		<Price>83.00</Price>
 	</Hotel>
 	<Hotel Rating="3.5" ID="8">
 		<Name>SureStay By Best Western Phoenix Airport</Name>
@@ -90,6 +104,8 @@
 			<State>AZ</State>
 			<Zip>85008</Zip>
 		</Address>
+		<BookedRooms>0</BookedRooms>
+		<Price>0.00</Price>
 	</Hotel>
 	<Hotel ID="9">
 		<Name>Holiday Inn Express and Suites Phoenix Airport by IHG</Name>
@@ -101,6 +117,8 @@
 			<State>AZ</State>
 			<Zip>85008</Zip>
 		</Address>
+		<BookedRooms>0</BookedRooms>
+		<Price>0.00</Price>
 	</Hotel>
 	<Hotel Rating="3.8" ID="10">
 		<Name>GreenTree Inn and Suites Phoenix</Name>
@@ -112,5 +130,7 @@
 			<State>AZ</State>
 			<Zip>85040</Zip>
 		</Address>
+		<BookedRooms>0</BookedRooms>
+		<Price>0.00</Price>
 	</Hotel>
 </Hotels>

@@ -21,6 +21,9 @@ namespace WcfHotelService
         [OperationContract]
         bool AddHotelRating(string username, string hotelID, float rating, string comment);
 
+        [OperationContract]
+        List<HotelListing> BrowseHotels();
+
 
         // TODO: Add your service operations here
     }
@@ -89,5 +92,28 @@ namespace WcfHotelService
 
         [DataMember]
         public Address HotelAddress { get; set; }
+    }
+
+    // Custom data structure holding hotel listing information (for members to browse)
+    [DataContract]
+    public class HotelListing
+    {
+        [DataMember]
+        public string HotelID { get; set; }
+
+        [DataMember]
+        public string Name { get; set; }
+
+        [DataMember]
+        public Address HotelAddress { get; set; }
+
+        [DataMember]
+        public int BookedRooms { get; set; }
+
+        [DataMember]
+        public float Price { get; set; }
+
+        [DataMember]
+        public string NearestAirport { get; set; }
     }
 }
