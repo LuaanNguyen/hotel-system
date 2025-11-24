@@ -71,6 +71,9 @@
     <Content Include="Connected Services\RatingServiceReference\HotelProject.RatingServiceReference.RatedHotel.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\RatingServiceReference\HotelProject.RatingServiceReference.HotelListing.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Connected Services\RatingServiceReference\Service1.disco" />
     <None Include="Connected Services\RatingServiceReference\configuration91.svcinfo" />
     <None Include="Connected Services\RatingServiceReference\configuration.svcinfo" />
@@ -81,6 +84,7 @@
     <Content Include="Default.aspx" />
     <Content Include="DiscountService.asmx" />
     <Content Include="LoginControl.ascx" />
+    <Content Include="MemberBrowse.aspx" />
     <Content Include="MemberLogin.aspx" />
     <Content Include="MemberRating.aspx" />
     <Content Include="StaffLogin.aspx" />
@@ -118,6 +122,13 @@
     </Compile>
     <Compile Include="LoginControl.ascx.designer.cs">
       <DependentUpon>LoginControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="MemberBrowse.aspx.cs">
+      <DependentUpon>MemberBrowse.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MemberBrowse.aspx.designer.cs">
+      <DependentUpon>MemberBrowse.aspx</DependentUpon>
     </Compile>
     <Compile Include="MemberLogin.aspx.cs">
       <DependentUpon>MemberLogin.aspx</DependentUpon>

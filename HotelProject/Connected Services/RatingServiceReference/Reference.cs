@@ -231,6 +231,131 @@ namespace HotelProject.RatingServiceReference {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="HotelListing", Namespace="http://schemas.datacontract.org/2004/07/WcfHotelService")]
+    [System.SerializableAttribute()]
+    public partial class HotelListing : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int BookedRoomsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private HotelProject.RatingServiceReference.Address HotelAddressField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string HotelIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NearestAirportField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private float PriceField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int BookedRooms {
+            get {
+                return this.BookedRoomsField;
+            }
+            set {
+                if ((this.BookedRoomsField.Equals(value) != true)) {
+                    this.BookedRoomsField = value;
+                    this.RaisePropertyChanged("BookedRooms");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public HotelProject.RatingServiceReference.Address HotelAddress {
+            get {
+                return this.HotelAddressField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.HotelAddressField, value) != true)) {
+                    this.HotelAddressField = value;
+                    this.RaisePropertyChanged("HotelAddress");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string HotelID {
+            get {
+                return this.HotelIDField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.HotelIDField, value) != true)) {
+                    this.HotelIDField = value;
+                    this.RaisePropertyChanged("HotelID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string NearestAirport {
+            get {
+                return this.NearestAirportField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NearestAirportField, value) != true)) {
+                    this.NearestAirportField = value;
+                    this.RaisePropertyChanged("NearestAirport");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public float Price {
+            get {
+                return this.PriceField;
+            }
+            set {
+                if ((this.PriceField.Equals(value) != true)) {
+                    this.PriceField = value;
+                    this.RaisePropertyChanged("Price");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="RatingServiceReference.IService1")]
     public interface IService1 {
@@ -246,6 +371,12 @@ namespace HotelProject.RatingServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddHotelRating", ReplyAction="http://tempuri.org/IService1/AddHotelRatingResponse")]
         System.Threading.Tasks.Task<bool> AddHotelRatingAsync(string username, string hotelID, float rating, string comment);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/BrowseHotels", ReplyAction="http://tempuri.org/IService1/BrowseHotelsResponse")]
+        HotelProject.RatingServiceReference.HotelListing[] BrowseHotels();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/BrowseHotels", ReplyAction="http://tempuri.org/IService1/BrowseHotelsResponse")]
+        System.Threading.Tasks.Task<HotelProject.RatingServiceReference.HotelListing[]> BrowseHotelsAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -289,6 +420,14 @@ namespace HotelProject.RatingServiceReference {
         
         public System.Threading.Tasks.Task<bool> AddHotelRatingAsync(string username, string hotelID, float rating, string comment) {
             return base.Channel.AddHotelRatingAsync(username, hotelID, rating, comment);
+        }
+        
+        public HotelProject.RatingServiceReference.HotelListing[] BrowseHotels() {
+            return base.Channel.BrowseHotels();
+        }
+        
+        public System.Threading.Tasks.Task<HotelProject.RatingServiceReference.HotelListing[]> BrowseHotelsAsync() {
+            return base.Channel.BrowseHotelsAsync();
         }
     }
 }

@@ -32,4 +32,16 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="BrowseHotels">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BrowseHotelsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/WcfHotelService" minOccurs="0" name="BrowseHotelsResult" nillable="true" type="q2:ArrayOfHotelListing" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

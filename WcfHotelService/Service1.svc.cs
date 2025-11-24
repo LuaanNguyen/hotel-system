@@ -187,6 +187,64 @@ namespace WcfHotelService
                 throw new Exception(ex.Message);
             }
         }
+        public List<HotelListing> BrowseHotels()
+        {
+            List<HotelListing> availableHotels = new List<HotelListing>();
+
+            try
+            {
+                string hotelsPath = HostingEnvironment.MapPath("~/App_Data/Hotels.xml");
+
+                if (!System.IO.File.Exists(hotelsPath))
+                {
+                    throw new Exception("Hotels.xml not found");
+                }
+
+                XDocument hotelsDoc = XDocument.Load(hotelsPath);
+
+                var hotels = hotelsDoc.Descendants("Hotel");
+
+                foreach (var hotel in hotels)
+                {
+                    string bookedRoomsText = hotel.Element("BookedRooms")?.Value ?? "0";
+                    int bookedRooms = int.Parse(bookedRoomsText);
+
+                    // Only include hotels with available rooms (BookedRooms > 0)
+                    if (bookedRooms > 0)
+                    {
+                         string priceText = hotel.Element("Price")?.Value ?? "0.00";
+                         float price = float.Parse(priceText);
+
+                        var addressElement = hotel.Element("Address");
+
+                        HotelListing listing = new HotelListing
+                        {
+                            HotelID = hotel.Element("HotelID")?.Value,
+                            Name = hotel.Element("Name")?.Value,
+                            BookedRooms = bookedRooms,
+                            Price = price,
+                            NearestAirport = hotel.Element("NearestAirport")?.Value,
+                            HotelAddress = new Address
+                            {
+                                Number = addressElement?.Element("Number")?.Value,
+                                Street = addressElement?.Element("Street")?.Value,
+                                City = addressElement?.Element("City")?.Value,
+                                State = addressElement?.Element("State")?.Value,
+                                Zip = addressElement?.Element("Zip")?.Value
+                            }
+                        };
+
+                        availableHotels.Add(listing);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error loading hotels: " + ex.Message);
+            }
+
+            return availableHotels;
+        }
 
     }
 }
