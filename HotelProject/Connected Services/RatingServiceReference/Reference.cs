@@ -389,6 +389,12 @@ namespace HotelProject.RatingServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/LoginMember", ReplyAction="http://tempuri.org/IService1/LoginMemberResponse")]
         System.Threading.Tasks.Task<bool> LoginMemberAsync(string username, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/RegisterMember", ReplyAction="http://tempuri.org/IService1/RegisterMemberResponse")]
+        bool RegisterMember(string username, string password, float balance);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/RegisterMember", ReplyAction="http://tempuri.org/IService1/RegisterMemberResponse")]
+        System.Threading.Tasks.Task<bool> RegisterMemberAsync(string username, string password, float balance);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -456,6 +462,14 @@ namespace HotelProject.RatingServiceReference {
         
         public System.Threading.Tasks.Task<bool> LoginMemberAsync(string username, string password) {
             return base.Channel.LoginMemberAsync(username, password);
+        }
+        
+        public bool RegisterMember(string username, string password, float balance) {
+            return base.Channel.RegisterMember(username, password, balance);
+        }
+        
+        public System.Threading.Tasks.Task<bool> RegisterMemberAsync(string username, string password, float balance) {
+            return base.Channel.RegisterMemberAsync(username, password, balance);
         }
     }
 }

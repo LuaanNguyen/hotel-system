@@ -326,5 +326,53 @@ namespace WcfHotelService
             }
         }
 
+        public bool RegisterMember(string username, string password, float balance)
+        {
+            try
+            {
+                // load up Members.xml
+                string membersPath = HostingEnvironment.MapPath("~/App_Data/Members.xml");
+                XDocument members = XDocument.Load(membersPath);
+
+                // get matching member
+                var allMembers = members.Descendants("Member");
+
+                //iterate through all members
+                foreach (var m in allMembers)
+                {
+                    var tempUsername = m.Element("Username");
+
+                    // if you find a member with the same username, that's a problem. Return false
+                    // (every username needs to be unique)
+                    if (tempUsername != null && tempUsername.Value == username)
+                    {
+                        return false;
+                    }
+                }
+
+                // Create new member with empty RatedHotels and BookedHotels
+                XElement newMember = new XElement("Member",
+                    new XElement("Username", username),
+                    new XElement("Password", password),
+                    new XElement("Balance", balance.ToString("F2")),
+                    new XElement("RatedHotels"),
+                    new XElement("BookedHotels")
+                );
+
+                // Add to document the newly formatted member
+                members.Root.Add(newMember);
+
+                // Save the new member
+                members.Save(membersPath);
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
     }
+
 }

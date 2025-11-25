@@ -37,6 +37,12 @@
   <wsdl:message name="IService1_LoginMember_OutputMessage">
     <wsdl:part name="parameters" element="tns:LoginMemberResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_RegisterMember_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterMember" />
+  </wsdl:message>
+  <wsdl:message name="IService1_RegisterMember_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterMemberResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="GetRatedHotels">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetRatedHotels" message="tns:IService1_GetRatedHotels_InputMessage" />
@@ -57,6 +63,10 @@
     <wsdl:operation name="LoginMember">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/LoginMember" message="tns:IService1_LoginMember_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/LoginMemberResponse" message="tns:IService1_LoginMember_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RegisterMember">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/RegisterMember" message="tns:IService1_RegisterMember_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/RegisterMemberResponse" message="tns:IService1_RegisterMember_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -99,6 +109,15 @@
     </wsdl:operation>
     <wsdl:operation name="LoginMember">
       <soap:operation soapAction="http://tempuri.org/IService1/LoginMember" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterMember">
+      <soap:operation soapAction="http://tempuri.org/IService1/RegisterMember" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
