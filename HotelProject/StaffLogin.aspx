@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="StaffLogin.aspx.cs" Inherits="HotelProject.StaffLogin" %>
+﻿﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="StaffLogin.aspx.cs" Inherits="HotelProject.StaffLogin" %>
 <%@ Register Src="~/LoginControl.ascx" TagPrefix="uc" TagName="Login" %>
 <!--Staff Login Page created by Sophia Gu-->
 <!DOCTYPE html>
@@ -11,16 +11,10 @@
     <form id="form1" runat="server">
         <div>
             <h3>Staff Login Page</h3>
-            <uc:Login ID="LoginControl1" runat="server" />
-            <br />
-
-            <asp:Label ID="CookieTitle" runat="server" Text="TryIt: Cookie" Font-Bold="true"></asp:Label><br />
-            <asp:Label ID="Description" runat="server" Text="Log in with the 
-                given credentials, exit the browser, and re-enter. 
-                Your username and password information will be saved below"></asp:Label><br />
-            <asp:Label ID="CookieUsername" runat="server" Text="Entered Username: "></asp:Label><br />
-            <asp:Label ID="CookiePassword" runat="server" Text="Entered Password: "></asp:Label><br />
-            
+            <asp:Label ID="DescLabel" runat="server" Text="Staff Login Page with Cookies.
+                Hint: Login with TA as the username and Cse445! as the password. You'll 
+                be redirected to the dashboard automatically." Font-Italic="true"></asp:Label>
+            <uc:Login ID="LoginControl1" runat="server" />        
         </div>
     </form>
 </body>

@@ -17,6 +17,37 @@ namespace HotelProject
         {
             lblHashResult.Text = SecurityLib.Security.HashPassword("Test123");
         }
+
+        protected void MemberLogin_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/MemberLogin.aspx");
+        }
+
+        protected void MemberRegister_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/MemberRegister.aspx");
+        }
+
+        protected void MemberRating_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/ProtectedMember/MemberRating.aspx");
+        }
+
+        protected void MemberBrowse_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/ProtectedMember/MemberBrowse.aspx");
+        }
+
+        protected void StaffLogin_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/StaffLogin.aspx");
+        }
+
+        protected void StaffDashboard_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/ProtectedStaff/StaffDashboard.aspx");
+        }
+
     }
 
     

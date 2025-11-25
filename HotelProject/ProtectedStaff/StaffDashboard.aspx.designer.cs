@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HotelProject
+namespace HotelProject.Protected
 {
 
 
-    public partial class StaffLogin
+    public partial class StaffDashboard
     {
 
         /// <summary>
@@ -31,14 +31,5 @@ namespace HotelProject
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label DescLabel;
-
-        /// <summary>
-        /// LoginControl1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::HotelProject.LoginControl LoginControl1;
     }
 }
