@@ -24,6 +24,19 @@
                 They will then offer those discounted rooms to the members through the application. New users can create an account
                 to become a member."></asp:Label>
             <br />
+            <br />
+
+            <asp:Button ID="StaffLoginButton" runat="server" Text="Login Staff" OnClick="StaffLogin_Click"/>
+            <asp:Button ID="StaffPageButton" runat="server" Text="Staff Page" OnClick="StaffDashboard_Click"/>
+            <br/>
+
+            <asp:Button ID="MemberLoginButton" runat="server" Text="Login Member" OnClick="MemberLogin_Click" />
+            <asp:Button ID="MemberRegisterButton" runat="server" Text="Register Member" OnClick="MemberRegister_Click"/>
+            <asp:Button ID="MemberRatingButton" runat="server" Text="Member Rating Hotels Page" OnClick="MemberRating_Click" />
+            <asp:Button ID="MemberBrowseButton" runat="server" Text="Member Browse/Book Hotels Page" OnClick="MemberBrowse_Click"/>
+            <br />
+            <br/>
+
             <asp:Table ID="ComponentsTable" runat="server" GridLines="Both" BorderWidth="1">
                 <asp:TableRow>
                     <asp:TableCell ColumnSpan="4" HorizontalAlign="Center">
@@ -86,6 +99,16 @@
                     </asp:TableCell>
                     <asp:TableCell>GUI design, C# code behind the GUI, Members.xml & Hotels.xml file, C# code for WSDL service
                         <br />     Member Rating Page TryIt: <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/MemberRating.aspx">Member Rating Page</asp:HyperLink>
+                    </asp:TableCell>
+                </asp:TableRow>
+                <asp:TableRow>
+                    <asp:TableCell>Sophia Gu</asp:TableCell>
+                    <asp:TableCell>WSDL Service (returns staff-booked hotels for members to browse)</asp:TableCell>
+                    <asp:TableCell>Input: void
+                        <br />     Output: List(HotelListing)
+                    </asp:TableCell>
+                    <asp:TableCell> GUI design, C# code behind the GUI, c# code for WSDL Service
+                        <br />      Browsing Page: <asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl="~/MemberBrowse.aspx">Member Rating Page</asp:HyperLink>
                     </asp:TableCell>
                 </asp:TableRow>
 

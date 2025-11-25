@@ -245,6 +245,86 @@ namespace WcfHotelService
 
             return availableHotels;
         }
+          
+         
+        // login functionality for staff
+        public bool LoginStaff(string username, string password)
+        {
+            // first validate the inputs
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+            {
+                return false;
+            }
+
+            try
+            {
+                // load up the staff.xmldocument
+                string staffPath = HostingEnvironment.MapPath("~/App_Data/Staff.xml");
+                XDocument staff = XDocument.Load(staffPath);
+
+                // get matching staff member
+                var allStaff = staff.Descendants("StaffMember");
+
+                // iterate through all staff
+                foreach (var m in allStaff)
+                {
+                    var tempUsername = m.Element("Username");
+                    var tempPassword = m.Element("Password");
+
+                    // found member with matching username & [password
+                    if (tempUsername != null && tempUsername.Value == username && tempPassword != null && tempPassword.Value == password)
+                    {
+                        return true;
+                    }
+                }
+                // if I didn't find a matching staff, return false
+                return false;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        // login functionality for member
+        public bool LoginMember(string username, string password)
+        {
+            // validate inputs
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+            {
+                return false;
+            }
+
+            try
+            {
+                // load up Members.xml
+                string membersPath = HostingEnvironment.MapPath("~/App_Data/Members.xml");
+                XDocument members = XDocument.Load(membersPath);
+
+                // get matching member
+                var allMembers = members.Descendants("Member");
+
+                //iterate through all members
+                foreach (var m in allMembers)
+                {
+                    var tempUsername = m.Element("Username");
+                    var tempPassword = m.Element("Password");
+
+                    // found member with matching username
+                    if (tempUsername != null && tempUsername.Value == username && tempPassword != null && tempPassword.Value == password)
+                    {
+                        return true;
+                    }
+                }
+
+                // if the member wasn't found, return false
+                return false;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
 
     }
 }

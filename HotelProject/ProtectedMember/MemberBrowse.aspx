@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MemberBrowse.aspx.cs" Inherits="HotelProject.MemberBrowse" %>
+﻿﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MemberBrowse.aspx.cs" Inherits="HotelProject.MemberBrowse" %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">

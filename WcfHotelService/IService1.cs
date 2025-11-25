@@ -24,6 +24,12 @@ namespace WcfHotelService
         [OperationContract]
         List<HotelListing> BrowseHotels();
 
+        [OperationContract]
+        bool LoginStaff(string username, string password);
+
+        [OperationContract]
+        bool LoginMember(string username, string password);
+
 
         // TODO: Add your service operations here
     }
