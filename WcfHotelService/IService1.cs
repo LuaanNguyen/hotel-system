@@ -30,6 +30,9 @@ namespace WcfHotelService
         [OperationContract]
         bool LoginMember(string username, string password);
 
+        [OperationContract]
+        bool RegisterMember(string username, string password, float balance);
+
 
         // TODO: Add your service operations here
     }
