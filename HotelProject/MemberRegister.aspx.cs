@@ -18,43 +18,45 @@ namespace HotelProject
         protected void RegisterButton_Click(object sender, EventArgs e)
         {
             // Check for nonempty fields first
-            if(!string.IsNullOrEmpty(UsernameTextbox.Text) ||
-               !string.IsNullOrEmpty(PasswordTextbox.Text) ||
-               !string.IsNullOrEmpty(PasswordConfirmTextbox.Text) ||
+            if(!string.IsNullOrEmpty(UsernameTextbox.Text) &&
+               !string.IsNullOrEmpty(PasswordTextbox.Text) &&
+               !string.IsNullOrEmpty(PasswordConfirmTextbox.Text) &&
                !string.IsNullOrEmpty(BalanceTextbox.Text))
             {
-                ResultLabel.Text = "Result: Please fill out all fields";
-                return;
-            }
 
-            if(PasswordTextbox.Text != PasswordConfirmTextbox.Text)
-            {
-                ResultLabel.Text = "Result: Ensure your passwords are matching";
-                return;
-            }
-
-
-            try
-            {
-                Service1Client prxy = new Service1Client();
-
-                string username = UsernameTextbox.Text;
-                string password = PasswordTextbox.Text;
-                float balance = float.Parse(BalanceTextbox.Text);
-
-                if(prxy.RegisterMember(username, password, balance))
+                if (PasswordTextbox.Text != PasswordConfirmTextbox.Text)
                 {
-                    ResultLabel.Text = $"Result: User with username {username} created successfully.";
-                }
-                else
-                {
-                    ResultLabel.Text = "Result: Failed to create user";
+                    ResultLabel.Text = "Result: Ensure your passwords are matching";
+                    return;
                 }
 
+                try
+                {
+                    Service1Client prxy = new Service1Client();
+
+                    string username = UsernameTextbox.Text;
+                    string password = PasswordTextbox.Text;
+                    float balance = float.Parse(BalanceTextbox.Text);
+
+                    if (prxy.RegisterMember(username, password, balance))
+                    {
+                        ResultLabel.Text = $"Result: User with username {username} created successfully.";
+                    }
+                    else
+                    {
+                        ResultLabel.Text = "Result: Failed to create user";
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    ResultLabel.Text += ex.Message;
+                }
             }
-            catch (Exception ex)
+            else
             {
-                ResultLabel.Text += ex.Message;
+                ResultLabel.Text = "Result: Please fill out all fields.";
+                return;
             }
         }
     }

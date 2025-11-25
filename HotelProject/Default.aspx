@@ -107,8 +107,28 @@
                     <asp:TableCell>Input: void
                         <br />     Output: List(HotelListing)
                     </asp:TableCell>
-                    <asp:TableCell> GUI design, C# code behind the GUI, c# code for WSDL Service
+                    <asp:TableCell> GUI design, C# code behind the GUI, C# code for WSDL Service
                         <br />      Browsing Page: <asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl="~/MemberBrowse.aspx">Member Rating Page</asp:HyperLink>
+                    </asp:TableCell>
+                </asp:TableRow>
+                <asp:TableRow>
+                    <asp:TableCell>Sophia Gu</asp:TableCell>
+                    <asp:TableCell>WSDL Service (adds new member)</asp:TableCell>
+                    <asp:TableCell>Input: string username, string password, float balance
+                        <br />     Output: bool
+                    </asp:TableCell>
+                    <asp:TableCell>GUI design, C# code behind the GUI, C# code and XDocument class for WSDL Service
+                        <br />     Register Member Page: <asp:HyperLink ID="HyperLink6" runat="server" NavigateUrl="~/MemberRegister.aspx">Member Register Page</asp:HyperLink>
+                    </asp:TableCell>
+                </asp:TableRow>
+                <asp:TableRow>
+                    <asp:TableCell>Sophia Gu</asp:TableCell>
+                    <asp:TableCell>Forms Authentication + Authorization</asp:TableCell>
+                    <asp:TableCell>Added forms authentication and authorizatoin for protected member pages and the staff dashboard</asp:TableCell>
+                    <asp:TableCell>Modification of Web.config to enable forms authentication + authorization
+                        <br />     Staff Login: <asp:HyperLink ID="HyperLink7" runat="server" NavigateUrl="~/StaffLogin.aspx">Staff Login</asp:HyperLink>
+                        <br />     Member Login: <asp:HyperLink ID="HyperLink8" runat="server" NavigateUrl="~/MemberLogin.aspx">Staff Login</asp:HyperLink>
+                        <br />     (Can also test with the navigation buttons above the table)
                     </asp:TableCell>
                 </asp:TableRow>
 
