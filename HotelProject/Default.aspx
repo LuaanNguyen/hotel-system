@@ -4,194 +4,210 @@
 <%@ Register Src="~/AgentProfile.ascx" TagPrefix="uc" TagName="AgentProfile" %>
 <%@ Register Src="~/MemberProfile.ascx" TagPrefix="uc" TagName="MemberProfile" %>
 
-
-<!--Default page linking all services made by Sophia-->
 <!DOCTYPE html>
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Hotel Application</title>
+
+    <style>
+        body {background: #f5f5f5; margin:0; padding:0; }
+        .container { width: 95%; max-width: 1200px; margin:auto; padding:20px; }
+        .card { background:white; padding:20px; margin-top:20px; box-shadow:0 0 10px #ddd; }
+        .navBtn {
+            margin:4px; padding:8px 14px; background:#007bff;
+            border:none; color:white !important; cursor:pointer;
+        }
+        .navBtn:hover { background:#0056b3; }
+        table { width:100%; }
+    </style>
 </head>
+
 <body>
-    <form id="form1" runat="server">
-        <div>
-            <asp:Label ID="Title" runat="server" Text="Hotel Application" Font-Bold="true" Font-Size="large"></asp:Label>
-            <br />
-            <asp:Label ID="Names" runat="server" Text="Implemented by: Luan Nguyen, Sophia Gu, Muhammed Topiwala" Font-Italic="true"></asp:Label>
-            <br />
-            <asp:Label ID="Description" runat="server" Text="This service allows members to sign in, book hotel rooms, and rate those hotels. 
-                Staff can use the application to receive notifications about discounted hotel prices, and book a batch of hotel rooms. 
-                They will then offer those discounted rooms to the members through the application. New users can create an account
-                to become a member."></asp:Label>
-            <br />
-            <br />
+<form id="form1" runat="server">
+<div class="container">
 
-            <asp:Button ID="StaffLoginButton" runat="server" Text="Login Staff" OnClick="StaffLogin_Click"/>
-            <asp:Button ID="StaffPageButton" runat="server" Text="Staff Page" OnClick="StaffDashboard_Click"/>
-            <br/>
+    <div class="card" style="text-align:center;">
+        <h1>CSE445: Hotel Application</h1>
+        <h4 style="color:#555;">Luan Nguyen, Sophia Gu, Muhammed Topiwala</h4>
 
-            <asp:Button ID="MemberLoginButton" runat="server" Text="Login Member" OnClick="MemberLogin_Click" />
-            <asp:Button ID="MemberRegisterButton" runat="server" Text="Register Member" OnClick="MemberRegister_Click"/>
-            <asp:Button ID="MemberRatingButton" runat="server" Text="Member Rating Hotels Page" OnClick="MemberRating_Click" />
-            <asp:Button ID="MemberBrowseButton" runat="server" Text="Member Browse/Book Hotels Page" OnClick="MemberBrowse_Click"/>
-            <br />
-            <br/>
+        <p style="max-width:800px; margin:auto; color:#444;">
+            This ASP.NET web application allows members to register, log in, browse hotels, book rooms, 
+            and rate their stays. Staff can log in, post discounted room batches, update hotel pricing, 
+            and manage room availability for members.
+        </p>
+    </div>
 
-            <asp:Table ID="ComponentsTable" runat="server" GridLines="Both" BorderWidth="1">
-                <asp:TableRow>
-                    <asp:TableCell ColumnSpan="4" HorizontalAlign="Center">
-                        Application and Components Summary Table
-                    </asp:TableCell>
-                </asp:TableRow>
-                <asp:TableRow>
-                    <asp:TableCell ColumnSpan="4" HorizontalAlign="Center">
-                        Percentage of overall contribution: Luan Nguyen: 33%, Sophia Gu: 33%, 
-                        Muhammed Hunaid Topiwala: 33%
-                    </asp:TableCell>
-                </asp:TableRow>
-                <asp:TableRow>
-                    <asp:TableCell>Provider Name</asp:TableCell>
-                    <asp:TableCell>Page and Component type</asp:TableCell>
-                    <asp:TableCell>Component Description (What does the component do?)</asp:TableCell>
-                    <asp:TableCell> Actual resources and methods used, link to component (where is it used></asp:TableCell>
-                </asp:TableRow>
-                <asp:TableRow>
-                    <asp:TableCell>Sophia Gu</asp:TableCell>
-                    <asp:TableCell>.aspx page and server controls</asp:TableCell>
-                    <asp:TableCell>The public Default page that calls and links other pages</asp:TableCell>
-                    <asp:TableCell>GUI Design and C# code <br />
-                                   Link: Current Page
-                    </asp:TableCell>
-                </asp:TableRow>
-                <asp:TableRow>
-                    <asp:TableCell>Sophia Gu</asp:TableCell>
-                    <asp:TableCell>.ascx page and user controls</asp:TableCell>
-                    <asp:TableCell>The Login User control component used for Staff & Member Login page</asp:TableCell>
-                    <asp:TableCell>C# Code behind the GUI. Present on the Staff Login Page and Member Login Page<br />
-                                   Staff Login Page: <asp:HyperLink ID="StaffLogin" runat="server" NavigateUrl="~/StaffLogin.aspx">Staff Login</asp:HyperLink><br />
-                                   Member Login Page: <asp:HyperLink ID="MemberLoginLink" runat="server" NavigateUrl="~/MemberLogin.aspx">Member Login</asp:HyperLink>
-                    </asp:TableCell>
-                </asp:TableRow>
-                <asp:TableRow>
-                    <asp:TableCell>Sophia Gu</asp:TableCell>
-                    <asp:TableCell>Cookies</asp:TableCell>
-                    <asp:TableCell>Stores username and password</asp:TableCell>
-                    <asp:TableCell>GUI design and C# Code behind GUI using HTTP cookies library. Present in Staff & Member Login Page <br />
-                                   Staff Login Page: <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/StaffLogin.aspx">Staff Login</asp:HyperLink><br />
-                                   Member Login Page: <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/MemberLogin.aspx">Member Login</asp:HyperLink>
-                    </asp:TableCell>
-                </asp:TableRow>
-                <asp:TableRow>
-                    <asp:TableCell>Sophia Gu</asp:TableCell>
-                    <asp:TableCell>WSDL Service (fetch rated hotels by username)</asp:TableCell>
-                    <asp:TableCell>Input: Username
-                        <br />     Output: All hotels that the member rated
-                    </asp:TableCell>
-                    <asp:TableCell>GUI design, C# code behind the GUI, Members.xml & Hotels.xml file, C# code for WSDL service
-                        <br />     Member Rating Page TryIt: <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/MemberRating.aspx">Member Rating Page</asp:HyperLink>
-                    </asp:TableCell>
-                </asp:TableRow>
-                <asp:TableRow>
-                    <asp:TableCell>Sophia Gu</asp:TableCell>
-                    <asp:TableCell>WSDL Service (user adds a rating for a hotel)</asp:TableCell>
-                    <asp:TableCell>Input: Username
-                        <br />     Output: bool
-                    </asp:TableCell>
-                    <asp:TableCell>GUI design, C# code behind the GUI, Members.xml & Hotels.xml file, C# code for WSDL service
-                        <br />     Member Rating Page TryIt: <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/MemberRating.aspx">Member Rating Page</asp:HyperLink>
-                    </asp:TableCell>
-                </asp:TableRow>
-                <asp:TableRow>
-                    <asp:TableCell>Sophia Gu</asp:TableCell>
-                    <asp:TableCell>WSDL Service (returns staff-booked hotels for members to browse)</asp:TableCell>
-                    <asp:TableCell>Input: void
-                        <br />     Output: List(HotelListing)
-                    </asp:TableCell>
-                    <asp:TableCell> GUI design, C# code behind the GUI, C# code for WSDL Service
-                        <br />      Browsing Page: <asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl="~/MemberBrowse.aspx">Member Rating Page</asp:HyperLink>
-                    </asp:TableCell>
-                </asp:TableRow>
-                <asp:TableRow>
-                    <asp:TableCell>Sophia Gu</asp:TableCell>
-                    <asp:TableCell>WSDL Service (adds new member)</asp:TableCell>
-                    <asp:TableCell>Input: string username, string password, float balance
-                        <br />     Output: bool
-                    </asp:TableCell>
-                    <asp:TableCell>GUI design, C# code behind the GUI, C# code and XDocument class for WSDL Service
-                        <br />     Register Member Page: <asp:HyperLink ID="HyperLink6" runat="server" NavigateUrl="~/MemberRegister.aspx">Member Register Page</asp:HyperLink>
-                    </asp:TableCell>
-                </asp:TableRow>
-                <asp:TableRow>
-                    <asp:TableCell>Sophia Gu</asp:TableCell>
-                    <asp:TableCell>Forms Authentication + Authorization</asp:TableCell>
-                    <asp:TableCell>Added forms authentication and authorizatoin for protected member pages and the staff dashboard</asp:TableCell>
-                    <asp:TableCell>Modification of Web.config to enable forms authentication + authorization
-                        <br />     Staff Login: <asp:HyperLink ID="HyperLink7" runat="server" NavigateUrl="~/StaffLogin.aspx">Staff Login</asp:HyperLink>
-                        <br />     Member Login: <asp:HyperLink ID="HyperLink8" runat="server" NavigateUrl="~/MemberLogin.aspx">Staff Login</asp:HyperLink>
-                        <br />     (Can also test with the navigation buttons above the table)
-                    </asp:TableCell>
-                </asp:TableRow>
+    <div class="card">
+        <h2>Hotel Navigation </h2>
 
-                <asp:TableRow>
-                    <asp:TableCell>Luan Nguyen</asp:TableCell>
-                    <asp:TableCell>DLL (SecurityLib)</asp:TableCell>
-                    <asp:TableCell>Contains SHA-256 hashing function for credential security</asp:TableCell>
-                    <asp:TableCell>
-                        Used in: Test Hash Button<br />
-                        Link: This Page
-                    </asp:TableCell>
-                </asp:TableRow>
+        <h3>Staff</h3>
+        <asp:Button ID="StaffLoginButton" CssClass="navBtn" runat="server" Text="Staff Login" OnClick="StaffLogin_Click"/>
+        <asp:Button ID="StaffPageButton" CssClass="navBtn" runat="server" Text="Staff Dashboard" OnClick="StaffDashboard_Click"/>
 
-                <asp:TableRow>
-                    <asp:TableCell>Luan Nguyen</asp:TableCell>
-                    <asp:TableCell>.ascx User Control</asp:TableCell>
-                    <asp:TableCell>Calculates a discounted hotel price</asp:TableCell>
-                    <asp:TableCell>
-                        Used in: Luan’s Components Demo<br />
-                        Control: &lt;uc:Discount /&gt;
-                    </asp:TableCell>
-                </asp:TableRow>
+        <h3>Members</h3>
+        <asp:Button ID="MemberLoginButton" CssClass="navBtn" runat="server" Text="Login Member" OnClick="MemberLogin_Click" />
+        <asp:Button ID="MemberRegisterButton" CssClass="navBtn" runat="server" Text="Register Member" OnClick="MemberRegister_Click"/>
+        <asp:Button ID="MemberRatingButton" CssClass="navBtn" runat="server" Text="Rate Hotels" OnClick="MemberRating_Click" />
+        <asp:Button ID="MemberBrowseButton" CssClass="navBtn" runat="server" Text="Browse / Book Hotels" OnClick="MemberBrowse_Click"/>
+    </div>
 
-                <asp:TableRow>
-                    <asp:TableCell>Luan Nguyen</asp:TableCell>
-                    <asp:TableCell>.asmx Web Service</asp:TableCell>
-                    <asp:TableCell>Provides discount calculation service endpoint</asp:TableCell>
-                    <asp:TableCell>
-                        TryIt Link:<br />
-                        <asp:HyperLink ID="TryDiscountServiceRow" runat="server" NavigateUrl="~/DiscountService.asmx">DiscountService.asmx</asp:HyperLink>
-                    </asp:TableCell>
-                </asp:TableRow>
-            </asp:Table>     
-            
-            <br /><br />
+    <div class="card">
+        <h2>Application and Components Summary Table (Assignment 5 & 6)</h2>
 
-            <!-- Luan's services-->
+        <asp:Table ID="ComponentsTable" runat="server" GridLines="Both" BorderWidth="1" CellPadding="8">
+            <asp:TableRow>
+                <asp:TableCell ColumnSpan="4" HorizontalAlign="Center" Font-Bold="true">
+                    Application and Components Summary Table
+                </asp:TableCell>
+            </asp:TableRow>
 
-            <div style="margin-top:30px; padding:20px; border:1px solid #aaa; width:90%; max-width:800px;">
-                <h2 style="text-align:center; font-family:Arial;">Luan's Components Demo</h2>
-    
-                <table style="width:100%; margin-top:20px;">
-                    <tr>
-                        <td style="vertical-align:top; padding:10px; width:33%;">
-                            <uc:Discount ID="Discount1" runat="server" />
-                        </td>
+            <asp:TableRow>
+                <asp:TableCell ColumnSpan="4" HorizontalAlign="Center">
+                    Percentage of overall contribution: Luan Nguyen (33%), Sophia Gu (33%), 
+                    Muhammed Hunaid Topiwala (33%)
+                </asp:TableCell>
+            </asp:TableRow>
 
-                        <td style="vertical-align:top; padding:10px; width:33%;">
-                            <uc:AgentProfile ID="AgentProfile1" runat="server" />
-                        </td>
+            <asp:TableRow Font-Bold="true">
+                <asp:TableCell>Provider Name</asp:TableCell>
+                <asp:TableCell>Page / Component Type</asp:TableCell>
+                <asp:TableCell>Description</asp:TableCell>
+                <asp:TableCell>Resources, Methods, & Link</asp:TableCell>
+            </asp:TableRow>
 
-                        <td style="vertical-align:top; padding:10px; width:33%;">
-                            <uc:MemberProfile ID="MemberProfile1" runat="server" />
-                        </td>
-                    </tr>
-                </table>
+            <asp:TableRow>
+                <asp:TableCell>Sophia Gu</asp:TableCell>
+                <asp:TableCell>.aspx page & server controls</asp:TableCell>
+                <asp:TableCell>Public Default page linking all pages</asp:TableCell>
+                <asp:TableCell>GUI design + C# code<br />Link: Current Page</asp:TableCell>
+            </asp:TableRow>
 
-                <asp:Button ID="btnTryHash" runat="server" Text="Test Hash" OnClick="btnTryHash_Click" />
-                <asp:Label ID="lblHashResult" runat="server" />
+            <asp:TableRow>
+                <asp:TableCell>Sophia Gu</asp:TableCell>
+                <asp:TableCell>User Control (.ascx)</asp:TableCell>
+                <asp:TableCell>Login Window for Staff & Member Login</asp:TableCell>
+                <asp:TableCell>
+                    Staff Login: <asp:HyperLink runat="server" NavigateUrl="~/StaffLogin.aspx">Staff Login</asp:HyperLink><br />
+                    Member Login: <asp:HyperLink runat="server" NavigateUrl="~/MemberLogin.aspx">Member Login</asp:HyperLink>
+                </asp:TableCell>
+            </asp:TableRow>
 
-                <asp:HyperLink ID="TryDiscountService" runat="server" NavigateUrl="~/DiscountService.asmx">Try Discount Service</asp:HyperLink>
-            </div>
+            <asp:TableRow>
+                <asp:TableCell>Sophia Gu</asp:TableCell>
+                <asp:TableCell>Cookies</asp:TableCell>
+                <asp:TableCell>Stores username/password for login</asp:TableCell>
+                <asp:TableCell>
+                    Staff Login: <asp:HyperLink runat="server" NavigateUrl="~/StaffLogin.aspx">Staff Login</asp:HyperLink><br />
+                    Member Login: <asp:HyperLink runat="server" NavigateUrl="~/MemberLogin.aspx">Member Login</asp:HyperLink>
+                </asp:TableCell>
+            </asp:TableRow>
+
+            <asp:TableRow>
+                <asp:TableCell>Sophia Gu</asp:TableCell>
+                <asp:TableCell>WSDL Service</asp:TableCell>
+                <asp:TableCell>Fetch rated hotels by username</asp:TableCell>
+                <asp:TableCell>
+                    TryIt: <asp:HyperLink runat="server" NavigateUrl="~/MemberRating.aspx">Member Rating</asp:HyperLink>
+                </asp:TableCell>
+            </asp:TableRow>
+
+            <asp:TableRow>
+                <asp:TableCell>Sophia Gu</asp:TableCell>
+                <asp:TableCell>WSDL Service</asp:TableCell>
+                <asp:TableCell>User adds a hotel rating</asp:TableCell>
+                <asp:TableCell>
+                    TryIt: <asp:HyperLink runat="server" NavigateUrl="~/MemberRating.aspx">Member Rating</asp:HyperLink>
+                </asp:TableCell>
+            </asp:TableRow>
+
+            <asp:TableRow>
+                <asp:TableCell>Sophia Gu</asp:TableCell>
+                <asp:TableCell>WSDL Service</asp:TableCell>
+                <asp:TableCell>Members browse staff-posted hotels</asp:TableCell>
+                <asp:TableCell>
+                    TryIt: <asp:HyperLink runat="server" NavigateUrl="~/MemberBrowse.aspx">Member Browse</asp:HyperLink>
+                </asp:TableCell>
+            </asp:TableRow>
+
+            <asp:TableRow>
+                <asp:TableCell>Sophia Gu</asp:TableCell>
+                <asp:TableCell>Member Registration</asp:TableCell>
+                <asp:TableCell>Create new member with hashed password + CAPTCHA</asp:TableCell>
+                <asp:TableCell>
+                    <asp:HyperLink runat="server" NavigateUrl="~/MemberRegister.aspx">Member Register</asp:HyperLink>
+                </asp:TableCell>
+            </asp:TableRow>
+
+            <asp:TableRow>
+                <asp:TableCell>Sophia Gu</asp:TableCell>
+                <asp:TableCell>Forms Authentication</asp:TableCell>
+                <asp:TableCell>Protects Member pages & Staff dashboard</asp:TableCell>
+                <asp:TableCell>
+                    Web.config modifications<br />
+                    StaffLogin + MemberLogin pages
+                </asp:TableCell>
+            </asp:TableRow>
+
+            <asp:TableRow>
+                <asp:TableCell>Luan Nguyen</asp:TableCell>
+                <asp:TableCell>DLL (SecurityLib)</asp:TableCell>
+                <asp:TableCell>SHA-256 hashing function</asp:TableCell>
+                <asp:TableCell>Used in Test Hash button shown in "Luan's Components Demo" section</asp:TableCell>
+            </asp:TableRow>
+
+            <asp:TableRow>
+                <asp:TableCell>Luan Nguyen</asp:TableCell>
+                <asp:TableCell>User Control (.ascx)</asp:TableCell>
+                <asp:TableCell>Discount calculator UI</asp:TableCell>
+                <asp:TableCell>Shown in "Luan's Components Demo" section</asp:TableCell>
+            </asp:TableRow>
+
+            <asp:TableRow>
+                <asp:TableCell>Luan Nguyen</asp:TableCell>
+                <asp:TableCell>.asmx Web Service</asp:TableCell>
+                <asp:TableCell>Discount calculation endpoint</asp:TableCell>
+                <asp:TableCell>
+                    <asp:HyperLink ID="TryDiscountServiceRow" runat="server" NavigateUrl="~/DiscountService.asmx">
+                        DiscountService.asmx
+                    </asp:HyperLink>
+                </asp:TableCell>
+            </asp:TableRow>
+
+            <asp:TableRow>
+                <asp:TableCell>Luan Nguyen</asp:TableCell>
+                <asp:TableCell>Staff Dashboard (.aspx Page)</asp:TableCell>
+                <asp:TableCell>Allows staff to book rooms, apply discounts, and update Hotels.xml</asp:TableCell>
+                <asp:TableCell>
+                    <asp:HyperLink runat="server" NavigateUrl="~/ProtectedStaff/StaffDashboard.aspx">
+                        Staff Dashboard
+                    </asp:HyperLink>
+                </asp:TableCell>
+            </asp:TableRow>
+
+        </asp:Table>
+    </div>
+
+    <div class="card">
+        <h2 style="text-align:center;">Luan's Components Demo</h2>
+
+        <table style="width:100%; text-align:center;">
+            <tr>
+                <td style="padding:10px; width:33%;"><uc:Discount ID="Discount1" runat="server" /></td>
+                <td style="padding:10px; width:33%;"><uc:AgentProfile ID="AgentProfile1" runat="server" /></td>
+                <td style="padding:10px; width:33%;"><uc:MemberProfile ID="MemberProfile1" runat="server" /></td>
+            </tr>
+        </table>
+
+        <div style="text-align:center; margin-top:20px;">
+            <asp:Button ID="btnTryHash" CssClass="navBtn" runat="server" Text="Test Hash" OnClick="btnTryHash_Click" /><br /><br />
+            <asp:Label ID="lblHashResult" runat="server" /><br /><br />
+            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/DiscountService.asmx">
+                Try Discount Web Service
+            </asp:HyperLink>
         </div>
-    </form>
+    </div>
+
+</div> 
+</form>
 </body>
 </html>

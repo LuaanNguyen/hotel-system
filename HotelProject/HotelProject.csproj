@@ -68,10 +68,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AgentProfile.ascx" />
-    <Content Include="Connected Services\RatingServiceReference\HotelProject.RatingServiceReference.RatedHotel.datasource">
+    <Content Include="Connected Services\RatingServiceReference\HotelProject.RatingServiceReference.HotelListing.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Connected Services\RatingServiceReference\HotelProject.RatingServiceReference.HotelListing.datasource">
+    <Content Include="Connected Services\RatingServiceReference\HotelProject.RatingServiceReference.RatedHotel.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Connected Services\RatingServiceReference\Service1.disco" />
@@ -196,6 +196,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ProtectedStaff\Web.config" />
+    <Content Include="ProtectedMember\Web.config" />
     <None Include="Connected Services\RatingServiceReference\Service1.wsdl" />
     <None Include="Connected Services\RatingServiceReference\Service1.xsd">
       <SubType>Designer</SubType>
@@ -207,8 +209,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
-    <Content Include="ProtectedStaff\Web.config" />
-    <Content Include="ProtectedMember\Web.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -228,7 +228,6 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\RatingServiceReference\" />
   </ItemGroup>
-  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

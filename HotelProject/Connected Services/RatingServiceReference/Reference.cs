@@ -395,6 +395,18 @@ namespace HotelProject.RatingServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/RegisterMember", ReplyAction="http://tempuri.org/IService1/RegisterMemberResponse")]
         System.Threading.Tasks.Task<bool> RegisterMemberAsync(string username, string password, float balance);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAllHotels", ReplyAction="http://tempuri.org/IService1/GetAllHotelsResponse")]
+        HotelProject.RatingServiceReference.HotelListing[] GetAllHotels();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAllHotels", ReplyAction="http://tempuri.org/IService1/GetAllHotelsResponse")]
+        System.Threading.Tasks.Task<HotelProject.RatingServiceReference.HotelListing[]> GetAllHotelsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/BookHotelRooms", ReplyAction="http://tempuri.org/IService1/BookHotelRoomsResponse")]
+        bool BookHotelRooms(string hotelID, int roomsToBook, float discountPercent);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/BookHotelRooms", ReplyAction="http://tempuri.org/IService1/BookHotelRoomsResponse")]
+        System.Threading.Tasks.Task<bool> BookHotelRoomsAsync(string hotelID, int roomsToBook, float discountPercent);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -470,6 +482,22 @@ namespace HotelProject.RatingServiceReference {
         
         public System.Threading.Tasks.Task<bool> RegisterMemberAsync(string username, string password, float balance) {
             return base.Channel.RegisterMemberAsync(username, password, balance);
+        }
+        
+        public HotelProject.RatingServiceReference.HotelListing[] GetAllHotels() {
+            return base.Channel.GetAllHotels();
+        }
+        
+        public System.Threading.Tasks.Task<HotelProject.RatingServiceReference.HotelListing[]> GetAllHotelsAsync() {
+            return base.Channel.GetAllHotelsAsync();
+        }
+        
+        public bool BookHotelRooms(string hotelID, int roomsToBook, float discountPercent) {
+            return base.Channel.BookHotelRooms(hotelID, roomsToBook, discountPercent);
+        }
+        
+        public System.Threading.Tasks.Task<bool> BookHotelRoomsAsync(string hotelID, int roomsToBook, float discountPercent) {
+            return base.Channel.BookHotelRoomsAsync(hotelID, roomsToBook, discountPercent);
         }
     }
 }

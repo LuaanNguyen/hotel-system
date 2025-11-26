@@ -373,6 +373,62 @@ namespace WcfHotelService
             }
         }
 
+        public List<HotelListing> GetAllHotels()
+        {
+            List<HotelListing> hotelsList = new List<HotelListing>();
+
+            string hotelsPath = HostingEnvironment.MapPath("~/App_Data/Hotels.xml");
+            XDocument doc = XDocument.Load(hotelsPath);
+
+            foreach (var h in doc.Descendants("Hotel"))
+            {
+                var addressElement = h.Element("Address");
+
+                hotelsList.Add(new HotelListing
+                {
+                    HotelID = h.Attribute("ID")?.Value,
+                    Name = h.Element("Name")?.Value,
+                    BookedRooms = int.Parse(h.Element("BookedRooms")?.Value ?? "0"),
+                    Price = float.Parse(h.Element("Price")?.Value ?? "0"),
+                    NearestAirport = addressElement?.Attribute("NearestAirport")?.Value,
+                    HotelAddress = new Address
+                    {
+                        Number = addressElement.Element("Number").Value,
+                        Street = addressElement.Element("Street").Value,
+                        City = addressElement.Element("City").Value,
+                        State = addressElement.Element("State").Value,
+                        Zip = addressElement.Element("Zip").Value
+                    }
+                });
+            }
+
+            return hotelsList;
+        }
+
+        public bool BookHotelRooms(string hotelID, int roomsToBook, float discountPercent)
+        {
+            string hotelsPath = HostingEnvironment.MapPath("~/App_Data/Hotels.xml");
+            XDocument doc = XDocument.Load(hotelsPath);
+
+            var hotel = doc.Descendants("Hotel")
+                           .FirstOrDefault(h => h.Attribute("ID")?.Value == hotelID);
+
+            if (hotel == null) return false;
+
+            // Update booked rooms
+            int current = int.Parse(hotel.Element("BookedRooms").Value);
+            hotel.Element("BookedRooms").Value = (current + roomsToBook).ToString();
+
+            // Apply discount
+            float oldPrice = float.Parse(hotel.Element("Price").Value);
+            float newPrice = oldPrice * (1 - (discountPercent / 100f));
+            hotel.Element("Price").Value = newPrice.ToString("F2");
+
+            doc.Save(hotelsPath);
+            return true;
+        }
+
+
     }
 
 }

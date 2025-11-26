@@ -90,4 +90,32 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetAllHotels">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllHotelsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/WcfHotelService" minOccurs="0" name="GetAllHotelsResult" nillable="true" type="q3:ArrayOfHotelListing" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BookHotelRooms">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="hotelID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="roomsToBook" type="xs:int" />
+        <xs:element minOccurs="0" name="discountPercent" type="xs:float" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BookHotelRoomsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="BookHotelRoomsResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

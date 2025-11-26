@@ -33,6 +33,11 @@ namespace WcfHotelService
         [OperationContract]
         bool RegisterMember(string username, string password, float balance);
 
+        [OperationContract]
+        List<HotelListing> GetAllHotels();
+
+        [OperationContract]
+        bool BookHotelRooms(string hotelID, int roomsToBook, float discountPercent);
 
         // TODO: Add your service operations here
     }

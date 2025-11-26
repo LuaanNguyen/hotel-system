@@ -43,6 +43,18 @@
   <wsdl:message name="IService1_RegisterMember_OutputMessage">
     <wsdl:part name="parameters" element="tns:RegisterMemberResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_GetAllHotels_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllHotels" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAllHotels_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllHotelsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_BookHotelRooms_InputMessage">
+    <wsdl:part name="parameters" element="tns:BookHotelRooms" />
+  </wsdl:message>
+  <wsdl:message name="IService1_BookHotelRooms_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BookHotelRoomsResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="GetRatedHotels">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetRatedHotels" message="tns:IService1_GetRatedHotels_InputMessage" />
@@ -67,6 +79,14 @@
     <wsdl:operation name="RegisterMember">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/RegisterMember" message="tns:IService1_RegisterMember_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/RegisterMemberResponse" message="tns:IService1_RegisterMember_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllHotels">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetAllHotels" message="tns:IService1_GetAllHotels_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetAllHotelsResponse" message="tns:IService1_GetAllHotels_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BookHotelRooms">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/BookHotelRooms" message="tns:IService1_BookHotelRooms_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/BookHotelRoomsResponse" message="tns:IService1_BookHotelRooms_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -118,6 +138,24 @@
     </wsdl:operation>
     <wsdl:operation name="RegisterMember">
       <soap:operation soapAction="http://tempuri.org/IService1/RegisterMember" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllHotels">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetAllHotels" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BookHotelRooms">
+      <soap:operation soapAction="http://tempuri.org/IService1/BookHotelRooms" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
