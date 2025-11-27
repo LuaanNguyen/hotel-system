@@ -123,6 +123,15 @@ namespace HotelProject
         protected global::System.Web.UI.WebControls.HyperLink TryDiscountServiceRow;
 
         /// <summary>
+        /// TryNotificationService control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink TryNotificationService;
+
+        /// <summary>
         /// Discount1 control.
         /// </summary>
         /// <remarks>
@@ -150,6 +159,15 @@ namespace HotelProject
         protected global::HotelProject.MemberProfile MemberProfile1;
 
         /// <summary>
+        /// AgentNotification1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::HotelProject.AgentNotification AgentNotification1;
+
+        /// <summary>
         /// btnTryHash control.
         /// </summary>
         /// <remarks>
@@ -175,5 +193,5 @@ namespace HotelProject
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink TryDiscountService;
-    }
+    }   
 }

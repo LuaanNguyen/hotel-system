@@ -3,7 +3,7 @@
 <%@ Register Src="~/DiscountControl.ascx" TagPrefix="uc" TagName="Discount" %>
 <%@ Register Src="~/AgentProfile.ascx" TagPrefix="uc" TagName="AgentProfile" %>
 <%@ Register Src="~/MemberProfile.ascx" TagPrefix="uc" TagName="MemberProfile" %>
-
+<%@ Register Src="~/AgentNotification.ascx" TagPrefix="uc" TagName="AgentNotification" %>
 
 <!--Default page linking all services made by Sophia-->
 <!DOCTYPE html>
@@ -118,7 +118,35 @@
                         <asp:HyperLink ID="TryDiscountServiceRow" runat="server" NavigateUrl="~/DiscountService.asmx">DiscountService.asmx</asp:HyperLink>
                     </asp:TableCell>
                 </asp:TableRow>
-            </asp:Table>     
+
+                <asp:TableRow>
+                        <asp:TableCell>Muhammed Hunaid Topiwala</asp:TableCell>
+                        <asp:TableCell>.asmx Web Service</asp:TableCell>
+                        <asp:TableCell>NotificationHelper Service: Formats notification messages for hotel staff agents
+                                       <br />Input: hotelName (string), discount (float)
+                                       <br />Output: Formatted notification message (string)
+                        </asp:TableCell>
+                        <asp:TableCell>C# code for ASMX Web Service<br />
+                                       TryIt Link:<br />
+                                       <asp:HyperLink ID="TryNotificationService" runat="server" 
+                                                      NavigateUrl="~/NotificationHelper.asmx">
+                                           NotificationHelper.asmx
+                                       </asp:HyperLink>
+                        </asp:TableCell>
+                    </asp:TableRow>
+
+                    <asp:TableRow>
+                        <asp:TableCell>Muhammed Hunaid Topiwala</asp:TableCell>
+                        <asp:TableCell>.ascx User Control</asp:TableCell>
+                        <asp:TableCell>Agent Notification Control: Displays real-time notifications for hotel staff 
+                                       about discount opportunities and booking alerts
+                        </asp:TableCell>
+                        <asp:TableCell>C# Code behind the GUI<br />
+                                       Present in: Muhammed's Component Demo section<br />
+                                       Link: Current Page (scroll to Muhammed's section)
+                        </asp:TableCell>
+                    </asp:TableRow>
+                </asp:Table>     
             
             <br /><br />
 
@@ -142,6 +170,13 @@
                         </td>
                     </tr>
                 </table>
+
+                <!-- Muhammed's Component Demo Section -->
+                
+                <h2 style="text-align:center; font-family:Arial; margin-top: 40px;">Muhammed's Components Demo</h2>
+                <div style="margin-top:20px; padding:20px; border:1px solid #2196F3; border-radius:8px;">
+                    <uc:AgentNotification ID="AgentNotification1" runat="server" />
+                </div>
 
                 <asp:Button ID="btnTryHash" runat="server" Text="Test Hash" OnClick="btnTryHash_Click" />
                 <asp:Label ID="lblHashResult" runat="server" />

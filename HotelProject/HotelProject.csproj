@@ -47,6 +47,9 @@
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
@@ -67,6 +70,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AgentNotification.ascx" />
     <Content Include="AgentProfile.ascx" />
     <Content Include="Connected Services\RatingServiceReference\HotelProject.RatingServiceReference.RatedHotel.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -83,12 +87,20 @@
     <Content Include="LoginControl.ascx" />
     <Content Include="MemberLogin.aspx" />
     <Content Include="MemberRating.aspx" />
+    <Content Include="NotificationHelper.asmx" />
     <Content Include="StaffLogin.aspx" />
     <Content Include="Web.config" />
     <Content Include="DiscountControl.ascx" />
     <Content Include="MemberProfile.ascx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AgentNotification.ascx.cs">
+      <DependentUpon>AgentNotification.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgentNotification.ascx.designer.cs">
+      <DependentUpon>AgentNotification.ascx</DependentUpon>
+    </Compile>
     <Compile Include="AgentProfile.ascx.cs">
       <DependentUpon>AgentProfile.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -132,6 +144,10 @@
     </Compile>
     <Compile Include="MemberRating.aspx.designer.cs">
       <DependentUpon>MemberRating.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="NotificationHelper.asmx.cs">
+      <DependentUpon>NotificationHelper.asmx</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StaffLogin.aspx.cs">
