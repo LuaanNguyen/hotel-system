@@ -1,0 +1,2 @@
+﻿null user11/28/2025 5:34:12 PM - ChangePassword Error: Object reference not set to an instance of an object.
+   at WcfHotelService.Service1.ChangePassword(String username, String newPassword, Int32 userType) in C:\Users\guwin\Projects\WcfHotelService\Service1.svc.cs:line 505

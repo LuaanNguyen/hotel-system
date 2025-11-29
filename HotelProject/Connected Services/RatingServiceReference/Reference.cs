@@ -407,6 +407,12 @@ namespace HotelProject.RatingServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/BookHotelRooms", ReplyAction="http://tempuri.org/IService1/BookHotelRoomsResponse")]
         System.Threading.Tasks.Task<bool> BookHotelRoomsAsync(string hotelID, int roomsToBook, float discountPercent);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ChangePassword", ReplyAction="http://tempuri.org/IService1/ChangePasswordResponse")]
+        bool ChangePassword(string username, string newPassword, int userType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ChangePassword", ReplyAction="http://tempuri.org/IService1/ChangePasswordResponse")]
+        System.Threading.Tasks.Task<bool> ChangePasswordAsync(string username, string newPassword, int userType);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -498,6 +504,14 @@ namespace HotelProject.RatingServiceReference {
         
         public System.Threading.Tasks.Task<bool> BookHotelRoomsAsync(string hotelID, int roomsToBook, float discountPercent) {
             return base.Channel.BookHotelRoomsAsync(hotelID, roomsToBook, discountPercent);
+        }
+        
+        public bool ChangePassword(string username, string newPassword, int userType) {
+            return base.Channel.ChangePassword(username, newPassword, userType);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ChangePasswordAsync(string username, string newPassword, int userType) {
+            return base.Channel.ChangePasswordAsync(username, newPassword, userType);
         }
     }
 }

@@ -89,6 +89,7 @@
     <Content Include="MemberLogin.aspx" />
     <Content Include="MemberRegister.aspx" />
     <Content Include="ProtectedMember\MemberBrowse.aspx" />
+    <Content Include="ProtectedMember\MemberChangePassword.aspx" />
     <Content Include="ProtectedMember\MemberRating.aspx" />
     <Content Include="ProtectedStaff\StaffDashboard.aspx" />
     <Content Include="StaffLogin.aspx" />
@@ -158,6 +159,13 @@
     </Compile>
     <Compile Include="ProtectedMember\MemberBrowse.aspx.designer.cs">
       <DependentUpon>MemberBrowse.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProtectedMember\MemberChangePassword.aspx.cs">
+      <DependentUpon>MemberChangePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProtectedMember\MemberChangePassword.aspx.designer.cs">
+      <DependentUpon>MemberChangePassword.aspx</DependentUpon>
     </Compile>
     <Compile Include="ProtectedMember\MemberRating.aspx.cs">
       <DependentUpon>MemberRating.aspx</DependentUpon>
