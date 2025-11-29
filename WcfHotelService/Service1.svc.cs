@@ -373,6 +373,7 @@ namespace WcfHotelService
             }
         }
 
+        // returns 
         public List<HotelListing> GetAllHotels()
         {
             List<HotelListing> hotelsList = new List<HotelListing>();
@@ -405,6 +406,7 @@ namespace WcfHotelService
             return hotelsList;
         }
 
+        // Allows the agent to book hotel rooms
         public bool BookHotelRooms(string hotelID, int roomsToBook, float discountPercent)
         {
             string hotelsPath = HostingEnvironment.MapPath("~/App_Data/Hotels.xml");
@@ -428,7 +430,98 @@ namespace WcfHotelService
             return true;
         }
 
+        // Allows user (both staff and member) to change their password. 0 userType = staff; 1 userType = Member
+        public bool ChangePassword(string username, string newPassword, int userType)
+        {
+            try
+            {
+                string xmlPath;
 
+                // Depending on user type, we'll have to adjust the xmlPath
+                // staff user type
+                if (userType == 0)
+                {
+                    xmlPath = HostingEnvironment.MapPath("~/App_Data/Staff.xml");
+                }
+                // member user type
+                else
+                {
+                    xmlPath = HostingEnvironment.MapPath("~/App_Data/Members.xml");
+                }
+
+                XDocument doc = XDocument.Load(xmlPath);
+
+                // Now find the user with the matching username
+                XElement user = null;
+                if(userType == 0)
+                {
+                    // get matching staff
+                    var allStaff = doc.Descendants("StaffMember");
+
+                    //iterate through all members
+                    foreach (var s in allStaff)
+                    {
+                        var tempUsername = s.Element("Username");
+
+                        // if you find a member with the same username, that's a problem. Return false
+                        // (every username needs to be unique)
+                        if (tempUsername != null && tempUsername.Value == username)
+                        {
+                            user = s;
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    // get matching member
+                    var allMembers = doc.Descendants("Member");
+
+                    //iterate through all members
+                    foreach (var m in allMembers)
+                    {
+                        var tempUsername = m.Element("Username");
+
+                        // if you find a member with the same username, that's a problem. Return false
+                        // (every username needs to be unique)
+                        if (tempUsername != null && tempUsername.Value == username)
+                        {
+                            user = m;
+                            break;
+                        }
+                    }
+
+                }
+
+                // see if user has been assigned
+                if(user == null)
+                {
+                    return false;
+                }
+
+                // update password
+                XElement passwordElement = user.Element("Password");
+                if (passwordElement != null) {
+                    passwordElement.Value = newPassword; 
+                }
+                // (this shouldn't happen, as every user has to enter password, but just in case...)
+                else
+                {
+                    user.Add(new XElement("Password", newPassword));
+                }
+
+                // save changes back to the xmldoc
+                doc.Save(xmlPath);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+
+
+        }
     }
 
+            
 }
