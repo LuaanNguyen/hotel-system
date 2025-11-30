@@ -74,6 +74,9 @@
     <Content Include="Connected Services\RatingServiceReference\HotelProject.RatingServiceReference.RatedHotel.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\RatingServiceReference\HotelProject.RatingServiceReference.HotelBooking.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Connected Services\RatingServiceReference\Service1.disco" />
     <None Include="Connected Services\RatingServiceReference\configuration91.svcinfo" />
     <None Include="Connected Services\RatingServiceReference\configuration.svcinfo" />

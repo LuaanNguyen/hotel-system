@@ -11,7 +11,7 @@
       <State>AZ</State>
       <Zip>85281</Zip>
     </Address>
-    <BookedRooms>43</BookedRooms>
+    <BookedRooms>42</BookedRooms>
     <Price>51.30</Price>
   </Hotel>
   <Hotel ID="2">
@@ -52,7 +52,7 @@
       <State>AZ</State>
       <Zip>85281</Zip>
     </Address>
-    <BookedRooms>20</BookedRooms>
+    <BookedRooms>19</BookedRooms>
     <Price>75.00</Price>
   </Hotel>
   <Hotel Rating="3.2" ID="5">

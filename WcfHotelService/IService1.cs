@@ -7,6 +7,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using System.Xml;
 
 namespace WcfHotelService
 {
@@ -41,6 +42,20 @@ namespace WcfHotelService
 
         [OperationContract]
         bool ChangePassword(string username, string newPassword, int userType);
+
+        [OperationContract]
+        List<HotelBooking> GetBookedHotels(string username);
+
+        [OperationContract]
+        float getBalance(string username);
+
+        [OperationContract]
+        bool addBalance(string username, float balance);
+
+
+        // (more potential errors with booking hotels, have it return int for more descriptive error handling/reporting)
+        [OperationContract]
+        int BookHotel(string username, int hotelId, string startDate, string endDate);
 
         // TODO: Add your service operations here
     }
@@ -132,5 +147,25 @@ namespace WcfHotelService
 
         [DataMember]
         public string NearestAirport { get; set; }
+    }
+
+    // Custom data structure to display the hotel rooms a member has booked
+    [DataContract]
+    public class HotelBooking
+    {
+        [DataMember]
+        public int HotelID { get; set; }
+
+        [DataMember]
+        public string HotelName { get; set; }
+
+        [DataMember]
+        public float Price { get; set; }
+
+        [DataMember]
+        public string Start_Date { get; set; }
+
+        [DataMember]
+        public string End_Date { get; set; }
     }
 }
