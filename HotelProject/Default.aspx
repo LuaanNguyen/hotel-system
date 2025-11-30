@@ -1,8 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="HotelProject.Default" %>
 <%@ Register Src="~/LoginControl.ascx" TagPrefix="uc" TagName="Login" %>
 <%@ Register Src="~/DiscountControl.ascx" TagPrefix="uc" TagName="Discount" %>
-<%@ Register Src="~/AgentProfile.ascx" TagPrefix="uc" TagName="AgentProfile" %>
-<%@ Register Src="~/MemberProfile.ascx" TagPrefix="uc" TagName="MemberProfile" %>
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -193,8 +191,6 @@
         <table style="width:100%; text-align:center;">
             <tr>
                 <td style="padding:10px; width:33%;"><uc:Discount ID="Discount1" runat="server" /></td>
-                <td style="padding:10px; width:33%;"><uc:AgentProfile ID="AgentProfile1" runat="server" /></td>
-                <td style="padding:10px; width:33%;"><uc:MemberProfile ID="MemberProfile1" runat="server" /></td>
             </tr>
         </table>
 

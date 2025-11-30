@@ -67,7 +67,6 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AgentProfile.ascx" />
     <Content Include="Connected Services\RatingServiceReference\HotelProject.RatingServiceReference.HotelListing.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -99,16 +98,8 @@
     <Content Include="TryItRating.aspx" />
     <Content Include="Web.config" />
     <Content Include="DiscountControl.ascx" />
-    <Content Include="MemberProfile.ascx" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AgentProfile.ascx.cs">
-      <DependentUpon>AgentProfile.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AgentProfile.ascx.designer.cs">
-      <DependentUpon>AgentProfile.ascx</DependentUpon>
-    </Compile>
     <Compile Include="Connected Services\RatingServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -198,13 +189,6 @@
     </Compile>
     <Compile Include="DiscountControl.ascx.designer.cs">
       <DependentUpon>DiscountControl.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="MemberProfile.ascx.cs">
-      <DependentUpon>MemberProfile.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="MemberProfile.ascx.designer.cs">
-      <DependentUpon>MemberProfile.ascx</DependentUpon>
     </Compile>
     <Compile Include="TryItRating.aspx.cs">
       <DependentUpon>TryItRating.aspx</DependentUpon>

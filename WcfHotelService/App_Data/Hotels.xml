@@ -11,8 +11,8 @@
       <State>AZ</State>
       <Zip>85281</Zip>
     </Address>
-    <BookedRooms>42</BookedRooms>
-    <Price>51.30</Price>
+    <BookedRooms>65</BookedRooms>
+    <Price>41.04</Price>
   </Hotel>
   <Hotel ID="2">
     <Name>La Quinta Inn</Name>
@@ -38,8 +38,8 @@
       <State>AZ</State>
       <Zip>85008</Zip>
     </Address>
-    <BookedRooms>0</BookedRooms>
-    <Price>0.00</Price>
+    <BookedRooms>5</BookedRooms>
+    <Price>33.00</Price>
   </Hotel>
   <Hotel Rating="4.4" ID="4">
     <Name>Hampton Inn and Suites Tempe</Name>
@@ -78,8 +78,8 @@
       <State>AZ</State>
       <Zip>85226</Zip>
     </Address>
-    <BookedRooms>0</BookedRooms>
-    <Price>0.00</Price>
+    <BookedRooms>10</BookedRooms>
+    <Price>77.00</Price>
   </Hotel>
   <Hotel ID="7">
     <Name>Hilton Garden Inn Phoenix Airport</Name>
@@ -104,8 +104,8 @@
       <State>AZ</State>
       <Zip>85008</Zip>
     </Address>
-    <BookedRooms>0</BookedRooms>
-    <Price>0.00</Price>
+    <BookedRooms>90</BookedRooms>
+    <Price>99.00</Price>
   </Hotel>
   <Hotel ID="9">
     <Name>Holiday Inn Express and Suites Phoenix Airport by IHG</Name>
@@ -117,8 +117,8 @@
       <State>AZ</State>
       <Zip>85008</Zip>
     </Address>
-    <BookedRooms>0</BookedRooms>
-    <Price>0.00</Price>
+    <BookedRooms>100</BookedRooms>
+    <Price>100.00</Price>
   </Hotel>
   <Hotel Rating="3.8" ID="10">
     <Name>GreenTree Inn and Suites Phoenix</Name>
@@ -130,7 +130,7 @@
       <State>AZ</State>
       <Zip>85040</Zip>
     </Address>
-    <BookedRooms>0</BookedRooms>
-    <Price>0.00</Price>
+    <BookedRooms>10</BookedRooms>
+    <Price>74.25</Price>
   </Hotel>
 </Hotels>

@@ -24,26 +24,32 @@ namespace HotelProject
             }
         }
 
+        // set/get HotelListings from Session
         protected List<HotelListing> Hotels
         {
             get { return Session["Hotels"] as List<HotelListing>; }
             set { Session["Hotels"] = value; }
         }
 
+        // Load all hotels available for booking
         protected void LoadAvailableHotels()
         {
             HotelDetailTextBox.Text = "Select a hotel to view further details...";
+
             try
             {
+                // use a proxy to call the service
                 Service1Client prxy = new Service1Client();
                 HotelListing[] hotelsArray = prxy.BrowseHotels();
 
+                // if hotelsArray's length is 0, then no hotels have been posted by the staff
                 if (hotelsArray == null || hotelsArray.Length == 0)
                 {
                     HotelDetailTextBox.Text = "No hotels have been booked + posted by an agent yet.";
                     HotelListView.DataSource = null;
                     Hotels = null;
                 }
+                // otherwise, set the data source of the ListView
                 else
                 {
                     Hotels = hotelsArray.ToList();
@@ -57,6 +63,7 @@ namespace HotelProject
             }
         }
 
+        // Event listener for an item on the HotelListView being selected
         protected void HotelListView_SelectedIndexChanging(object sender, ListViewSelectEventArgs e)
         {
             HotelListView.SelectedIndex = e.NewSelectedIndex;
@@ -64,14 +71,16 @@ namespace HotelProject
             HotelListView.DataBind();
         }
 
+        // Event listener for item on HotelListView being changed
         protected void lvHotels_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // display details of the seleced hotel
             if (HotelListView.SelectedIndex >= 0 && Hotels != null && HotelListView.SelectedIndex < Hotels.Count)
             {
                 HotelListing selectedHotel = Hotels[HotelListView.SelectedIndex];
                 DisplayHotelDetails(selectedHotel);
 
-                // get the selected hotelID
+                // get the selected hotelID aNd store it in the hidden field for future reference
                 hiddenHotelId.Value = selectedHotel.HotelID;
             }
         }
@@ -115,7 +124,7 @@ namespace HotelProject
                 return;
             }
 
-            // otherwise, 
+            // otherwise, if all error checks passed, continue with adding money to the user's account
             Service1Client prxy = new Service1Client();
             if(!prxy.addBalance(username, addedBalance))
             {
@@ -129,7 +138,7 @@ namespace HotelProject
             displayBalance();
         }
 
-
+        // load up all the hotels that a user has previously booked
         protected void LoadBookedHotels()
         {
             string username = User.Identity.Name;
@@ -146,6 +155,7 @@ namespace HotelProject
                     return;
                 }
 
+                // use the string builder to format how the booked hotel is displayed
                 StringBuilder details = new StringBuilder();
                 details.AppendLine("Booked Hotels");
                 details.AppendLine("=========================");
@@ -158,8 +168,9 @@ namespace HotelProject
                     details.AppendLine($"Price: {bookedHotelsTemp[i].Price.ToString()}");
                     details.AppendLine("-------------------------");
                 }
-                BookedHotelsTextBox.Text = details.ToString();
 
+                // display the booked hotels in the textbox
+                BookedHotelsTextBox.Text = details.ToString();
 
             }
             catch (Exception ex)
@@ -252,6 +263,8 @@ namespace HotelProject
                         // details about the balance have changed too 
                         displayBalance();
                         break;
+
+                    // otherwise, report the specific type of error encountered in the result label
                     case 1:
                         BookHotelResult.Text = "Result: Insufficient balance";
                         break;

@@ -10,11 +10,12 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <h3>Staff Login Page</h3>
+            <h2>Staff Login Page</h2>
             <asp:Label ID="DescLabel" runat="server" Text="Staff Login Page with Cookies.
                 Hint: Login with TA as the username and Cse445! as the password. You'll 
                 be redirected to the dashboard automatically." Font-Italic="true"></asp:Label>
-            <uc:Login ID="LoginControl1" runat="server" />        
+            <uc:Login ID="LoginControl1" runat="server" />    
+            <asp:Label ID="ResultLabel" runat="server" Text="Result: "></asp:Label>
         </div>
     </form>
 </body>
