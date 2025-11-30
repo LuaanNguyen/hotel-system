@@ -96,6 +96,7 @@
     <Content Include="ProtectedMember\MemberRating.aspx" />
     <Content Include="ProtectedStaff\StaffDashboard.aspx" />
     <Content Include="StaffLogin.aspx" />
+    <Content Include="TryItRating.aspx" />
     <Content Include="Web.config" />
     <Content Include="DiscountControl.ascx" />
     <Content Include="MemberProfile.ascx" />
@@ -204,6 +205,13 @@
     </Compile>
     <Compile Include="MemberProfile.ascx.designer.cs">
       <DependentUpon>MemberProfile.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="TryItRating.aspx.cs">
+      <DependentUpon>TryItRating.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TryItRating.aspx.designer.cs">
+      <DependentUpon>TryItRating.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
