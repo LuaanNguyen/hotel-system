@@ -146,7 +146,7 @@ namespace HotelProject
                 StringBuilder result = new StringBuilder();
 
                 // first, let's display how many hotels user has rated
-                result.AppendLine($"Total Hotels Rated: {ratedHotels.Length}");
+                result.AppendLine(string.Format("Total Hotels Rated: {0}", ratedHotels.Length));
                 result.AppendLine(new string('=', 75));
                 result.AppendLine();
 
@@ -154,15 +154,15 @@ namespace HotelProject
                 foreach (var hotel in ratedHotels)
                 {
                     // we're going to display the hotel name, rating, address
-                    result.AppendLine($"Hotel: {hotel.HotelName}");
-                    result.AppendLine($"Rating: {hotel.Rating}/5");
-                    result.AppendLine($"Address: {hotel.HotelAddress.Number} {hotel.HotelAddress.Street}");
-                    result.AppendLine($"         {hotel.HotelAddress.City}, {hotel.HotelAddress.Zip}");
+                    result.AppendLine(string.Format("Hotel: {0}", hotel.HotelName));
+                    result.AppendLine(string.Format("Rating: {0}/5", hotel.Rating));
+                    result.AppendLine(string.Format("Address: {0} {1}", hotel.HotelAddress.Number, hotel.HotelAddress.Street));
+                    result.AppendLine(string.Format("         {0}, {1}", hotel.HotelAddress.City, hotel.HotelAddress.Zip));
 
                     // we will possibly display the comment (if user entered comment)
                     if (!string.IsNullOrEmpty(hotel.Comment))
                     {
-                        result.AppendLine($"Comment: {hotel.Comment}");
+                        result.AppendLine(string.Format("Comment: {0}", hotel.Comment));
                     }
 
                     result.AppendLine();

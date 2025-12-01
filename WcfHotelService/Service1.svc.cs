@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
+using System.ServiceModel.Activation;
 using System.ServiceModel.Web;
 using System.Text;
 using System.Web.Hosting;
@@ -13,6 +14,7 @@ namespace WcfHotelService
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in code, svc and config file together.
     // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
     [ServiceBehavior(IncludeExceptionDetailInFaults = true)]
+    [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)]
     public class Service1 : IService1
     {
         // Given username, fetch all the hotels they have previously rated
@@ -63,8 +65,9 @@ namespace WcfHotelService
                 // now go through all the ratings (user can rate multiple hotels)
                 foreach (var rating in ratings)
                 {
-                    // null protection with ?, if not null, get the value
-                    string hotelID = rating.Element("HotelID")?.Value;
+                    // null protection - get value if element exists
+                    var hotelIDElement = rating.Element("HotelID");
+                    string hotelID = hotelIDElement != null ? hotelIDElement.Value : null;
 
                     // now find the matching hotel
                     var allHotels = hotels.Descendants("Hotel");
@@ -100,12 +103,14 @@ namespace WcfHotelService
                         }
                         
                         
+                        var ratingElement = rating.Element("Rating");
+                        var commentElement = rating.Element("Comment");
                         ratedHotels.Add(new RatedHotel
                         {
                             HotelID = currHotel.Attribute("ID").Value,
                             HotelName = currHotel.Element("Name").Value,
-                            Rating = float.Parse(rating.Element("Rating")?.Value ?? "0.0"),
-                            Comment = rating.Element("Comment")?.Value ?? "No comment",
+                            Rating = float.Parse(ratingElement != null ? ratingElement.Value : "0.0"),
+                            Comment = commentElement != null ? commentElement.Value : "No comment",
                             HotelAddress = currHotelAddress
                         });
                     }
@@ -154,14 +159,17 @@ namespace WcfHotelService
                 // if no match after searching, I'll throw an exception (two invalid possiblities, so throw exception)
                 if (member == null)
                 {
-                    throw new Exception($"Member with username '{username}' doesn't exist!");
+                    throw new Exception(string.Format("Member with username '{0}' doesn't exist!", username));
                 }
 
                 //check if already rated
-                var existingRating = member.Descendants("RatedHotel").FirstOrDefault(r => r.Element("HotelID")?.Value == hotelID);
+                var existingRating = member.Descendants("RatedHotel").FirstOrDefault(r => {
+                    var el = r.Element("HotelID");
+                    return el != null && el.Value == hotelID;
+                });
                 if (existingRating != null)
                 {
-                    throw new Exception($"You have already rated hotel with ID {hotelID}");
+                    throw new Exception(string.Format("You have already rated hotel with ID {0}", hotelID));
                 }
 
                 // check if rating given is valid
@@ -221,7 +229,8 @@ namespace WcfHotelService
                 // search for hotels that actually have booked rooms available
                 foreach (var hotel in hotels)
                 {
-                    string bookedRoomsText = hotel.Element("BookedRooms")?.Value ?? "0";
+                    var bookedRoomsEl = hotel.Element("BookedRooms");
+                    string bookedRoomsText = bookedRoomsEl != null ? bookedRoomsEl.Value : "0";
                     int bookedRooms = int.Parse(bookedRoomsText);
 
                     // Only include hotels with available rooms (BookedRooms > 0)
@@ -229,27 +238,31 @@ namespace WcfHotelService
                     {
 
                         // (first parse the price)
-                         string priceText = hotel.Element("Price")?.Value ?? "0.00";
-                         float price = float.Parse(priceText);
+                        var priceEl = hotel.Element("Price");
+                        string priceText = priceEl != null ? priceEl.Value : "0.00";
+                        float price = float.Parse(priceText);
 
                         // get the address separately, since it's a more complex type
                         var addressElement = hotel.Element("Address");
+                        var hotelIdAttr = hotel.Attribute("ID");
+                        var nameEl = hotel.Element("Name");
+                        var nearestAirportAttr = addressElement != null ? addressElement.Attribute("NearestAirport") : null;
 
                         // format the HotelListing, and add it in
                         HotelListing listing = new HotelListing
                         {
-                            HotelID = hotel.Attribute("ID")?.Value,
-                            Name = hotel.Element("Name")?.Value,
+                            HotelID = hotelIdAttr != null ? hotelIdAttr.Value : null,
+                            Name = nameEl != null ? nameEl.Value : null,
                             BookedRooms = bookedRooms,
                             Price = price,
-                            NearestAirport = addressElement?.Attribute("NearestAirport")?.Value,
+                            NearestAirport = nearestAirportAttr != null ? nearestAirportAttr.Value : null,
                             HotelAddress = new Address
                             {
-                                Number = addressElement?.Element("Number")?.Value,
-                                Street = addressElement?.Element("Street")?.Value,
-                                City = addressElement?.Element("City")?.Value,
-                                State = addressElement?.Element("State")?.Value,
-                                Zip = addressElement?.Element("Zip")?.Value
+                                Number = addressElement != null && addressElement.Element("Number") != null ? addressElement.Element("Number").Value : null,
+                                Street = addressElement != null && addressElement.Element("Street") != null ? addressElement.Element("Street").Value : null,
+                                City = addressElement != null && addressElement.Element("City") != null ? addressElement.Element("City").Value : null,
+                                State = addressElement != null && addressElement.Element("State") != null ? addressElement.Element("State").Value : null,
+                                Zip = addressElement != null && addressElement.Element("Zip") != null ? addressElement.Element("Zip").Value : null
                             }
                         };
 
@@ -404,14 +417,19 @@ namespace WcfHotelService
             foreach (var h in doc.Descendants("Hotel"))
             {
                 var addressElement = h.Element("Address");
+                var idAttr = h.Attribute("ID");
+                var nameEl = h.Element("Name");
+                var bookedRoomsEl = h.Element("BookedRooms");
+                var priceEl = h.Element("Price");
+                var nearestAirportAttr = addressElement != null ? addressElement.Attribute("NearestAirport") : null;
 
                 hotelsList.Add(new HotelListing
                 {
-                    HotelID = h.Attribute("ID")?.Value,
-                    Name = h.Element("Name")?.Value,
-                    BookedRooms = int.Parse(h.Element("BookedRooms")?.Value ?? "0"),
-                    Price = float.Parse(h.Element("Price")?.Value ?? "0"),
-                    NearestAirport = addressElement?.Attribute("NearestAirport")?.Value,
+                    HotelID = idAttr != null ? idAttr.Value : null,
+                    Name = nameEl != null ? nameEl.Value : null,
+                    BookedRooms = int.Parse(bookedRoomsEl != null ? bookedRoomsEl.Value : "0"),
+                    Price = float.Parse(priceEl != null ? priceEl.Value : "0"),
+                    NearestAirport = nearestAirportAttr != null ? nearestAirportAttr.Value : null,
                     HotelAddress = new Address
                     {
                         Number = addressElement.Element("Number").Value,
@@ -433,7 +451,10 @@ namespace WcfHotelService
             XDocument doc = XDocument.Load(hotelsPath);
 
             var hotel = doc.Descendants("Hotel")
-                           .FirstOrDefault(h => h.Attribute("ID")?.Value == hotelID);
+                           .FirstOrDefault(h => {
+                               var attr = h.Attribute("ID");
+                               return attr != null && attr.Value == hotelID;
+                           });
 
             if (hotel == null) return false;
 
@@ -583,20 +604,29 @@ namespace WcfHotelService
 
                 foreach (var hotel in bookedHotelElements)
                 {
-                    int hotelId = int.Parse(hotel.Element("HotelID")?.Value ?? "0");
+                    var hotelIdEl = hotel.Element("HotelID");
+                    int hotelId = int.Parse(hotelIdEl != null ? hotelIdEl.Value : "0");
 
                     // Look up hotel name from Hotels.xml using HotelID
-                    string hotelName = hotelsDoc.Descendants("Hotel")
-                            .FirstOrDefault(h => h.Attribute("ID")?.Value == hotelId.ToString())
-                            ?.Element("Name")?.Value ?? "Error: Unknown Hotel Name";
+                    var matchingHotel = hotelsDoc.Descendants("Hotel")
+                            .FirstOrDefault(h => {
+                                var attr = h.Attribute("ID");
+                                return attr != null && attr.Value == hotelId.ToString();
+                            });
+                    var nameEl = matchingHotel != null ? matchingHotel.Element("Name") : null;
+                    string hotelName = nameEl != null ? nameEl.Value : "Error: Unknown Hotel Name";
+
+                    var priceEl = hotel.Element("Price");
+                    var startDateEl = hotel.Element("StartDate");
+                    var endDateEl = hotel.Element("EndDate");
 
                     HotelBooking bookedHotel = new HotelBooking()
                     {
                         HotelID = hotelId,
                         HotelName = hotelName,  // Now includes the name
-                        Price = float.Parse(hotel.Element("Price")?.Value ?? "0"),
-                        Start_Date = hotel.Element("StartDate")?.Value ?? "",
-                        End_Date = hotel.Element("EndDate")?.Value ?? ""
+                        Price = float.Parse(priceEl != null ? priceEl.Value : "0"),
+                        Start_Date = startDateEl != null ? startDateEl.Value : "",
+                        End_Date = endDateEl != null ? endDateEl.Value : ""
                     };
 
                     bookedHotels.Add(bookedHotel);
@@ -634,7 +664,10 @@ namespace WcfHotelService
 
                 // Find the member with matching username first
                 XElement member = membersDoc.Descendants("Member")
-                                            .FirstOrDefault(m => m.Element("Username")?.Value == username);
+                                            .FirstOrDefault(m => {
+                                                var el = m.Element("Username");
+                                                return el != null && el.Value == username;
+                                            });
 
                 if (member == null)
                 {
@@ -643,7 +676,10 @@ namespace WcfHotelService
 
                 // Find the hotel
                 XElement hotel = hotelsDoc.Descendants("Hotel")
-                                          .FirstOrDefault(h => h.Attribute("ID")?.Value == hotelId.ToString());
+                                          .FirstOrDefault(h => {
+                                              var attr = h.Attribute("ID");
+                                              return attr != null && attr.Value == hotelId.ToString();
+                                          });
 
                 if (hotel == null)
                 {
@@ -651,8 +687,10 @@ namespace WcfHotelService
                 }
 
                 // Get hotel price and available rooms
-                float hotelPrice = float.Parse(hotel.Element("Price")?.Value ?? "0");
-                int bookedRooms = int.Parse(hotel.Element("BookedRooms")?.Value ?? "0");
+                var hotelPriceEl = hotel.Element("Price");
+                var bookedRoomsEl = hotel.Element("BookedRooms");
+                float hotelPrice = float.Parse(hotelPriceEl != null ? hotelPriceEl.Value : "0");
+                int bookedRooms = int.Parse(bookedRoomsEl != null ? bookedRoomsEl.Value : "0");
 
                 // Check if rooms are available (this shouldn't occur, based on how front-end/BrowseHotels is designed, though)
                 // (it's just additional error checking)
@@ -662,7 +700,8 @@ namespace WcfHotelService
                 }
 
                 // Get member's balance
-                float memberBalance = float.Parse(member.Element("Balance")?.Value ?? "0");
+                var balanceEl = member.Element("Balance");
+                float memberBalance = float.Parse(balanceEl != null ? balanceEl.Value : "0");
 
                 // Check if member has sufficient balance
                 if (memberBalance < hotelPrice)
@@ -742,7 +781,7 @@ namespace WcfHotelService
                 // if no match after searching, I'll throw an exception
                 if (member == null)
                 {
-                    throw new Exception($"Member with username '{username}' doesn't exist!");
+                    throw new Exception(string.Format("Member with username '{0}' doesn't exist!", username));
                 }
 
                 // otherwise, get the balance, convert it to a float, and return it
@@ -793,7 +832,8 @@ namespace WcfHotelService
                 }
 
                 // Get current balance
-                float currentBalance = float.Parse(member.Element("Balance")?.Value ?? "0");
+                var currentBalanceEl = member.Element("Balance");
+                float currentBalance = float.Parse(currentBalanceEl != null ? currentBalanceEl.Value : "0");
 
                 // Add funds
                 float newBalance = currentBalance + balance;

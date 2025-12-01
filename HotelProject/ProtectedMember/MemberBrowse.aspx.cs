@@ -195,12 +195,12 @@ namespace HotelProject
                 StringBuilder details = new StringBuilder();
                 for (int i = 0; i < bookedHotelsTemp.Length; i++)
                 {
-                    details.AppendLine($"{bookedHotelsTemp[i].HotelName.ToString()}");
+                    details.AppendLine(bookedHotelsTemp[i].HotelName.ToString());
                     details.AppendLine("=========================");
-                    details.AppendLine($"Booked Hotel ID: {bookedHotelsTemp[i].HotelID.ToString()}");
-                    details.AppendLine($"Start Date: {bookedHotelsTemp[i].Start_Date.ToString()}");
-                    details.AppendLine($"End Date: {bookedHotelsTemp[i].End_Date.ToString()}");
-                    details.AppendLine($"Price: ${bookedHotelsTemp[i].Price.ToString()}");
+                    details.AppendLine(string.Format("Booked Hotel ID: {0}", bookedHotelsTemp[i].HotelID.ToString()));
+                    details.AppendLine(string.Format("Start Date: {0}", bookedHotelsTemp[i].Start_Date.ToString()));
+                    details.AppendLine(string.Format("End Date: {0}", bookedHotelsTemp[i].End_Date.ToString()));
+                    details.AppendLine(string.Format("Price: ${0}", bookedHotelsTemp[i].Price.ToString()));
                     details.AppendLine("-------------------------");
                     details.AppendLine();
                 }
@@ -223,15 +223,15 @@ namespace HotelProject
             StringBuilder details = new StringBuilder();
 
             // list out the hotel's addess, nearest airport, its price, and the # of rooms available
-            details.AppendLine($"{hotelListing.Name}");
+            details.AppendLine(hotelListing.Name);
             details.AppendLine("=========================");
-            details.AppendLine($"Hotel ID: {hotelListing.HotelID}");
+            details.AppendLine(string.Format("Hotel ID: {0}", hotelListing.HotelID));
             details.AppendLine("Address: ");
-            details.AppendLine($"{hotelListing.HotelAddress.Number} {hotelListing.HotelAddress.Street}");
-            details.AppendLine($"{hotelListing.HotelAddress.City}, {hotelListing.HotelAddress.State}, {hotelListing.HotelAddress.Zip}");
-            details.AppendLine($"Nearest Airport: {hotelListing.NearestAirport}");
-            details.AppendLine($"Quantity of Rooms: {hotelListing.BookedRooms}");
-            details.AppendLine($"Price per Hotel Room: ${hotelListing.Price:F2}");
+            details.AppendLine(string.Format("{0} {1}", hotelListing.HotelAddress.Number, hotelListing.HotelAddress.Street));
+            details.AppendLine(string.Format("{0}, {1}, {2}", hotelListing.HotelAddress.City, hotelListing.HotelAddress.State, hotelListing.HotelAddress.Zip));
+            details.AppendLine(string.Format("Nearest Airport: {0}", hotelListing.NearestAirport));
+            details.AppendLine(string.Format("Quantity of Rooms: {0}", hotelListing.BookedRooms));
+            details.AppendLine(string.Format("Price per Hotel Room: ${0:F2}", hotelListing.Price));
 
             // convert it all to a string and display
             HotelDetailTextBox.Text = details.ToString();

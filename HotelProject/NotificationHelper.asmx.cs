@@ -41,7 +41,7 @@ namespace HotelProject
             }
 
             // Format the notification message with professional styling
-            string message = $"ALERT: {discount}% discount available at {hotelName} Hotel! Book now for your clients.";
+            string message = string.Format("ALERT: {0}% discount available at {1} Hotel! Book now for your clients.", discount, hotelName);
 
             return message;
         }

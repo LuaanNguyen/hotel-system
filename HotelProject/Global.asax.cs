@@ -96,7 +96,7 @@ namespace HotelProject
         protected void Application_Error(object sender, EventArgs e)
         {
             Exception exception = Server.GetLastError();
-            System.Diagnostics.Debug.WriteLine("Application Error: " + exception?.Message);
+            System.Diagnostics.Debug.WriteLine("Application Error: " + (exception != null ? exception.Message : "Unknown"));
         }
 
         /// <summary>
