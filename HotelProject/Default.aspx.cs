@@ -13,9 +13,13 @@ namespace HotelProject
         {
 
         }
+        
         protected void btnTryHash_Click(object sender, EventArgs e)
         {
-            lblHashResult.Text = SecurityLib.Security.HashPassword("Test123");
+            // Test hash functionality
+            string testHash = SecurityLib.Security.HashPassword("Test123");
+            // Display in debug or log
+            System.Diagnostics.Debug.WriteLine("Hash test: " + testHash);
         }
 
         protected void MemberLogin_Click(object sender, EventArgs e)
@@ -38,6 +42,11 @@ namespace HotelProject
             Response.Redirect("~/ProtectedMember/MemberBrowse.aspx");
         }
 
+        protected void MemberPassword_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/ProtectedMember/MemberChangePassword.aspx");
+        }
+
         protected void StaffLogin_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/StaffLogin.aspx");
@@ -47,9 +56,5 @@ namespace HotelProject
         {
             Response.Redirect("~/ProtectedStaff/StaffDashboard.aspx");
         }
-
     }
-
-    
-
 }
