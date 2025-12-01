@@ -1,4 +1,5 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MemberRating.aspx.cs" Inherits="HotelProject.MemberRating" %>
+﻿
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="TryItRating.aspx.cs" Inherits="HotelProject.TryItRating" %>
 
 <!DOCTYPE html>
 

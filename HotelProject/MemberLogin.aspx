@@ -10,15 +10,11 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <h3>Member Login Page</h3>
+            <h2>Member Login Page</h2>
+            <asp:Label ID="HintLabel" runat="server" Text="Try entering SophiaGu as username, with password SophiaGu123. 
+                Other valid credentials are LuanNguyen (username), LuanNguyen123 (password) AND MoTopiwala (username), MoTopiwala123 (password)"></asp:Label>
             <uc:Login ID="LoginControl1" runat="server" /><br />
-
-            <asp:Label ID="CookieTitle" runat="server" Text="TryIt: Cookie" Font-Bold="true"></asp:Label><br />
-            <asp:Label ID="Description" runat="server" Text="Log in with the 
-                given credentials, exit the browser, and re-enter. 
-                Your username and password information will be saved below"></asp:Label><br />
-            <asp:Label ID="CookieUsername" runat="server" Text="Entered Username: "></asp:Label><br />
-            <asp:Label ID="CookiePassword" runat="server" Text="Entered Password: "></asp:Label><br />
+            <asp:Label ID="ResultLabel" runat="server" Text="Result: "></asp:Label>
         </div>
     </form>
 </body>

@@ -1,116 +1,136 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Hotels>
-	<Hotel Rating="4.2" ID="1">
-		<Name>Westin</Name>
-		<Phone>480-968-8885</Phone>
-		<Phone>800-937-8461</Phone>
-		<Address NearestAirport="Sky Harbor">
-			<Number>11</Number>
-			<Street>E.7th St</Street>
-			<City>Tempe</City>
-			<State>AZ</State>
-			<Zip>85281</Zip>
-		</Address>
-	</Hotel>
-	<Hotel ID="2">
-		<Name>La Quinta Inn</Name>
-		<Phone>480-967-4465</Phone>
-		<Address NearestAirport="Sky Harbor">
-			<Number>911</Number>
-			<Street>S 48th St</Street>
-			<City>Tempe</City>
-			<State>AZ</State>
-			<Zip>85281</Zip>
-		</Address>
-	</Hotel>
-	<Hotel Rating="4.1" ID="3">
-		<Name>Hampton Inn Phoenix-Airport North</Name>
-		<Phone>833-372-3721</Phone>
-		<Phone>602-267-0606</Phone>
-		<Address NearestAirport="Sky Harbor">
-			<Number>601</Number>
-			<Street>N 44th St</Street>
-			<City>Phoenix</City>
-			<State>AZ</State>
-			<Zip>85008</Zip>
-		</Address>
-	</Hotel>
-	<Hotel Rating="4.4" ID="4">
-		<Name>Hampton Inn and Suites Tempe</Name>
-		<Phone>844-535-6939</Phone>
-		<Phone>800-426-7866</Phone>
-		<Address NearestAirport="Sky Harbor">
-			<Number>1550</Number>
-			<Street>S 52nd St</Street>
-			<City>Tempe</City>
-			<State>AZ</State>
-			<Zip>85281</Zip>
-		</Address>
-	</Hotel>
-	<Hotel Rating="3.2" ID="5">
-		<Name>Days Inn By Wyndham Phoeix North</Name>
-		<Phone>623-434-5500</Phone>
-		<Address NearestAirport="Sky Harbor">
-			<Number>21636</Number>
-			<Street>N 26th Ave</Street>
-			<City>Phoenix</City>
-			<State>AZ</State>
-			<Zip>85027</Zip>
-		</Address>
-	</Hotel>
-	<Hotel Rating="4.3" ID="6">
-		<Name>Best Western Plus Chandler Hotel and Suites</Name>
-		<Phone>520-796-1350</Phone>
-		<Address NearestAirport="Sky Harbor">
-			<Number>7101</Number>
-			<Street>W Sundust Road</Street>
-			<City>Chandler</City>
-			<State>AZ</State>
-			<Zip>85226</Zip>
-		</Address>
-	</Hotel>
-	<Hotel ID="7">
-		<Name>Hilton Garden Inn Phoenix Airport</Name>
-		<Phone>480-520-3695</Phone>
-		<Address NearestAirport="Sky Harbor">
-			<Number>3422</Number>
-			<Street>E Elwood University</Street>
-			<City>Phoenix</City>
-			<State>AZ</State>
-			<Zip>85040</Zip>
-		</Address>
-	</Hotel>
-	<Hotel Rating="3.5" ID="8">
-		<Name>SureStay By Best Western Phoenix Airport</Name>
-		<Phone>602-273-1601</Phone>
-		<Address NearestAirport="Sky Harbor">
-			<Number>3037</Number>
-			<Street>E Van Buren St</Street>
-			<City>Phoenix</City>
-			<State>AZ</State>
-			<Zip>85008</Zip>
-		</Address>
-	</Hotel>
-	<Hotel ID="9">
-		<Name>Holiday Inn Express and Suites Phoenix Airport by IHG</Name>
-		<Phone>602-453-9900</Phone>
-		<Address NearestAirport="Sky Harbor">
-			<Number>800</Number>
-			<Street>N 44th St</Street>
-			<City>Phoenix</City>
-			<State>AZ</State>
-			<Zip>85008</Zip>
-		</Address>
-	</Hotel>
-	<Hotel Rating="3.8" ID="10">
-		<Name>GreenTree Inn and Suites Phoenix</Name>
-		<Phone>602-688-5730</Phone>
-		<Address NearestAirport="Sky Harbor">
-			<Number>4234</Number>
-			<Street>S 48th St</Street>
-			<City>Tempe</City>
-			<State>AZ</State>
-			<Zip>85040</Zip>
-		</Address>
-	</Hotel>
+  <Hotel Rating="4.2" ID="1">
+    <Name>Westin</Name>
+    <Phone>480-968-8885</Phone>
+    <Phone>800-937-8461</Phone>
+    <Address NearestAirport="Sky Harbor">
+      <Number>11</Number>
+      <Street>E.7th St</Street>
+      <City>Tempe</City>
+      <State>AZ</State>
+      <Zip>85281</Zip>
+    </Address>
+    <BookedRooms>65</BookedRooms>
+    <Price>41.04</Price>
+  </Hotel>
+  <Hotel ID="2">
+    <Name>La Quinta Inn</Name>
+    <Phone>480-967-4465</Phone>
+    <Address NearestAirport="Sky Harbor">
+      <Number>911</Number>
+      <Street>S 48th St</Street>
+      <City>Tempe</City>
+      <State>AZ</State>
+      <Zip>85281</Zip>
+    </Address>
+    <BookedRooms>62</BookedRooms>
+    <Price>29.53</Price>
+  </Hotel>
+  <Hotel Rating="4.1" ID="3">
+    <Name>Hampton Inn Phoenix-Airport North</Name>
+    <Phone>833-372-3721</Phone>
+    <Phone>602-267-0606</Phone>
+    <Address NearestAirport="Sky Harbor">
+      <Number>601</Number>
+      <Street>N 44th St</Street>
+      <City>Phoenix</City>
+      <State>AZ</State>
+      <Zip>85008</Zip>
+    </Address>
+    <BookedRooms>5</BookedRooms>
+    <Price>33.00</Price>
+  </Hotel>
+  <Hotel Rating="4.4" ID="4">
+    <Name>Hampton Inn and Suites Tempe</Name>
+    <Phone>844-535-6939</Phone>
+    <Phone>800-426-7866</Phone>
+    <Address NearestAirport="Sky Harbor">
+      <Number>1550</Number>
+      <Street>S 52nd St</Street>
+      <City>Tempe</City>
+      <State>AZ</State>
+      <Zip>85281</Zip>
+    </Address>
+    <BookedRooms>19</BookedRooms>
+    <Price>75.00</Price>
+  </Hotel>
+  <Hotel Rating="3.2" ID="5">
+    <Name>Days Inn By Wyndham Phoeix North</Name>
+    <Phone>623-434-5500</Phone>
+    <Address NearestAirport="Sky Harbor">
+      <Number>21636</Number>
+      <Street>N 26th Ave</Street>
+      <City>Phoenix</City>
+      <State>AZ</State>
+      <Zip>85027</Zip>
+    </Address>
+    <BookedRooms>25</BookedRooms>
+    <Price>77.00</Price>
+  </Hotel>
+  <Hotel Rating="4.3" ID="6">
+    <Name>Best Western Plus Chandler Hotel and Suites</Name>
+    <Phone>520-796-1350</Phone>
+    <Address NearestAirport="Sky Harbor">
+      <Number>7101</Number>
+      <Street>W Sundust Road</Street>
+      <City>Chandler</City>
+      <State>AZ</State>
+      <Zip>85226</Zip>
+    </Address>
+    <BookedRooms>10</BookedRooms>
+    <Price>77.00</Price>
+  </Hotel>
+  <Hotel ID="7">
+    <Name>Hilton Garden Inn Phoenix Airport</Name>
+    <Phone>480-520-3695</Phone>
+    <Address NearestAirport="Sky Harbor">
+      <Number>3422</Number>
+      <Street>E Elwood University</Street>
+      <City>Phoenix</City>
+      <State>AZ</State>
+      <Zip>85040</Zip>
+    </Address>
+    <BookedRooms>23</BookedRooms>
+    <Price>83.00</Price>
+  </Hotel>
+  <Hotel Rating="3.5" ID="8">
+    <Name>SureStay By Best Western Phoenix Airport</Name>
+    <Phone>602-273-1601</Phone>
+    <Address NearestAirport="Sky Harbor">
+      <Number>3037</Number>
+      <Street>E Van Buren St</Street>
+      <City>Phoenix</City>
+      <State>AZ</State>
+      <Zip>85008</Zip>
+    </Address>
+    <BookedRooms>90</BookedRooms>
+    <Price>99.00</Price>
+  </Hotel>
+  <Hotel ID="9">
+    <Name>Holiday Inn Express and Suites Phoenix Airport by IHG</Name>
+    <Phone>602-453-9900</Phone>
+    <Address NearestAirport="Sky Harbor">
+      <Number>800</Number>
+      <Street>N 44th St</Street>
+      <City>Phoenix</City>
+      <State>AZ</State>
+      <Zip>85008</Zip>
+    </Address>
+    <BookedRooms>99</BookedRooms>
+    <Price>100.00</Price>
+  </Hotel>
+  <Hotel Rating="3.8" ID="10">
+    <Name>GreenTree Inn and Suites Phoenix</Name>
+    <Phone>602-688-5730</Phone>
+    <Address NearestAirport="Sky Harbor">
+      <Number>4234</Number>
+      <Street>S 48th St</Street>
+      <City>Tempe</City>
+      <State>AZ</State>
+      <Zip>85040</Zip>
+    </Address>
+    <BookedRooms>10</BookedRooms>
+    <Price>74.25</Price>
+  </Hotel>
 </Hotels>

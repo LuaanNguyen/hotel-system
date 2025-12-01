@@ -19,6 +19,72 @@
   <wsdl:message name="IService1_AddHotelRating_OutputMessage">
     <wsdl:part name="parameters" element="tns:AddHotelRatingResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_BrowseHotels_InputMessage">
+    <wsdl:part name="parameters" element="tns:BrowseHotels" />
+  </wsdl:message>
+  <wsdl:message name="IService1_BrowseHotels_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BrowseHotelsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_LoginStaff_InputMessage">
+    <wsdl:part name="parameters" element="tns:LoginStaff" />
+  </wsdl:message>
+  <wsdl:message name="IService1_LoginStaff_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoginStaffResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_LoginMember_InputMessage">
+    <wsdl:part name="parameters" element="tns:LoginMember" />
+  </wsdl:message>
+  <wsdl:message name="IService1_LoginMember_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoginMemberResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_RegisterMember_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterMember" />
+  </wsdl:message>
+  <wsdl:message name="IService1_RegisterMember_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterMemberResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAllHotels_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllHotels" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAllHotels_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllHotelsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_BookHotelRooms_InputMessage">
+    <wsdl:part name="parameters" element="tns:BookHotelRooms" />
+  </wsdl:message>
+  <wsdl:message name="IService1_BookHotelRooms_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BookHotelRoomsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ChangePassword_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChangePassword" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ChangePassword_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ChangePasswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetBookedHotels_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBookedHotels" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetBookedHotels_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBookedHotelsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getBalance_InputMessage">
+    <wsdl:part name="parameters" element="tns:getBalance" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getBalance_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getBalanceResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_addBalance_InputMessage">
+    <wsdl:part name="parameters" element="tns:addBalance" />
+  </wsdl:message>
+  <wsdl:message name="IService1_addBalance_OutputMessage">
+    <wsdl:part name="parameters" element="tns:addBalanceResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_BookHotel_InputMessage">
+    <wsdl:part name="parameters" element="tns:BookHotel" />
+  </wsdl:message>
+  <wsdl:message name="IService1_BookHotel_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BookHotelResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="GetRatedHotels">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetRatedHotels" message="tns:IService1_GetRatedHotels_InputMessage" />
@@ -27,6 +93,50 @@
     <wsdl:operation name="AddHotelRating">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/AddHotelRating" message="tns:IService1_AddHotelRating_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/AddHotelRatingResponse" message="tns:IService1_AddHotelRating_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BrowseHotels">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/BrowseHotels" message="tns:IService1_BrowseHotels_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/BrowseHotelsResponse" message="tns:IService1_BrowseHotels_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LoginStaff">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/LoginStaff" message="tns:IService1_LoginStaff_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/LoginStaffResponse" message="tns:IService1_LoginStaff_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LoginMember">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/LoginMember" message="tns:IService1_LoginMember_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/LoginMemberResponse" message="tns:IService1_LoginMember_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RegisterMember">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/RegisterMember" message="tns:IService1_RegisterMember_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/RegisterMemberResponse" message="tns:IService1_RegisterMember_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllHotels">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetAllHotels" message="tns:IService1_GetAllHotels_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetAllHotelsResponse" message="tns:IService1_GetAllHotels_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BookHotelRooms">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/BookHotelRooms" message="tns:IService1_BookHotelRooms_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/BookHotelRoomsResponse" message="tns:IService1_BookHotelRooms_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangePassword">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ChangePassword" message="tns:IService1_ChangePassword_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ChangePasswordResponse" message="tns:IService1_ChangePassword_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBookedHotels">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetBookedHotels" message="tns:IService1_GetBookedHotels_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetBookedHotelsResponse" message="tns:IService1_GetBookedHotels_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getBalance">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getBalance" message="tns:IService1_getBalance_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getBalanceResponse" message="tns:IService1_getBalance_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="addBalance">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/addBalance" message="tns:IService1_addBalance_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/addBalanceResponse" message="tns:IService1_addBalance_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BookHotel">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/BookHotel" message="tns:IService1_BookHotel_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/BookHotelResponse" message="tns:IService1_BookHotel_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -42,6 +152,105 @@
     </wsdl:operation>
     <wsdl:operation name="AddHotelRating">
       <soap:operation soapAction="http://tempuri.org/IService1/AddHotelRating" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BrowseHotels">
+      <soap:operation soapAction="http://tempuri.org/IService1/BrowseHotels" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoginStaff">
+      <soap:operation soapAction="http://tempuri.org/IService1/LoginStaff" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoginMember">
+      <soap:operation soapAction="http://tempuri.org/IService1/LoginMember" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterMember">
+      <soap:operation soapAction="http://tempuri.org/IService1/RegisterMember" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllHotels">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetAllHotels" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BookHotelRooms">
+      <soap:operation soapAction="http://tempuri.org/IService1/BookHotelRooms" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangePassword">
+      <soap:operation soapAction="http://tempuri.org/IService1/ChangePassword" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBookedHotels">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetBookedHotels" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBalance">
+      <soap:operation soapAction="http://tempuri.org/IService1/getBalance" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addBalance">
+      <soap:operation soapAction="http://tempuri.org/IService1/addBalance" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BookHotel">
+      <soap:operation soapAction="http://tempuri.org/IService1/BookHotel" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
