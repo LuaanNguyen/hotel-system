@@ -10,44 +10,62 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <h3>Member Rating Page</h3><br />
+            <h2>Member Rating Page</h2>
 
-            <asp:Label ID="Display" runat="server" Text="TryIt: Fetch Rated Hotels by Username" Font-Bold="true"></asp:Label><br />
-            <asp:Label ID="DisplayDesc" runat="server" Text="Given a username, service displays all the hotels 
-                           member has rated and corresponding details. Hint: valid usernames are SophiaGu, LuanNguyen, and MoTopiwala" Font-Italic="true"></asp:Label><br />
+            <asp:Label ID="WelcomeLabel" runat="server" Text="Welcome, "></asp:Label><br /><br />
 
-            <asp:Label ID="UsernameLabel" runat="server" Text="Enter Username:"></asp:Label>
-            <asp:TextBox ID="UsernameTextbox" runat="server"></asp:TextBox>
-            <asp:Button ID="Button1" runat="server" Text="Get Ratings" OnClick="GetRatings_Click"/><br />
-            <asp:Label ID="ResultLabel1" runat="server" Text="Result: "></asp:Label><br />
-            <asp:TextBox ID="RatingDisplay" runat="server"
+            <asp:Button ID="DefaultButton" runat="server" Text="Default Page" OnClick="DefaultButton_Click" />
+            <asp:Button ID="BrowseButton" runat="server" Text="Browse and Book Hotels" OnClick="BrowseButton_Click" />
+            <asp:Button ID="LogOutButton" runat="server" Text="Log Out" OnClick="Log_Click" />
+            <asp:Button ID="ChangePasswordButton" runat="server" Text="Change Password" OnClick="ChangePassword_Click" /><br /><br />
+            
+            <asp:Label ID="PastRatingSection" runat="server" Text="Past Ratings" Font-Bold="true"></asp:Label><br />
+            <asp:TextBox ID="RatingTextBox" runat="server"
                 TextMode="MultiLine"
                 ReadOnly="true"
                 Rows="25"
                 Width="600px"></asp:TextBox><br /><br />
 
-            <asp:Label ID="AddRating" runat="server" Text="TryIt: Rate a hotel, given a username" Font-Bold="true"></asp:Label><br />
-            <asp:Label ID="AddRatingDesc" runat="server" Text="Given a username, hotelID, comment, and score, this service will add a rating
-                           for that corresponding hotel and username. To see that the hotel was successfully added, please use the above TryIt
-                           service." Font-Italic="true"></asp:Label><br />
-            
-            <asp:Label ID="Label1" runat="server" Text="Valid usernames: SophiaGu, LuanNguyen, MoTopiwala"></asp:Label><br />
-            <asp:Label ID="UsernameLabel1" runat="server" Text="Enter Username:"></asp:Label>
-            <asp:TextBox ID="UsernameTextbox2" runat="server"></asp:TextBox><br /><br />
+            <asp:Label ID="RateHotelTitle" runat="server" Text="Select and Rate a Hotel" Font-Bold="true"></asp:Label><br />
+            <asp:Label ID="RateInstructions" runat="server" Text="Click a hotel below, fill out the fields, and click on the Rate Hotel button to rate a hotel" Font-Italic="true"></asp:Label><br />
+            <asp:HiddenField ID="hiddenHotelId" runat="server" />
+            <asp:ListView ID="HotelListView" runat="server" 
+                OnSelectedIndexChanging="HotelListView_SelectedIndexChanging"
+                OnSelectedIndexChanged="lvHotels_SelectedIndexChanged">
+                <LayoutTemplate>
+                    <table>
+                        <tr id="itemPlaceholder" runat="server"></tr>
+                    </table>
+                </LayoutTemplate>
+                <ItemTemplate>
+                    <tr>
+                        <td>
+                            <asp:LinkButton ID="lblSelectHotel" runat="server"
+                                CommandName="Select" Text='<%# Eval("Name") %>'></asp:LinkButton>
+                        </td>
+                    </tr>
+                </ItemTemplate>
+                <SelectedItemTemplate>
+                    <tr style="background-color: cornflowerblue; color: white">
+                        <td>
+                            <asp:LinkButton ID="lblSelectHotel" runat="server"
+                                CommandName="Select"
+                                Text='<%# Eval("Name") %>'></asp:LinkButton>
+                        </td>
+                    </tr>
+                </SelectedItemTemplate>
+                <EmptyDataTemplate>
+                    <div>The service has no hotels. Check back again later.</div>
+                </EmptyDataTemplate>
+            </asp:ListView>
+            <br />
 
-            <asp:Label ID="Label2" runat="server" Text="Valid Hotel ID's range from 1 to 10 (inclusive)"></asp:Label><br />
-            <asp:Label ID="HotelLabel" runat="server" Text="Enter Hotel ID:"></asp:Label>
-            <asp:TextBox ID="HotelIDTextbox" runat="server"></asp:TextBox><br /><br />
-
-            <asp:Label ID="Label3" runat="server" Text="Valid ratings are floats between 0 and 5 (inclusive)"></asp:Label><br />
-            <asp:Label ID="RatingLabel" runat="server" Text="Enter Rating: "></asp:Label>
-            <asp:TextBox ID="RatingTextbox" runat="server"></asp:TextBox><br /><br />
-
-            <asp:Label ID="CommentLabel" runat="server" Text="Enter Comment: "></asp:Label>
-            <asp:TextBox ID="CommentTextbox" runat="server"></asp:TextBox><br /><br />
-
-            <asp:Button ID="AddRatingButton" runat="server" Text="Add Rating" OnClick="AddRating_Click"/><br />
-            <asp:Label ID="ResultLabel2" runat="server" Text="Result: "></asp:Label>
+            <asp:Label ID="RatingLabel" runat="server" Text="Rating (decimal between 1 and 5):"></asp:Label>
+            <asp:TextBox ID="RatingEnterTextBox" runat="server"></asp:TextBox><br />
+            <asp:Label ID="CommentLabel" runat="server" Text="Comment: "></asp:Label>
+            <asp:TextBox ID="CommentTextBox" runat="server"></asp:TextBox><br />
+            <asp:Button ID="RateButton" runat="server" Text="Rate Hotel" OnClick="RateButton_Click"/><br />
+            <asp:Label ID="ResultLabel" runat="server" Text="Result: "></asp:Label>
 
         </div>
     </form>

@@ -11,7 +11,7 @@ namespace HotelProject
 {
 
 
-    public partial class MemberBrowse
+    public partial class TryItRating
     {
 
         /// <summary>
@@ -24,210 +24,201 @@ namespace HotelProject
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// WelcomeLabel control.
+        /// Display control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label WelcomeLabel;
+        protected global::System.Web.UI.WebControls.Label Display;
 
         /// <summary>
-        /// DefaultButton control.
+        /// DisplayDesc control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button DefaultButton;
+        protected global::System.Web.UI.WebControls.Label DisplayDesc;
 
         /// <summary>
-        /// RateButton control.
+        /// UsernameLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button RateButton;
+        protected global::System.Web.UI.WebControls.Label UsernameLabel;
 
         /// <summary>
-        /// LogOut control.
+        /// UsernameTextbox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button LogOut;
+        protected global::System.Web.UI.WebControls.TextBox UsernameTextbox;
 
         /// <summary>
-        /// ChangePasswordButton control.
+        /// Button1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ChangePasswordButton;
+        protected global::System.Web.UI.WebControls.Button Button1;
 
         /// <summary>
-        /// AddMoneyTitle control.
+        /// ResultLabel1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label AddMoneyTitle;
+        protected global::System.Web.UI.WebControls.Label ResultLabel1;
 
         /// <summary>
-        /// CurrBalanceLabel control.
+        /// RatingDisplay control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label CurrBalanceLabel;
+        protected global::System.Web.UI.WebControls.TextBox RatingDisplay;
 
         /// <summary>
-        /// AddMoneyLabel control.
+        /// AddRating control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label AddMoneyLabel;
+        protected global::System.Web.UI.WebControls.Label AddRating;
 
         /// <summary>
-        /// AddMoneyTextBox control.
+        /// AddRatingDesc control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox AddMoneyTextBox;
+        protected global::System.Web.UI.WebControls.Label AddRatingDesc;
 
         /// <summary>
-        /// AddMoneyButton control.
+        /// Label1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button AddMoneyButton;
+        protected global::System.Web.UI.WebControls.Label Label1;
 
         /// <summary>
-        /// ErrorLabel control.
+        /// UsernameLabel1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ErrorLabel;
+        protected global::System.Web.UI.WebControls.Label UsernameLabel1;
 
         /// <summary>
-        /// BrowseHotelTitle control.
+        /// UsernameTextbox2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label BrowseHotelTitle;
+        protected global::System.Web.UI.WebControls.TextBox UsernameTextbox2;
 
         /// <summary>
-        /// hiddenHotelId control.
+        /// Label2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hiddenHotelId;
+        protected global::System.Web.UI.WebControls.Label Label2;
 
         /// <summary>
-        /// HotelListView control.
+        /// HotelLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView HotelListView;
+        protected global::System.Web.UI.WebControls.Label HotelLabel;
 
         /// <summary>
-        /// HotelDetailLabel control.
+        /// HotelIDTextbox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label HotelDetailLabel;
+        protected global::System.Web.UI.WebControls.TextBox HotelIDTextbox;
 
         /// <summary>
-        /// HotelDetailTextBox control.
+        /// Label3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox HotelDetailTextBox;
+        protected global::System.Web.UI.WebControls.Label Label3;
 
         /// <summary>
-        /// BookHotelsInstruction control.
+        /// RatingLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label BookHotelsInstruction;
+        protected global::System.Web.UI.WebControls.Label RatingLabel;
 
         /// <summary>
-        /// txtStartDate control.
+        /// RatingTextbox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtStartDate;
+        protected global::System.Web.UI.WebControls.TextBox RatingTextbox;
 
         /// <summary>
-        /// txtEndDate control.
+        /// CommentLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEndDate;
+        protected global::System.Web.UI.WebControls.Label CommentLabel;
 
         /// <summary>
-        /// BookHotelButton control.
+        /// CommentTextbox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BookHotelButton;
+        protected global::System.Web.UI.WebControls.TextBox CommentTextbox;
 
         /// <summary>
-        /// BookHotelResult control.
+        /// AddRatingButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label BookHotelResult;
+        protected global::System.Web.UI.WebControls.Button AddRatingButton;
 
         /// <summary>
-        /// BookedHotelsLabel control.
+        /// ResultLabel2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label BookedHotelsLabel;
-
-        /// <summary>
-        /// BookedHotelsTextBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox BookedHotelsTextBox;
+        protected global::System.Web.UI.WebControls.Label ResultLabel2;
     }
 }

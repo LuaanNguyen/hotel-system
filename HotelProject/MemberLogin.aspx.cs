@@ -76,8 +76,8 @@ namespace HotelProject
             }
             else
             {
-                // otherwise, just go back to incorrect credentials
-                // ResultLabel.Text = "Result: Invalid Credentials.";
+                // otherwise, display error message
+                ResultLabel.Text = "Result: Invalid Credentials.";
             }
         }
     }

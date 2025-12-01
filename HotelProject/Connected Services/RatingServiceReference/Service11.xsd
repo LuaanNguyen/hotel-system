@@ -43,4 +43,20 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="HotelListing" nillable="true" type="tns:HotelListing" />
+  <xs:complexType name="ArrayOfHotelBooking">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="HotelBooking" nillable="true" type="tns:HotelBooking" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfHotelBooking" nillable="true" type="tns:ArrayOfHotelBooking" />
+  <xs:complexType name="HotelBooking">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="End_Date" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HotelID" type="xs:int" />
+      <xs:element minOccurs="0" name="HotelName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Price" type="xs:float" />
+      <xs:element minOccurs="0" name="Start_Date" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="HotelBooking" nillable="true" type="tns:HotelBooking" />
 </xs:schema>

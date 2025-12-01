@@ -50,6 +50,7 @@ namespace HotelProject
             // if the credentials are correct...
             if (prxy.LoginStaff(enteredUsername, enteredPassword))
             {
+                // as requirements dictate, use FormsAuthentication to authenticate in staff
                 FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(
                      1,                              
                      e.Username,                 
@@ -71,7 +72,7 @@ namespace HotelProject
             else
             {
                 // otherwise, just go back to incorrect credentials
-                // ResultLabel.Text = "Result: Invalid Credentials.";
+                ResultLabel.Text = "Result: Invalid Credentials.";
             }
 
         }

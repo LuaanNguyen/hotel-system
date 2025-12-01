@@ -120,11 +120,19 @@ namespace WcfHotelService
             return ratedHotels ;
         }
 
+        // allows member to add a hotel rating
         public bool AddHotelRating(string username, string hotelID, float rating, string comment)
         {
             try
             {
                 string membersPath = HostingEnvironment.MapPath("~/App_Data/Members.xml");
+
+                // (additional error checking)
+                if (!System.IO.File.Exists(membersPath))
+                {
+                    throw new Exception("Members.xml not found");
+                }
+
                 XDocument members = XDocument.Load(membersPath);
 
                 // get matching member
@@ -187,12 +195,17 @@ namespace WcfHotelService
                 throw new Exception(ex.Message);
             }
         }
+
+        // returns all the hotels that have been booked by an agent (staff)
         public List<HotelListing> BrowseHotels()
         {
+            // availableHotels will hold all the hotels that have agent-booked rooms
             List<HotelListing> availableHotels = new List<HotelListing>();
-
+            
+            
             try
             {
+                // additional error checking (this shouldn't ever happen, though)
                 string hotelsPath = HostingEnvironment.MapPath("~/App_Data/Hotels.xml");
 
                 if (!System.IO.File.Exists(hotelsPath))
@@ -200,10 +213,12 @@ namespace WcfHotelService
                     throw new Exception("Hotels.xml not found");
                 }
 
+                // get all the hotels
                 XDocument hotelsDoc = XDocument.Load(hotelsPath);
 
                 var hotels = hotelsDoc.Descendants("Hotel");
 
+                // search for hotels that actually have booked rooms available
                 foreach (var hotel in hotels)
                 {
                     string bookedRoomsText = hotel.Element("BookedRooms")?.Value ?? "0";
@@ -212,18 +227,22 @@ namespace WcfHotelService
                     // Only include hotels with available rooms (BookedRooms > 0)
                     if (bookedRooms > 0)
                     {
+
+                        // (first parse the price)
                          string priceText = hotel.Element("Price")?.Value ?? "0.00";
                          float price = float.Parse(priceText);
 
+                        // get the address separately, since it's a more complex type
                         var addressElement = hotel.Element("Address");
 
+                        // format the HotelListing, and add it in
                         HotelListing listing = new HotelListing
                         {
-                            HotelID = hotel.Element("HotelID")?.Value,
+                            HotelID = hotel.Attribute("ID")?.Value,
                             Name = hotel.Element("Name")?.Value,
                             BookedRooms = bookedRooms,
                             Price = price,
-                            NearestAirport = hotel.Element("NearestAirport")?.Value,
+                            NearestAirport = addressElement?.Attribute("NearestAirport")?.Value,
                             HotelAddress = new Address
                             {
                                 Number = addressElement?.Element("Number")?.Value,
@@ -326,6 +345,7 @@ namespace WcfHotelService
             }
         }
 
+        // method for creating a new member account
         public bool RegisterMember(string username, string password, float balance)
         {
             try
@@ -373,7 +393,7 @@ namespace WcfHotelService
             }
         }
 
-        // returns 
+        // returns all hotels stored in Hotels.xml
         public List<HotelListing> GetAllHotels()
         {
             List<HotelListing> hotelsList = new List<HotelListing>();
@@ -520,6 +540,276 @@ namespace WcfHotelService
             }
 
 
+        }
+
+        // given a username, return all the hotel rooms that the user has booked
+        public List<HotelBooking> GetBookedHotels(string username)
+        {
+            List<HotelBooking> bookedHotels = new List<HotelBooking>();
+
+            try
+            {
+                string membersPath = HostingEnvironment.MapPath("~/App_Data/Members.xml");
+                string hotelsPath = HostingEnvironment.MapPath("~/App_Data/Hotels.xml");
+
+                XDocument membersDoc = XDocument.Load(membersPath);
+                XDocument hotelsDoc = XDocument.Load(hotelsPath);
+
+                // get matching member
+                XElement member = null;
+                var allMembers = membersDoc.Descendants("Member");
+
+                //iterate through all members
+                foreach (var m in allMembers)
+                {
+                    var tempUsername = m.Element("Username");
+
+                    // if you find a member with the same username, that's a problem. Return false
+                    // (every username needs to be unique)
+                    if (tempUsername != null && tempUsername.Value == username)
+                    {
+                        member = m;
+                        break;
+                    }
+                }
+
+                if (member == null)
+                {
+                    return bookedHotels;
+                }
+
+                // Get all booked hotels for this member
+                var bookedHotelElements = member.Descendants("BookedHotel");
+
+                foreach (var hotel in bookedHotelElements)
+                {
+                    int hotelId = int.Parse(hotel.Element("HotelID")?.Value ?? "0");
+
+                    // Look up hotel name from Hotels.xml using HotelID
+                    string hotelName = hotelsDoc.Descendants("Hotel")
+                            .FirstOrDefault(h => h.Attribute("ID")?.Value == hotelId.ToString())
+                            ?.Element("Name")?.Value ?? "Error: Unknown Hotel Name";
+
+                    HotelBooking bookedHotel = new HotelBooking()
+                    {
+                        HotelID = hotelId,
+                        HotelName = hotelName,  // Now includes the name
+                        Price = float.Parse(hotel.Element("Price")?.Value ?? "0"),
+                        Start_Date = hotel.Element("StartDate")?.Value ?? "",
+                        End_Date = hotel.Element("EndDate")?.Value ?? ""
+                    };
+
+                    bookedHotels.Add(bookedHotel);
+                }
+
+                return bookedHotels;
+            }
+            catch 
+            {
+                return bookedHotels;
+            }
+        }
+
+        // allows member to book a hotel
+        public int BookHotel(string username, int hotelId, string startDate, string endDate)
+        {
+            try
+            {
+                string membersPath = HostingEnvironment.MapPath("~/App_Data/Members.xml");
+                string hotelsPath = HostingEnvironment.MapPath("~/App_Data/Hotels.xml");
+
+                // additional error checking
+                if (!System.IO.File.Exists(hotelsPath))
+                {
+                    throw new Exception("Hotels.xml not found");
+                }
+
+                if (!System.IO.File.Exists(membersPath))
+                {
+                    throw new Exception("Members.xml not found");
+                }
+
+                XDocument membersDoc = XDocument.Load(membersPath);
+                XDocument hotelsDoc = XDocument.Load(hotelsPath);
+
+                // Find the member with matching username first
+                XElement member = membersDoc.Descendants("Member")
+                                            .FirstOrDefault(m => m.Element("Username")?.Value == username);
+
+                if (member == null)
+                {
+                    return 3; // error 3 represents user not found
+                }
+
+                // Find the hotel
+                XElement hotel = hotelsDoc.Descendants("Hotel")
+                                          .FirstOrDefault(h => h.Attribute("ID")?.Value == hotelId.ToString());
+
+                if (hotel == null)
+                {
+                    return 4; // error four represents hotel not found
+                }
+
+                // Get hotel price and available rooms
+                float hotelPrice = float.Parse(hotel.Element("Price")?.Value ?? "0");
+                int bookedRooms = int.Parse(hotel.Element("BookedRooms")?.Value ?? "0");
+
+                // Check if rooms are available (this shouldn't occur, based on how front-end/BrowseHotels is designed, though)
+                // (it's just additional error checking)
+                if (bookedRooms <= 0)
+                {
+                    return 2; // Error 2 represents no rooms available
+                }
+
+                // Get member's balance
+                float memberBalance = float.Parse(member.Element("Balance")?.Value ?? "0");
+
+                // Check if member has sufficient balance
+                if (memberBalance < hotelPrice)
+                {
+                    return 1; // Error 1 represents insufficient balance
+                }
+
+                // no errors encountered, so proceed
+
+                // Deduct price from member's balance
+                member.Element("Balance").Value = (memberBalance - hotelPrice).ToString("F2");
+
+                // Add booking to member's BookedHotels
+                XElement bookedHotels = member.Element("BookedHotels");
+                if (bookedHotels == null)
+                {
+                    // Create BookedHotels element if it doesn't exist
+                    bookedHotels = new XElement("BookedHotels");
+                    member.Add(bookedHotels);
+                }
+
+                // format the new BookedHotel elemenet,a nd add it in
+                XElement newBooking = new XElement("BookedHotel",
+                    new XElement("HotelID", hotelId),
+                    new XElement("Price", hotelPrice.ToString("F2")),
+                    new XElement("StartDate", startDate),
+                    new XElement("EndDate", endDate)
+                );
+
+                bookedHotels.Add(newBooking);
+
+                // Decrease available rooms (BookedRooms) by 1 in Hotels.xml
+                hotel.Element("BookedRooms").Value = (bookedRooms - 1).ToString();
+
+                // Save changes to both documents
+                membersDoc.Save(membersPath);
+                hotelsDoc.Save(hotelsPath);
+
+                return 0; // Success
+            }
+            catch (Exception ex)
+            {
+                return -1; // this will just represent uncaught errors; will generate basic error message
+            }
+        }
+
+        public float getBalance(string username)
+        {
+            try
+            {
+                string membersPath = HostingEnvironment.MapPath("~/App_Data/Members.xml");
+
+                // (additional error checking)
+                if (!System.IO.File.Exists(membersPath))
+                {
+                    throw new Exception("Members.xml not found");
+                }
+
+                XDocument members = XDocument.Load(membersPath);
+
+                // get matching member
+                var allMembers = members.Descendants("Member");
+                XElement member = null;
+
+                foreach (var m in allMembers)
+                {
+                    var tempUsername = m.Element("Username");
+
+                    // found member with matching username
+                    if (tempUsername != null && tempUsername.Value == username)
+                    {
+                        member = m;
+                        break;
+                    }
+                }
+
+                // if no match after searching, I'll throw an exception
+                if (member == null)
+                {
+                    throw new Exception($"Member with username '{username}' doesn't exist!");
+                }
+
+                // otherwise, get the balance, convert it to a float, and return it
+                string balanceStr = member.Element("Balance").Value;
+                float balance = float.Parse(balanceStr);
+
+                return balance;
+            }
+            catch
+            {
+                return 0;
+            }
+        }
+
+        public bool addBalance(string username, float balance)
+        {
+            try
+            {
+                string membersPath = HostingEnvironment.MapPath("~/App_Data/Members.xml");
+
+                // (additional error checking)
+                if (!System.IO.File.Exists(membersPath))
+                {
+                    throw new Exception("Members.xml not found");
+                }
+
+                XDocument members = XDocument.Load(membersPath);
+
+                // get matching member
+                var allMembers = members.Descendants("Member");
+                XElement member = null;
+
+                foreach (var m in allMembers)
+                {
+                    var tempUsername = m.Element("Username");
+
+                    // found member with matching username
+                    if (tempUsername != null && tempUsername.Value == username)
+                    {
+                        member = m;
+                        break;
+                    }
+                }
+
+                if (member == null)
+                {
+                    return false;
+                }
+
+                // Get current balance
+                float currentBalance = float.Parse(member.Element("Balance")?.Value ?? "0");
+
+                // Add funds
+                float newBalance = currentBalance + balance;
+
+                // Update balance
+                member.Element("Balance").Value = newBalance.ToString("F2");
+
+                // Save changes
+                members.Save(membersPath);
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 

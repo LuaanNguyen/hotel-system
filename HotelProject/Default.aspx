@@ -1,8 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="HotelProject.Default" %>
 <%@ Register Src="~/LoginControl.ascx" TagPrefix="uc" TagName="Login" %>
 <%@ Register Src="~/DiscountControl.ascx" TagPrefix="uc" TagName="Discount" %>
-<%@ Register Src="~/AgentProfile.ascx" TagPrefix="uc" TagName="AgentProfile" %>
-<%@ Register Src="~/MemberProfile.ascx" TagPrefix="uc" TagName="MemberProfile" %>
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -105,18 +103,18 @@
             <asp:TableRow>
                 <asp:TableCell>Sophia Gu</asp:TableCell>
                 <asp:TableCell>WSDL Service</asp:TableCell>
-                <asp:TableCell>Fetch rated hotels by username</asp:TableCell>
+                <asp:TableCell>Fetch rated hotels by username. Input: username. Output: HotelListing</asp:TableCell>
                 <asp:TableCell>
-                    TryIt: <asp:HyperLink runat="server" NavigateUrl="~/MemberRating.aspx">Member Rating</asp:HyperLink>
+                    Used here: <asp:HyperLink runat="server" NavigateUrl="~/ProtectedMember/MemberRating.aspx">Member Rating</asp:HyperLink>
                 </asp:TableCell>
             </asp:TableRow>
 
             <asp:TableRow>
                 <asp:TableCell>Sophia Gu</asp:TableCell>
                 <asp:TableCell>WSDL Service</asp:TableCell>
-                <asp:TableCell>User adds a hotel rating</asp:TableCell>
+                <asp:TableCell>User adds a hotel rating. Input: username, hotelID, rating, comment. Output: boolean</asp:TableCell>
                 <asp:TableCell>
-                    TryIt: <asp:HyperLink runat="server" NavigateUrl="~/MemberRating.aspx">Member Rating</asp:HyperLink>
+                    Used Here: <asp:HyperLink runat="server" NavigateUrl="~/ProtectedMember/MemberRating.aspx">Member Rating</asp:HyperLink>
                 </asp:TableCell>
             </asp:TableRow>
 
@@ -125,16 +123,25 @@
                 <asp:TableCell>WSDL Service</asp:TableCell>
                 <asp:TableCell>Members browse staff-posted hotels</asp:TableCell>
                 <asp:TableCell>
-                    TryIt: <asp:HyperLink runat="server" NavigateUrl="~/MemberBrowse.aspx">Member Browse</asp:HyperLink>
+                    Used Here: <asp:HyperLink runat="server" NavigateUrl="~/ProtectedMember/MemberBrowse.aspx">Member Browse</asp:HyperLink>
                 </asp:TableCell>
             </asp:TableRow>
 
             <asp:TableRow>
                 <asp:TableCell>Sophia Gu</asp:TableCell>
-                <asp:TableCell>Member Registration</asp:TableCell>
-                <asp:TableCell>Create new member with hashed password + CAPTCHA</asp:TableCell>
+                <asp:TableCell>WSDL Service</asp:TableCell>
+                <asp:TableCell>Members use service to book hotels. Input: username, hotelID, startDate, endDate. Output: int</asp:TableCell>
                 <asp:TableCell>
-                    <asp:HyperLink runat="server" NavigateUrl="~/MemberRegister.aspx">Member Register</asp:HyperLink>
+                    Used Here: <asp:HyperLink runat="server" NavigateUrl="~/ProtectedMember/MemberBrowse.aspx">Member Browse</asp:HyperLink>
+                </asp:TableCell>
+            </asp:TableRow>
+
+            <asp:TableRow>
+                <asp:TableCell>Sophia Gu</asp:TableCell>
+                <asp:TableCell>WSDL Service</asp:TableCell>
+                <asp:TableCell>Member Registration: Create new member. Input: username, password. Output: boolean</asp:TableCell>
+                <asp:TableCell>
+                    Used Here: <asp:HyperLink runat="server" NavigateUrl="~/MemberRegister.aspx">Member Register</asp:HyperLink>
                 </asp:TableCell>
             </asp:TableRow>
 
@@ -145,6 +152,25 @@
                 <asp:TableCell>
                     Web.config modifications<br />
                     StaffLogin + MemberLogin pages
+                </asp:TableCell>
+            </asp:TableRow>
+
+            <asp:TableRow>
+                <asp:TableCell>Mo Topiwala</asp:TableCell>
+                <asp:TableCell>WSDL Service</asp:TableCell>
+                <asp:TableCell>Allows staff/member to change password. Input: username, newPassword, userType. Output: boolean</asp:TableCell>
+                <asp:TableCell>
+                    Used in Staff Dashboard: <asp:HyperLink runat="server" NavigateUrl="~/ProtectedStaff/StaffDashboard.aspx">Staff Dashboard</asp:HyperLink>
+                    Used in Member Page: <asp:HyperLink runat="server" NavigateUrl="~/ProtectedMember/MemberChangePassword.aspx">Change Member Password</asp:HyperLink>
+                </asp:TableCell>
+            </asp:TableRow>
+
+            <asp:TableRow>
+                <asp:TableCell>Mo Topiwala</asp:TableCell>
+                <asp:TableCell>WSDL Service</asp:TableCell>
+                <asp:TableCell>Service returning all hotels. Input: void. Output: HotelListing</asp:TableCell>
+                <asp:TableCell>
+                    Used Here: <asp:HyperLink runat="server" NavigateUrl="~/ProtectedStaff/StaffDashboard.aspx">Staff Dashboard</asp:HyperLink>
                 </asp:TableCell>
             </asp:TableRow>
 
@@ -193,8 +219,6 @@
         <table style="width:100%; text-align:center;">
             <tr>
                 <td style="padding:10px; width:33%;"><uc:Discount ID="Discount1" runat="server" /></td>
-                <td style="padding:10px; width:33%;"><uc:AgentProfile ID="AgentProfile1" runat="server" /></td>
-                <td style="padding:10px; width:33%;"><uc:MemberProfile ID="MemberProfile1" runat="server" /></td>
             </tr>
         </table>
 

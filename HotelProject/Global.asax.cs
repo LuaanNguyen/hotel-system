@@ -24,23 +24,23 @@ namespace HotelProject
         {
 
         }
-
+        
+        // for forms authentication + role checking
         protected void Application_AuthenticateRequest(object sender, EventArgs e)
         {
-
-        }
-
-        protected void Application_Error(object sender, EventArgs e)
-        {
+            // check if authenticated first
             if (User != null && User.Identity.IsAuthenticated)
             {
+                // create a cookie
                 HttpCookie authCookie = Request.Cookies[FormsAuthentication.FormsCookieName];
+
+                // verify cookie information
                 if (authCookie != null)
                 {
                     try
                     {
                         FormsAuthenticationTicket ticket = FormsAuthentication.Decrypt(authCookie.Value);
-                        string[] roles = ticket.UserData.Split(','); 
+                        string[] roles = ticket.UserData.Split(',');
 
                         System.Security.Principal.GenericIdentity identity =
                             new System.Security.Principal.GenericIdentity(ticket.Name, "Forms");
@@ -49,9 +49,14 @@ namespace HotelProject
 
                         Context.User = principal;
                     }
-                    catch {}
+                    catch { }
                 }
             }
+        }
+
+        protected void Application_Error(object sender, EventArgs e)
+        {
+
         }
 
         protected void Session_End(object sender, EventArgs e)

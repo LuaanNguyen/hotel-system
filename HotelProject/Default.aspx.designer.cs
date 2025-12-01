@@ -105,24 +105,6 @@ namespace HotelProject
         protected global::HotelProject.DiscountControl Discount1;
 
         /// <summary>
-        /// AgentProfile1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::HotelProject.AgentProfile AgentProfile1;
-
-        /// <summary>
-        /// MemberProfile1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::HotelProject.MemberProfile MemberProfile1;
-
-        /// <summary>
         /// btnTryHash control.
         /// </summary>
         /// <remarks>

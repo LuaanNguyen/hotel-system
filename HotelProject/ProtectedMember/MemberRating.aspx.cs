@@ -1,12 +1,13 @@
-﻿using System;
+﻿using HotelProject.RatingServiceReference;
+using System;
+using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Web;
+using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Text;
-using HotelProject.RatingServiceReference;
-using System.CodeDom.Compiler;
 
 namespace HotelProject
 {
@@ -14,26 +15,110 @@ namespace HotelProject
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            DisplayWelcome();
+            DisplayRatedHotels();
+            LoadAvailableHotels();
 
         }
 
-        // Event handler for getting all the ratings for a user
-        protected void GetRatings_Click(object sender, EventArgs e)
+        // event listener for the default button
+        protected void DefaultButton_Click(object sender, EventArgs e)
         {
-            // clear previous results
-            RatingDisplay.Text = "";
-            ResultLabel1.Text = "";
+            Response.Redirect("~/Default.aspx");
+        }
 
-            // get username
-            string username = UsernameTextbox.Text;
+        // event listener for the browse button
+        protected void BrowseButton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/ProtectedMember/MemberBrowse.aspx");
+        }
 
-            // validate the username
-            if (string.IsNullOrEmpty(username))
+        // event listener for log out button
+        protected void Log_Click(object sender, EventArgs e)
+        {
+            // clear authentication
+            FormsAuthentication.SignOut();
+
+            // clear session (holding the hotel listing info, in this case)
+            Session.Clear();
+            Session.Abandon();
+
+            // go back to login page
+            Response.Redirect("~/MemberLogin.aspx");
+        }
+
+        // event listener for change password
+        protected void ChangePassword_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/ProtectedMember/MemberChangePassword.aspx");
+        }
+
+        // stores the available hotels to rate as a session variable
+        protected List<HotelListing> Hotels
+        {
+            get { return Session["Hotels"] as List<HotelListing>; }
+            set { Session["Hotels"] = value; }
+        }
+
+        // load all the hotels stored in the XML file
+        protected void LoadAvailableHotels()
+        {
+            try
             {
-                ResultLabel1.Text = "Result: Enter a username.";
-                UsernameTextbox.Text = "";
+                Service1Client prxy = new Service1Client();
+                HotelListing[] hotelsArray = prxy.GetAllHotels();
+
+                // the if branch should never happen, but just in case no hotels are in Hotels.xml
+                if (hotelsArray == null || hotelsArray.Length == 0)
+                {
+                    HotelListView.DataSource = null;
+                    Hotels = null;
+                }
+                // otherwise, set the DataSource to be all hotels in Hotels.Xml
+                else
+                {
+                    Hotels = hotelsArray.ToList();
+                    HotelListView.DataSource = Hotels;
+                }
+                HotelListView.DataBind();
+            }
+            catch (Exception ex)
+            {
                 return;
             }
+        }
+
+        // event listener for list view selection
+        protected void HotelListView_SelectedIndexChanging(object sender, ListViewSelectEventArgs e)
+        {
+            HotelListView.SelectedIndex = e.NewSelectedIndex;
+            HotelListView.DataSource = Hotels;
+            HotelListView.DataBind();
+        }
+
+        // event listener for the selected hotel changing on the list view
+        protected void lvHotels_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (HotelListView.SelectedIndex >= 0 && Hotels != null && HotelListView.SelectedIndex < Hotels.Count)
+            {
+                HotelListing selectedHotel = Hotels[HotelListView.SelectedIndex];
+
+                // get the selected hotelID
+                hiddenHotelId.Value = selectedHotel.HotelID;
+            }
+        }
+
+        // display welcome message
+        protected void DisplayWelcome()
+        {
+            string username = User.Identity.Name;
+            WelcomeLabel.Text = "Welcome, " + username;
+        }
+
+        // display all the hotels
+        protected void DisplayRatedHotels()
+        {
+            string username = User.Identity.Name;
 
             try
             {
@@ -45,9 +130,7 @@ namespace HotelProject
                 if (ratedHotels == null || ratedHotels.Length == 0)
                 {
                     // display that the user hasn't rated any hotels, but this member does exist
-                    RatingDisplay.Text = "This member has not rated any hotels.";
-                    ResultLabel1.Text = $"Member '{username}' exists!";
-                    UsernameTextbox.Text = "";
+                    RatingTextBox.Text = "This member has not rated any hotels.";
                     return;
                 }
 
@@ -55,8 +138,7 @@ namespace HotelProject
                 if (ratedHotels[0].HotelID == "-1")
                 {
                     // display that the user has incorrect credentials
-                    ResultLabel1.Text = "Incorrect credentials. Member with entered username doesn't exist";
-                    UsernameTextbox.Text = "";
+                    RatingTextBox.Text = "Incorrect credentials. Member with entered username doesn't exist";
                     return;
                 }
 
@@ -86,89 +168,70 @@ namespace HotelProject
                     result.AppendLine();
                 }
 
-                // clear out the username textbox
-                UsernameTextbox.Text = "";
-
                 // display the result in large textbox
-                RatingDisplay.Text = result.ToString();
+                RatingTextBox.Text = result.ToString();
 
             }
             catch (Exception ex)
             {
-                ResultLabel1.Text = ex.Message;
+                RatingTextBox.Text = ex.Message;
             }
+
         }
 
-        // Event listener for button to add a rating
-        protected void AddRating_Click(object sender, EventArgs e)
+        // event listener for rating a hotel
+        protected void RateButton_Click(object sender, EventArgs e)
         {
-            // clear out the text, just in case
-            ResultLabel2.Text = "";
+            ResultLabel.Text = "Result: ";
+            string username = User.Identity.Name;
+            int hotelID;
 
-            // validate inputs
-            string username = UsernameTextbox2.Text.Trim();
-            string hotelID = HotelIDTextbox.Text.Trim();
-            string rating = RatingTextbox.Text.Trim();
-            string comment = CommentTextbox.Text.Trim();
-
-            // checking (mostly) if all fields nonempty (except rating, which needs to be float between 0 and 5)
-            if (string.IsNullOrEmpty(username))
+            // first see if a hotel has been added
+            if(!int.TryParse(hiddenHotelId.Value, out hotelID))
             {
-                ResultLabel2.Text = "Result: Enter a username, please.";
+                ResultLabel.Text = "Result: Please select a hotel to proceed.";
+                return;
+            } 
+
+            if(string.IsNullOrEmpty(CommentTextBox.Text))
+            {
+                ResultLabel.Text = "Result: Please enter a comment before proceeding.";
                 return;
             }
 
-            if (string.IsNullOrEmpty(hotelID))
-            {
-                ResultLabel2.Text = "Result: Enter a hotel ID, please.";
+            // see if the rating given is a valid number
+            float score;
+            if(!float.TryParse(RatingEnterTextBox.Text, out score)) {
+                ResultLabel.Text = "Result: Enter in a valid floating point number.";
                 return;
             }
 
-            if (!float.TryParse(rating, out float ratingFloat) || ratingFloat < 0.0f || ratingFloat > 5.0f)
+            if(!(score >= 1 && score <= 5))
             {
-                ResultLabel2.Text = "Result: Enter a valid rating from 0.0 to 5.0, please";
+                ResultLabel.Text = "Result: We only accept ratings from 1 to 5 inclusive.";
                 return;
             }
 
-            if (string.IsNullOrEmpty(comment))
-            {
-                ResultLabel2.Text = "Result: Enter a comment, please.";
-                return;
-            }
-
+            // if we passed all that, it's time to actually add the rating
             try
             {
-                // now create a proxy to use the WSDL service
                 Service1Client prxy = new Service1Client();
-
-                // service takes float as arg, so first parse the rating
-                float convertedRating = float.Parse(rating);
-
-                // now call the service (method)
-                bool success = prxy.AddHotelRating(username, hotelID, convertedRating, comment);
-
-                // if successfully added, indicate so
-                if (success)
+                if (prxy.AddHotelRating(username, hotelID.ToString(), score, CommentTextBox.Text))
                 {
-                    ResultLabel2.Text = "Result: Rating successfully added.\n" +
-                    "Please enter the corresponding username in the above TryIt Service to see the newly added rating";
+                    ResultLabel.Text = "Result: Hotel Successfully Added!";
 
-                    // clear out all the inputs
-                    UsernameTextbox2.Text = "";
-                    HotelIDTextbox.Text = "";
-                    RatingTextbox.Text = "";
-                    CommentTextbox.Text = "";
-
+                    // gotta redisplay the booked hotels now
+                    DisplayRatedHotels();
                 }
-                // otherwise, notify of exceptions
                 else
                 {
-                    ResultLabel2.Text = "Result: Failed to add rating";
+                    ResultLabel.Text = "Result: An unexpected error occurred. Try again.";
                 }
+
             }
             catch (Exception ex)
             {
-                ResultLabel2.Text = "Result: " + ex.Message;
+                ResultLabel.Text = "Result: " + ex.Message;
             }
 
         }

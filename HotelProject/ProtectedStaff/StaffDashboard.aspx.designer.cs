@@ -24,6 +24,24 @@ namespace HotelProject.Protected
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
+        /// DefaultButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button DefaultButton;
+
+        /// <summary>
+        /// LogOutButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button LogOutButton;
+
+        /// <summary>
         /// WelcomeLabel control.
         /// </summary>
         /// <remarks>
@@ -31,6 +49,15 @@ namespace HotelProject.Protected
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label WelcomeLabel;
+
+        /// <summary>
+        /// BookHotelsTitle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label BookHotelsTitle;
 
         /// <summary>
         /// gvHotels control.
@@ -58,6 +85,15 @@ namespace HotelProject.Protected
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblSelectedHotel;
+
+        /// <summary>
+        /// InstructionLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label InstructionLabel;
 
         /// <summary>
         /// txtRooms control.
@@ -94,6 +130,15 @@ namespace HotelProject.Protected
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblResult;
+
+        /// <summary>
+        /// ChangePasswordTitle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ChangePasswordTitle;
 
         /// <summary>
         /// NewPasswordLabel control.

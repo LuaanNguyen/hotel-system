@@ -22,8 +22,11 @@
 
             <asp:Label ID="BalanceLabel" runat="server" Text="Enter in initial balance: "></asp:Label>
             <asp:TextBox ID="BalanceTextbox" runat="server"></asp:TextBox><br />
-            <asp:Button ID="RegisterButton" runat="server" Text="Register" OnClick="RegisterButton_Click" /><br />
 
+            <asp:Button ID="RegisterButton" runat="server" Text="Register" OnClick="RegisterButton_Click" />
+            <asp:Button ID="LogInButton" runat="server" Text="Log In" OnClick="LoginButton_Click" />
+            <asp:Button ID="DefautButton" runat="server" Text="Return to Default" OnClick="DefaultButton_Click" />
+            <br />
 
             <asp:Label ID="ResultLabel" runat="server" Text="Result: "></asp:Label>
 

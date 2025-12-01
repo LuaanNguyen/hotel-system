@@ -3,12 +3,22 @@
   <Member>
     <Username>SophiaGu</Username>
     <Password>SophiaGu123</Password>
-    <Balance>200.00</Balance>
+    <Balance>2101.70</Balance>
     <RatedHotels>
       <RatedHotel>
         <HotelID>1</HotelID>
         <Rating>3.0</Rating>
         <Comment>Mediocre</Comment>
+      </RatedHotel>
+      <RatedHotel>
+        <HotelID>7</HotelID>
+        <Rating>3.0</Rating>
+        <Comment>Average</Comment>
+      </RatedHotel>
+      <RatedHotel>
+        <HotelID>8</HotelID>
+        <Rating>5.0</Rating>
+        <Comment>Perfect</Comment>
       </RatedHotel>
     </RatedHotels>
     <BookedHotels>
@@ -17,6 +27,12 @@
         <Price>150.00</Price>
         <StartDate>2025-01-01</StartDate>
         <EndDate>2025-01-07</EndDate>
+      </BookedHotel>
+      <BookedHotel>
+        <HotelID>9</HotelID>
+        <Price>100.00</Price>
+        <StartDate>2025-11-30</StartDate>
+        <EndDate>2025-12-01</EndDate>
       </BookedHotel>
     </BookedHotels>
   </Member>
@@ -59,5 +75,12 @@
         <EndDate>2025-02-10</EndDate>
       </BookedHotel>
     </BookedHotels>
+  </Member>
+  <Member>
+    <Username>JohnSmith</Username>
+    <Password>JohnSmith123</Password>
+    <Balance>100.00</Balance>
+    <RatedHotels />
+    <BookedHotels />
   </Member>
 </Members>
