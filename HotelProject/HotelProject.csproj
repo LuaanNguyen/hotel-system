@@ -70,6 +70,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AgentBooking.ascx" />
+    <Content Include="AgentBookingPage.aspx" />
     <Content Include="AgentNotification.ascx" />
     <Content Include="AgentProfile.ascx" />
     <Content Include="Connected Services\RatingServiceReference\HotelProject.RatingServiceReference.RatedHotel.datasource">
@@ -84,7 +86,10 @@
     </None>
     <Content Include="Default.aspx" />
     <Content Include="DiscountService.asmx" />
+    <Content Include="Global.asax" />
     <Content Include="LoginControl.ascx" />
+    <Content Include="MemberBrowsing.ascx" />
+    <Content Include="MemberBrowsingPage.aspx" />
     <Content Include="MemberLogin.aspx" />
     <Content Include="MemberRating.aspx" />
     <Content Include="NotificationHelper.asmx" />
@@ -94,6 +99,20 @@
     <Content Include="MemberProfile.ascx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AgentBooking.ascx.cs">
+      <DependentUpon>AgentBooking.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgentBooking.ascx.designer.cs">
+      <DependentUpon>AgentBooking.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="AgentBookingPage.aspx.cs">
+      <DependentUpon>AgentBookingPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgentBookingPage.aspx.designer.cs">
+      <DependentUpon>AgentBookingPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AgentNotification.ascx.cs">
       <DependentUpon>AgentNotification.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -124,12 +143,29 @@
       <DependentUpon>DiscountService.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
     <Compile Include="LoginControl.ascx.cs">
       <DependentUpon>LoginControl.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="LoginControl.ascx.designer.cs">
       <DependentUpon>LoginControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="MemberBrowsing.ascx.cs">
+      <DependentUpon>MemberBrowsing.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MemberBrowsing.ascx.designer.cs">
+      <DependentUpon>MemberBrowsing.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="MemberBrowsingPage.aspx.cs">
+      <DependentUpon>MemberBrowsingPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MemberBrowsingPage.aspx.designer.cs">
+      <DependentUpon>MemberBrowsingPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="MemberLogin.aspx.cs">
       <DependentUpon>MemberLogin.aspx</DependentUpon>

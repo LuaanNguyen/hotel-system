@@ -40,7 +40,7 @@ namespace HotelProject
                 return "Error: Discount percentage must be between 0 and 100.";
             }
 
-            // Format the notification message with emoji and professional styling
+            // Format the notification message with professional styling
             string message = $"ALERT: {discount}% discount available at {hotelName} Hotel! Book now for your clients.";
 
             return message;

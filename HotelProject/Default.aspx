@@ -4,6 +4,8 @@
 <%@ Register Src="~/AgentProfile.ascx" TagPrefix="uc" TagName="AgentProfile" %>
 <%@ Register Src="~/MemberProfile.ascx" TagPrefix="uc" TagName="MemberProfile" %>
 <%@ Register Src="~/AgentNotification.ascx" TagPrefix="uc" TagName="AgentNotification" %>
+<%@ Register Src="~/AgentBooking.ascx" TagPrefix="uc" TagName="AgentBooking" %>
+<%@ Register Src="~/MemberBrowsing.ascx" TagPrefix="uc" TagName="MemberBrowsing" %>
 
 <!--Default page linking all services made by Sophia-->
 <!DOCTYPE html>
@@ -121,32 +123,66 @@
 
                 <asp:TableRow>
                         <asp:TableCell>Muhammed Hunaid Topiwala</asp:TableCell>
-                        <asp:TableCell>.asmx Web Service</asp:TableCell>
-                        <asp:TableCell>NotificationHelper Service: Formats notification messages for hotel staff agents
-                                       <br />Input: hotelName (string), discount (float)
-                                       <br />Output: Formatted notification message (string)
-                        </asp:TableCell>
-                        <asp:TableCell>C# code for ASMX Web Service<br />
-                                       TryIt Link:<br />
-                                       <asp:HyperLink ID="TryNotificationService" runat="server" 
-                                                      NavigateUrl="~/NotificationHelper.asmx">
-                                           NotificationHelper.asmx
-                                       </asp:HyperLink>
-                        </asp:TableCell>
-                    </asp:TableRow>
+                        <asp:TableCell>Global.asax with Application_Start</asp:TableCell>
+                        <asp:TableCell>Application-level event handlers for tracking visitors, sessions, and application lifecycle events</asp:TableCell>
+                        <asp:TableCell>C# code in Global.asax.cs<br />
+                                   Tracks: Total Visitors, Active Sessions, Application Start/End times<br />
+                                   Link: Global.asax (application-wide)
+                    </asp:TableCell>
+                </asp:TableRow>
 
-                    <asp:TableRow>
-                        <asp:TableCell>Muhammed Hunaid Topiwala</asp:TableCell>
-                        <asp:TableCell>.ascx User Control</asp:TableCell>
-                        <asp:TableCell>Agent Notification Control: Displays real-time notifications for hotel staff 
-                                       about discount opportunities and booking alerts
-                        </asp:TableCell>
-                        <asp:TableCell>C# Code behind the GUI<br />
-                                       Present in: Muhammed's Component Demo section<br />
-                                       Link: Current Page (scroll to Muhammed's section)
-                        </asp:TableCell>
-                    </asp:TableRow>
-                </asp:Table>     
+                <asp:TableRow>
+                    <asp:TableCell>Muhammed Hunaid Topiwala</asp:TableCell>
+                    <asp:TableCell>.asmx Web Service</asp:TableCell>
+                    <asp:TableCell>NotificationHelper Service: Formats notification messages for hotel staff agents
+                                   <br />Input: hotelName (string), discount (float)
+                                   <br />Output: Formatted notification message (string)
+                    </asp:TableCell>
+                    <asp:TableCell>C# code for ASMX Web Service<br />
+                                   TryIt Link:<br />
+                                   <asp:HyperLink ID="TryNotificationService" runat="server" 
+                                                  NavigateUrl="~/NotificationHelper.asmx">
+                                       NotificationHelper.asmx
+                                   </asp:HyperLink>
+                    </asp:TableCell>
+                </asp:TableRow>
+
+                <asp:TableRow>
+                    <asp:TableCell>Muhammed Hunaid Topiwala</asp:TableCell>
+                    <asp:TableCell>.ascx User Control</asp:TableCell>
+                    <asp:TableCell>Agent Notification Control: Displays real-time notifications for hotel staff 
+                                   about discount opportunities and booking alerts
+                    </asp:TableCell>
+                    <asp:TableCell>C# Code behind the GUI<br />
+                                   Present in: Muhammed's Component Demo section<br />
+                                   Link: Current Page (scroll to Muhammed's section)
+                    </asp:TableCell>
+                </asp:TableRow>
+
+                <asp:TableRow>
+                    <asp:TableCell>Muhammed Hunaid Topiwala</asp:TableCell>
+                    <asp:TableCell>.ascx User Control + .aspx Page</asp:TableCell>
+                    <asp:TableCell>Agent Booking Control: Allows staff agents to book multiple rooms with discounts. 
+                                   Features: Hotel selection, room count, date selection, discount display, booking history
+                    </asp:TableCell>
+                    <asp:TableCell>C# Code behind the GUI, GridView for booking history<br />
+                                   Present in: Muhammed's Component Demo section<br />
+                                   Full Page: <asp:HyperLink ID="AgentBookingPageLink" runat="server" NavigateUrl="~/AgentBookingPage.aspx">Agent Booking Page</asp:HyperLink>
+                    </asp:TableCell>
+                </asp:TableRow>
+
+                <asp:TableRow>
+                    <asp:TableCell>Muhammed Hunaid Topiwala</asp:TableCell>
+                    <asp:TableCell>.ascx User Control + .aspx Page</asp:TableCell>
+                    <asp:TableCell>Member Browsing Control: Allows members to search, filter, and browse available hotels. 
+                                   Features: Search by name/location, price filtering, rating sorting, hotel details view
+                    </asp:TableCell>
+                    <asp:TableCell>C# Code behind the GUI, GridView for hotel listings, LINQ queries for filtering<br />
+                                   Present in: Muhammed's Component Demo section<br />
+                                   Full Page: <asp:HyperLink ID="MemberBrowsingPageLink" runat="server" NavigateUrl="~/MemberBrowsingPage.aspx">Member Browsing Page</asp:HyperLink>
+                    </asp:TableCell>
+                </asp:TableRow>
+            </asp:Table>     
             
             <br /><br />
 
@@ -174,8 +210,20 @@
                 <!-- Muhammed's Component Demo Section -->
                 
                 <h2 style="text-align:center; font-family:Arial; margin-top: 40px;">Muhammed's Components Demo</h2>
+                
+                <h3 style="color: #2196F3; margin-top: 30px;">1. Agent Notification Control</h3>
                 <div style="margin-top:20px; padding:20px; border:1px solid #2196F3; border-radius:8px;">
                     <uc:AgentNotification ID="AgentNotification1" runat="server" />
+                </div>
+
+                <h3 style="color: #4CAF50; margin-top: 30px;">2. Agent Booking Control</h3>
+                <div style="margin-top:20px; padding:20px; border:1px solid #4CAF50; border-radius:8px;">
+                    <uc:AgentBooking ID="AgentBooking1" runat="server" />
+                </div>
+
+                <h3 style="color: #2196F3; margin-top: 30px;">3. Member Browsing Control</h3>
+                <div style="margin-top:20px; padding:20px; border:1px solid #2196F3; border-radius:8px;">
+                    <uc:MemberBrowsing ID="MemberBrowsing1" runat="server" />
                 </div>
 
                 <asp:Button ID="btnTryHash" runat="server" Text="Test Hash" OnClick="btnTryHash_Click" />
