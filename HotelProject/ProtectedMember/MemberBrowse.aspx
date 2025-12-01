@@ -8,8 +8,15 @@
     <form id="form1" runat="server">
         <div>
             <h2>Browse And Book Hotels</h2>
+
             <asp:Label ID="WelcomeLabel" runat="server" Text="Welcome, "></asp:Label><br /><br />
-            
+
+            <asp:Button ID="DefaultButton" runat="server" Text="Default Page" OnClick="DefaultButton_Click" />
+            <asp:Button ID="RateButton" runat="server" Text="Rate Hotels" OnClick="RateButton_Click" />
+            <asp:Button ID="LogOut" runat="server" Text="Log Out" OnClick="LogOut_Click" />
+            <asp:Button ID="ChangePasswordButton" runat="server" Text="Change Password" OnClick="ChangePassword_Click" />
+            <br /><br />
+
             <asp:Label ID="AddMoneyTitle" runat="server" Text="View balance/add funds" Font-Bold="true"></asp:Label><br />
             <asp:Label ID="CurrBalanceLabel" runat="server" Text="Current Balance: "></asp:Label><br />
             <asp:Label ID="AddMoneyLabel" runat="server" Text="Add Money: "></asp:Label>

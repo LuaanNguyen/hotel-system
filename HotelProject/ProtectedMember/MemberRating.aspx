@@ -12,7 +12,12 @@
         <div>
             <h2>Member Rating Page</h2>
 
-            <asp:Label ID="WelcomeLabel" runat="server" Text="Welcome, "></asp:Label><br />
+            <asp:Label ID="WelcomeLabel" runat="server" Text="Welcome, "></asp:Label><br /><br />
+
+            <asp:Button ID="DefaultButton" runat="server" Text="Default Page" OnClick="DefaultButton_Click" />
+            <asp:Button ID="BrowseButton" runat="server" Text="Browse and Book Hotels" OnClick="BrowseButton_Click" />
+            <asp:Button ID="LogOutButton" runat="server" Text="Log Out" OnClick="Log_Click" />
+            <asp:Button ID="ChangePasswordButton" runat="server" Text="Change Password" OnClick="ChangePassword_Click" /><br /><br />
             
             <asp:Label ID="PastRatingSection" runat="server" Text="Past Ratings" Font-Bold="true"></asp:Label><br />
             <asp:TextBox ID="RatingTextBox" runat="server"
@@ -21,7 +26,7 @@
                 Rows="25"
                 Width="600px"></asp:TextBox><br /><br />
 
-             <asp:Label ID="RateHotelTitle" runat="server" Text="Select and Rate a Hotel" Font-Bold="true"></asp:Label><br />
+            <asp:Label ID="RateHotelTitle" runat="server" Text="Select and Rate a Hotel" Font-Bold="true"></asp:Label><br />
             <asp:Label ID="RateInstructions" runat="server" Text="Click a hotel below, fill out the fields, and click on the Rate Hotel button to rate a hotel" Font-Italic="true"></asp:Label><br />
             <asp:HiddenField ID="hiddenHotelId" runat="server" />
             <asp:ListView ID="HotelListView" runat="server" 

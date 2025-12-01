@@ -1,12 +1,13 @@
-﻿using System;
+﻿using HotelProject.RatingServiceReference;
+using System;
+using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Web;
+using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Text;
-using HotelProject.RatingServiceReference;
-using System.CodeDom.Compiler;
 
 namespace HotelProject
 {
@@ -20,6 +21,39 @@ namespace HotelProject
 
         }
 
+        // event listener for the default button
+        protected void DefaultButton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Default.aspx");
+        }
+
+        // event listener for the browse button
+        protected void BrowseButton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/ProtectedMember/MemberBrowse.aspx");
+        }
+
+        // event listener for log out button
+        protected void Log_Click(object sender, EventArgs e)
+        {
+            // clear authentication
+            FormsAuthentication.SignOut();
+
+            // clear session (holding the hotel listing info, in this case)
+            Session.Clear();
+            Session.Abandon();
+
+            // go back to login page
+            Response.Redirect("~/MemberLogin.aspx");
+        }
+
+        // event listener for change password
+        protected void ChangePassword_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/ProtectedMember/MemberChangePassword.aspx");
+        }
+
+        // stores the available hotels to rate as a session variable
         protected List<HotelListing> Hotels
         {
             get { return Session["Hotels"] as List<HotelListing>; }
@@ -54,7 +88,7 @@ namespace HotelProject
             }
         }
 
-        // event listener for lsit view selection
+        // event listener for list view selection
         protected void HotelListView_SelectedIndexChanging(object sender, ListViewSelectEventArgs e)
         {
             HotelListView.SelectedIndex = e.NewSelectedIndex;
@@ -62,6 +96,7 @@ namespace HotelProject
             HotelListView.DataBind();
         }
 
+        // event listener for the selected hotel changing on the list view
         protected void lvHotels_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (HotelListView.SelectedIndex >= 0 && Hotels != null && HotelListView.SelectedIndex < Hotels.Count)

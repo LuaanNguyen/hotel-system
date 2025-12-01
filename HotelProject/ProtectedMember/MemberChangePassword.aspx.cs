@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -15,6 +16,22 @@ namespace HotelProject.ProtectedMember
             string username = User.Identity.Name;
             WelcomeLabel.Text = "Welcome, ";
             WelcomeLabel.Text += username;
+        }
+
+        // event listener for the login button
+        protected void LoginButton_Click(object sender, EventArgs e)
+        {
+            // Log out and proceed to the login page
+
+            // clear authentication
+            FormsAuthentication.SignOut();
+
+            // clear session (holding the hotel listing info, in this case)
+            Session.Clear();
+            Session.Abandon();
+
+            // go back to login page
+            Response.Redirect("~/MemberLogin.aspx");
         }
 
         // Change password

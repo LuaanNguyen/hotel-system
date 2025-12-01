@@ -2,10 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Web;
+using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Text;
 
 namespace HotelProject
 {
@@ -23,6 +24,39 @@ namespace HotelProject
                 displayBalance();
             }
         }
+
+        // event listener for log out button
+        protected void LogOut_Click(object sender, EventArgs e)
+        {
+            // clear authentication
+            FormsAuthentication.SignOut();
+
+            // clear session (holding the hotel listing info, in this case)
+            Session.Clear();
+            Session.Abandon();
+
+            // go back to login page
+            Response.Redirect("~/MemberLogin.aspx");
+        }
+
+        // event listener for default button
+        protected void DefaultButton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Default.aspx");
+        }
+
+        // event listener for member button
+        protected void RateButton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/ProtectedMember/MemberRating.aspx");
+        }
+
+        // event listener for changing password
+        protected void ChangePassword_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/ProtectedMember/MemberChangePassword.aspx");
+        }
+
 
         // set/get HotelListings from Session
         protected List<HotelListing> Hotels
@@ -135,7 +169,9 @@ namespace HotelProject
             {
                 ErrorLabel.Text = "Error: ";
             }
+            // redisplay the balance and reset the input field
             displayBalance();
+            AddMoneyTextBox.Text = "";
         }
 
         // load up all the hotels that a user has previously booked
@@ -157,16 +193,16 @@ namespace HotelProject
 
                 // use the string builder to format how the booked hotel is displayed
                 StringBuilder details = new StringBuilder();
-                details.AppendLine("Booked Hotels");
-                details.AppendLine("=========================");
                 for (int i = 0; i < bookedHotelsTemp.Length; i++)
                 {
+                    details.AppendLine($"{bookedHotelsTemp[i].HotelName.ToString()}");
+                    details.AppendLine("=========================");
                     details.AppendLine($"Booked Hotel ID: {bookedHotelsTemp[i].HotelID.ToString()}");
-                    details.AppendLine($"Hotel Name: {bookedHotelsTemp[i].HotelName.ToString()}");
                     details.AppendLine($"Start Date: {bookedHotelsTemp[i].Start_Date.ToString()}");
                     details.AppendLine($"End Date: {bookedHotelsTemp[i].End_Date.ToString()}");
-                    details.AppendLine($"Price: {bookedHotelsTemp[i].Price.ToString()}");
+                    details.AppendLine($"Price: ${bookedHotelsTemp[i].Price.ToString()}");
                     details.AppendLine("-------------------------");
+                    details.AppendLine();
                 }
 
                 // display the booked hotels in the textbox
@@ -189,13 +225,13 @@ namespace HotelProject
             // list out the hotel's addess, nearest airport, its price, and the # of rooms available
             details.AppendLine($"{hotelListing.Name}");
             details.AppendLine("=========================");
+            details.AppendLine($"Hotel ID: {hotelListing.HotelID}");
             details.AppendLine("Address: ");
             details.AppendLine($"{hotelListing.HotelAddress.Number} {hotelListing.HotelAddress.Street}");
             details.AppendLine($"{hotelListing.HotelAddress.City}, {hotelListing.HotelAddress.State}, {hotelListing.HotelAddress.Zip}");
             details.AppendLine($"Nearest Airport: {hotelListing.NearestAirport}");
             details.AppendLine($"Quantity of Rooms: {hotelListing.BookedRooms}");
-            details.AppendLine($"Price per Hotel Room: {hotelListing.Price:F2}");
-            details.AppendLine($"Hotel ID: {hotelListing.HotelID}");
+            details.AppendLine($"Price per Hotel Room: ${hotelListing.Price:F2}");
 
             // convert it all to a string and display
             HotelDetailTextBox.Text = details.ToString();
@@ -206,7 +242,14 @@ namespace HotelProject
         {
             // first gather all inputs
             string username = User.Identity.Name;
-            int hotelId = int.Parse(hiddenHotelId.Value);
+            int hotelId;
+
+            if (!int.TryParse(hiddenHotelId.Value, out hotelId))
+            {
+                BookHotelResult.Text = "Book Hotel Result: Must select a hotel from the list view first.";
+                return;
+            }
+
             string startDateStr = txtStartDate.Text; 
             string endDateStr = txtEndDate.Text;
 
@@ -218,26 +261,26 @@ namespace HotelProject
             // see if entered in start_date and end_date are valid
             if (!DateTime.TryParse(txtStartDate.Text, out startDate))
             {
-                BookHotelResult.Text = "Please enter a valid start date";
+                BookHotelResult.Text = "Book Hotel Result: Please enter a valid start date";
                 return;
             }
 
             if (!DateTime.TryParse(txtEndDate.Text, out endDate))
             {
-                BookHotelResult.Text = "Please enter a valid end date";
+                BookHotelResult.Text = "Book Hote Result: Please enter a valid end date";
                 return;
             }
             // Check if start date is today or in the future
             if (startDate.Date < DateTime.Today)
             {
-                BookHotelResult.Text = "Start date must be today or in the future";
+                BookHotelResult.Text = "Book Hotel Result: Start date must be today or in the future";
                 return;
             }
 
             // Check if end date is after start date
             if (endDate <= startDate)
             {
-                BookHotelResult.Text = "End date must be after start date";
+                BookHotelResult.Text = "Book Hotel Result: End date must be after start date";
                 return;
             }
 
@@ -254,9 +297,11 @@ namespace HotelProject
                     case 0:
                         // if the hotel was booked succesfully, then I have to refresh BookedHotels
                         // also have to refresh available hotels, since the quantity changed
-                        BookHotelResult.Text = "Result: Hotel booked successfully!";
+                        BookHotelResult.Text = "Book Hotel Result: Hotel booked successfully!";
                         LoadBookedHotels();
                         LoadAvailableHotels();
+
+                        // reset the input fields
                         txtStartDate.Text = "";
                         txtEndDate.Text = "";
 
@@ -266,26 +311,27 @@ namespace HotelProject
 
                     // otherwise, report the specific type of error encountered in the result label
                     case 1:
-                        BookHotelResult.Text = "Result: Insufficient balance";
+                        BookHotelResult.Text = "Book Hotel Result: Insufficient balance";
                         break;
                     case 2:
-                        BookHotelResult.Text = "Result: No rooms available at this hotel";
+                        BookHotelResult.Text = "Book Hotel Result: No rooms available at this hotel";
                         break;
                     case 3:
-                        BookHotelResult.Text = "Result: User not found";
+                        BookHotelResult.Text = "Book Hotel Result: User not found";
                         break;
                     case 4:
-                        BookHotelResult.Text = "Result: Hotel not found";
+                        BookHotelResult.Text = "Book Hotel Result: Hotel not found";
                         break;
                     default:
-                        BookHotelResult.Text = "Result: An error occurred";
+                        BookHotelResult.Text = "Book Hotel Result: An error occurred";
                         break;
                 }
 
             }
+            // otherwise, print out the unexpected error (should've caught most errors, though)
             catch (Exception ex)
             {
-                BookHotelResult.Text = "Result: " + ex.Message;
+                BookHotelResult.Text = "Book Hotel Result: " + ex.Message;
             }
         }
     }

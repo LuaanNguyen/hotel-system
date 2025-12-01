@@ -117,7 +117,7 @@
       <State>AZ</State>
       <Zip>85008</Zip>
     </Address>
-    <BookedRooms>100</BookedRooms>
+    <BookedRooms>99</BookedRooms>
     <Price>100.00</Price>
   </Hotel>
   <Hotel Rating="3.8" ID="10">
