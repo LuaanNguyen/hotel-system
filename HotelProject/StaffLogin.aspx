@@ -11,7 +11,8 @@
     <form id="form1" runat="server">
         <div>
             <h2>Staff Login Page</h2>
-            <asp:Button ID="HomeButton" runat="server" Text="Return to Home" OnClick="HomeButton_Click" /><br /><br />
+            <asp:Button ID="HomeButton" runat="server" Text="Return to Home" OnClick="HomeButton_Click" /><br />
+            <asp:Label ID="TryTwiceLabel" runat="server" Text="Try twice to get the login details" Font-Italic="true"></asp:Label><br /><br />
             <asp:Label ID="DescLabel" runat="server" Visible="false" Text="Hint: Login with TA as the username and Cse445! as the password." Font-Italic="true"></asp:Label>
             <uc:Login ID="LoginControl1" runat="server" />
             <asp:Label ID="ResultLabel" runat="server" Text="Result: "></asp:Label>
