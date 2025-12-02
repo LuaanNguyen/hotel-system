@@ -36,14 +36,14 @@ namespace HotelProject
             {
                 allHotels = new List<Hotel>
                 {
-                    new Hotel { HotelId = "H001", Name = "Westin Hotel", Location = "Downtown Phoenix", PricePerNight = 189.99, Rating = 4.5, AvailableRooms = 25 },
-                    new Hotel { HotelId = "H002", Name = "Hampton Inn Phoenix", Location = "Airport North", PricePerNight = 129.99, Rating = 4.2, AvailableRooms = 30 },
-                    new Hotel { HotelId = "H003", Name = "La Quinta Inn", Location = "Scottsdale", PricePerNight = 99.99, Rating = 4.0, AvailableRooms = 20 },
-                    new Hotel { HotelId = "H004", Name = "Best Western Plus Chandler", Location = "Chandler", PricePerNight = 119.99, Rating = 4.3, AvailableRooms = 15 },
-                    new Hotel { HotelId = "H005", Name = "Hilton Garden Inn Phoenix", Location = "Airport", PricePerNight = 159.99, Rating = 4.4, AvailableRooms = 28 },
-                    new Hotel { HotelId = "H006", Name = "Marriott Phoenix Resort", Location = "Tempe", PricePerNight = 229.99, Rating = 4.7, AvailableRooms = 12 },
-                    new Hotel { HotelId = "H007", Name = "Comfort Inn", Location = "Mesa", PricePerNight = 89.99, Rating = 3.8, AvailableRooms = 35 },
-                    new Hotel { HotelId = "H008", Name = "Embassy Suites", Location = "Downtown", PricePerNight = 199.99, Rating = 4.6, AvailableRooms = 18 }
+                    new Hotel { HotelId = "1", Name = "Westin", Location = "Tempe", PricePerNight = 41.04, Rating = 4.2, AvailableRooms = 35 },
+                    new Hotel { HotelId = "2", Name = "La Quinta Inn", Location = "Tempe", PricePerNight = 29.53, Rating = 4.0, AvailableRooms = 38 },
+                    new Hotel { HotelId = "3", Name = "Hampton Inn Phoenix-Airport North", Location = "Phoenix", PricePerNight = 33.00, Rating = 4.1, AvailableRooms = 95 },
+                    new Hotel { HotelId = "4", Name = "Hampton Inn and Suites Tempe", Location = "Tempe", PricePerNight = 75.00, Rating = 4.4, AvailableRooms = 81 },
+                    new Hotel { HotelId = "5", Name = "Days Inn By Wyndham Phoenix North", Location = "Phoenix", PricePerNight = 77.00, Rating = 3.2, AvailableRooms = 75 },
+                    new Hotel { HotelId = "6", Name = "Best Western Plus Chandler", Location = "Chandler", PricePerNight = 77.00, Rating = 4.3, AvailableRooms = 90 },
+                    new Hotel { HotelId = "7", Name = "Hilton Garden Inn Phoenix Airport", Location = "Phoenix", PricePerNight = 83.00, Rating = 4.4, AvailableRooms = 77 },
+                    new Hotel { HotelId = "8", Name = "SureStay By Best Western Phoenix Airport", Location = "Phoenix", PricePerNight = 99.00, Rating = 3.5, AvailableRooms = 10 }
                 };
             }
         }
