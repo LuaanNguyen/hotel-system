@@ -71,10 +71,24 @@ namespace HotelProject
             }
             else
             {
-                // otherwise, just go back to incorrect credentials
+                // Track failed attempts
+                int attempts = Session["StaffLoginAttempts"] != null ? (int)Session["StaffLoginAttempts"] : 0;
+                attempts++;
+                Session["StaffLoginAttempts"] = attempts;
+
+                // Show hint after 2 failed attempts
+                if (attempts >= 2)
+                {
+                    DescLabel.Visible = true;
+                }
+
                 ResultLabel.Text = "Result: Invalid Credentials.";
             }
+        }
 
+        protected void HomeButton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Default.aspx");
         }
     }
 }

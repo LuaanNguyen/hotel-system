@@ -11,8 +11,9 @@
     <form id="form1" runat="server">
         <div>
             <h2>Member Login Page</h2>
-            <asp:Label ID="HintLabel" runat="server" Text="Try entering SophiaGu as username, with password SophiaGu123. 
-                Other valid credentials are LuanNguyen (username), LuanNguyen123 (password) AND MoTopiwala (username), MoTopiwala123 (password)"></asp:Label>
+            <asp:Button ID="HomeButton" runat="server" Text="Return to Home" OnClick="HomeButton_Click" /><br />
+            <asp:Label ID="TryTwiceLabel" runat="server" Text="Try twice to get the login details" Font-Italic="true"></asp:Label><br /><br />
+            <asp:Label ID="HintLabel" runat="server" Visible="false" Text="Hint: Valid credentials are SophiaGu/SophiaGu123, LuanNguyen/LuanNguyen123, MoTopiwala/MoTopiwala123"></asp:Label>
             <uc:Login ID="LoginControl1" runat="server" /><br />
             <asp:Label ID="ResultLabel" runat="server" Text="Result: "></asp:Label>
         </div>

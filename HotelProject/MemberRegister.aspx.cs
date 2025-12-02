@@ -57,7 +57,7 @@ namespace HotelProject
 
                         if (prxy.RegisterMember(username, password, balance))
                         {
-                            ResultLabel.Text = $"Result: User with username {username} created successfully.";
+                            ResultLabel.Text = string.Format("Result: User with username {0} created successfully.", username);
                         }
                         else
                         {

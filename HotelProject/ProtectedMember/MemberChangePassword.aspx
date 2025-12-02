@@ -20,6 +20,7 @@
 
             <asp:Button ID="ChangePasswordBtn" runat="server" Text="Change Password" OnClick="ChangePassword_Click"/>
             <asp:Button ID="LoginButton" runat="server" Text="Login" OnClick="LoginButton_Click" />
+            <asp:Button ID="HomeButton" runat="server" Text="Return to Home" OnClick="HomeButton_Click" />
             <br />
 
             <asp:Label ID="ResultLabel" runat="server" Text="Result: "></asp:Label>

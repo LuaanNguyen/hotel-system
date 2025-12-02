@@ -10,7 +10,8 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <h3>Member Rating Page</h3><br />
+            <h3>Member Rating Page</h3>
+            <asp:Button ID="HomeButton" runat="server" Text="Return to Home" OnClick="HomeButton_Click" /><br /><br />
 
             <asp:Label ID="Display" runat="server" Text="TryIt: Fetch Rated Hotels by Username" Font-Bold="true"></asp:Label><br />
             <asp:Label ID="DisplayDesc" runat="server" Text="Given a username, service displays all the hotels 
