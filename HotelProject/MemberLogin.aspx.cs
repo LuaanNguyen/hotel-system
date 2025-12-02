@@ -76,9 +76,24 @@ namespace HotelProject
             }
             else
             {
-                // otherwise, display error message
+                // Track failed attempts
+                int attempts = Session["MemberLoginAttempts"] != null ? (int)Session["MemberLoginAttempts"] : 0;
+                attempts++;
+                Session["MemberLoginAttempts"] = attempts;
+
+                // Show hint after 2 failed attempts
+                if (attempts >= 2)
+                {
+                    HintLabel.Visible = true;
+                }
+
                 ResultLabel.Text = "Result: Invalid Credentials.";
             }
+        }
+
+        protected void HomeButton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Default.aspx");
         }
     }
 }

@@ -170,7 +170,11 @@ namespace HotelProject
             {
                 ResultLabel2.Text = "Result: " + ex.Message;
             }
+        }
 
+        protected void HomeButton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Default.aspx");
         }
     }
 }

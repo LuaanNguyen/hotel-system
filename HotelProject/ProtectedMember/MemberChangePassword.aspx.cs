@@ -66,5 +66,10 @@ namespace HotelProject.ProtectedMember
                 ResultLabel.Text = "Result: An error occured while trying to change the password.";
             }
         }
+
+        protected void HomeButton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Default.aspx");
+        }
     }
 }
