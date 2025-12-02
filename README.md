@@ -36,18 +36,53 @@ Instructor: Yinong Chen
 
 <img width="1292" alt="Muhammed Topiwala Contributions" src="https://github.com/user-attachments/assets/73a935df-5e16-4a31-893b-b58a618a4226" />
 
-## How to Run the Application
+## Live Deployment (WebStrar)
 
-1. Unzip/extract the zip file. You should endup with a folder name `hotel-system-main` that contains all the source code from every members in our grou.
-2. Locate and open `HotelProject.sln` in Visual Studio 2022.
-3. Right‑click the HotelProject project and choose Set as Startup Project.
-4. Then press F5 (or click the green arrow) to run the site using IIS Express.
-5. Your browser will open to the `Default.aspx` page where the application and components summary table resides.
+Our application is deployed on ASU's WebStrar server:
 
-## Troubleshooting
+| Component | URL |
+|-----------|-----|
+| **Web Application** | http://webstrar8.fulton.asu.edu/page8/Default.aspx |
+| **WCF Service** | http://webstrar8.fulton.asu.edu/page0/Service1.svc |
 
-### If you encounter this error:
+### Test Credentials
+
+| Role | Username | Password |
+|------|----------|----------|
+| Member | SophiaGu | SophiaGu123 |
+| Member | LuanNguyen | LuanNguyen123 |
+| Member | MoTopiwala | MoTopiwala123 |
+| Staff | TA | Cse445! |
+
+### Accessing WebStrar (VPN Required for Development)
+
+To deploy or modify files on WebStrar, you need ASU VPN access:
+
+1. **Install Cisco AnyConnect VPN** from [ASU VPN Guide](https://asu.my.salesforce-sites.com/kb/articles/FAQ/How-do-I-Install-Cisco-AnyConnect-SSLVPN)
+2. **Connect to VPN**: `sslvpn.asu.edu/2fa`
+   - Use your ASURITE ID and password
+   - Second password: `push` (triggers DUO verification)
+3. **Map Network Drive**: `\\webstrar.fulton.asu.edu\website8`
+   - Username: `asuad\<your-asurite>`
+   - Drive letter: `Z:`
+
+## Running Locally
+
+### Prerequisites
+- Visual Studio 2022
+- .NET Framework 4.0+
+
+### Steps
+
+1. Clone or extract the repository
+2. Open `HotelProject.sln` in Visual Studio 2022
+3. Right-click **WcfHotelService** → Set as Startup Project → Press F5
+   - Note the localhost port (e.g., `localhost:51042`)
+4. Right-click **HotelProject** → Set as Startup Project → Press F5
+5. Browser opens to `Default.aspx`
+
+### If NuGet packages fail:
 
 <img width="1156" height="430" alt="image" src="https://github.com/user-attachments/assets/668aa9c1-798f-40b8-ab32-23d6290bceeb" />
 
-You need to restore the NuGet packages. Go to Tools > NuGet Package Manager > Package Manager Console and type in command `Update-Package -reinstall`
+Run in Package Manager Console: `Update-Package -reinstall`
