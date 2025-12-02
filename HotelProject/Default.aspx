@@ -225,6 +225,12 @@
         <br />
         <h4>Discount Control</h4>
         <uc:Discount ID="DiscountControl1" runat="server" />
+        <br />
+        <h4>Agent Notification Control</h4>
+        <uc:AgentNotification ID="AgentNotification1" runat="server" />
+        <br />
+        <h4>Member Browsing Control</h4>
+        <uc:MemberBrowsing ID="MemberBrowsing1" runat="server" />
     </div>
 
 </div>
