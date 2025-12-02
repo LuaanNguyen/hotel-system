@@ -86,14 +86,23 @@
     <Content Include="Default.aspx" />
     <Content Include="DiscountService.asmx" />
     <Content Include="Global.asax" />
+    <Content Include="Login.aspx" />
     <Content Include="LoginControl.ascx" />
     <Content Include="MemberBrowsing.ascx" />
     <Content Include="MemberBrowsingPage.aspx" />
     <Content Include="MemberLogin.aspx" />
+    <Content Include="MemberRegister.aspx" />
     <Content Include="NotificationHelper.asmx" />
     <Content Include="StaffLogin.aspx" />
+    <Content Include="TryItRating.aspx" />
     <Content Include="Web.config" />
     <Content Include="DiscountControl.ascx" />
+    <Content Include="ProtectedMember\MemberBrowse.aspx" />
+    <Content Include="ProtectedMember\MemberRating.aspx" />
+    <Content Include="ProtectedMember\MemberChangePassword.aspx" />
+    <Content Include="ProtectedMember\Web.config" />
+    <Content Include="ProtectedStaff\StaffDashboard.aspx" />
+    <Content Include="ProtectedStaff\Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AgentBooking.ascx.cs">
@@ -182,6 +191,55 @@
     </Compile>
     <Compile Include="DiscountControl.ascx.designer.cs">
       <DependentUpon>DiscountControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MemberRegister.aspx.cs">
+      <DependentUpon>MemberRegister.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MemberRegister.aspx.designer.cs">
+      <DependentUpon>MemberRegister.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TryItRating.aspx.cs">
+      <DependentUpon>TryItRating.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TryItRating.aspx.designer.cs">
+      <DependentUpon>TryItRating.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProtectedMember\MemberBrowse.aspx.cs">
+      <DependentUpon>MemberBrowse.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProtectedMember\MemberBrowse.aspx.designer.cs">
+      <DependentUpon>MemberBrowse.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProtectedMember\MemberRating.aspx.cs">
+      <DependentUpon>MemberRating.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProtectedMember\MemberRating.aspx.designer.cs">
+      <DependentUpon>MemberRating.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProtectedMember\MemberChangePassword.aspx.cs">
+      <DependentUpon>MemberChangePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProtectedMember\MemberChangePassword.aspx.designer.cs">
+      <DependentUpon>MemberChangePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProtectedStaff\StaffDashboard.aspx.cs">
+      <DependentUpon>StaffDashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProtectedStaff\StaffDashboard.aspx.designer.cs">
+      <DependentUpon>StaffDashboard.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
